@@ -19,5 +19,8 @@
   "homepage": "https://github.com/dmilin1/SaferWay#readme",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }

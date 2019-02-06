@@ -1,0 +1,23 @@
+{
+  "name": "saferway",
+  "version": "1.0.0",
+  "description": "A better version of Safeway",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmilin1/SaferWay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmilin1/SaferWay/issues"
+  },
+  "homepage": "https://github.com/dmilin1/SaferWay#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

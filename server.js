@@ -1,40 +1,53 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
 
-var port = 3000;
+const port = 3000;
 
-app.use(express.static(__dirname + '/public'));
-app.set('view engine', 'html');
-app.listen(port,()=>{
-  console.log("listening at http://127.0.0.1:" + port);
+
+var products = new mongoose.Schema({
+  name: String,
+  price: Number,
+  updated: { type: Date, default: Date.now },
+});
+
+var Product = mongoose.model('Product', products);
+
+
+function launchServer() {
+  app.use(express.static(__dirname + '/public'));
+  app.set('view engine', 'html');
+  app.listen(port,()=>{
+    console.log("listening at http://127.0.0.1:" + port);
+  });
+}
+
+
+// an example function that returns data from the database
+// in this case, it returns all "Products" with a "price" greater than 0.99
+app.get('/test', function (req, res) {
+    Product.find()
+    .where('price').gt('0.99')
+    .exec(function (err, data) {
+
+      console.log(data)
+      res.send(data)
+
+    })
 });
 
 
 
-// const mongoose = require('mongoose');
-//
-// mongoose.connect('mongodb://localhost/saferway');
-//
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function() {
-//   // we're connected!
-//
-//   var products = new mongoose.Schema({
-//     name: String,
-//     price: Number,
-//     updated: { type: Date, default: Date.now },
-//   });
-//
-//   var Product = mongoose.model('Product', products);
-//
-//   var exampleProduct1 = new Product({
-//     name: "Tomato",
-//     price: 0.99,
-//   })
-//
-//   exampleProduct1.save(function (err, exampleProduct1) {
-//     if (err) return console.error(err);
-//   });
-//
-// });
+mongoose.connect('mongodb://localhost/saferway');
+
+var db = mongoose.connection;
+
+db.on('error', function () {
+  console.log('Failed to connect to database')
+  launchServer()
+});
+
+db.once('open', function () {
+   console.log('Connected to database');
+   launchServer()
+});

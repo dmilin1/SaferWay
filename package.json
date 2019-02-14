@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/dmilin1/SaferWay#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
     "express": "^4.16.4",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.10"

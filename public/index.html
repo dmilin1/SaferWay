@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="main.css">
     <title>SaferWay</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
   </head>
   <body>
 
@@ -31,14 +35,13 @@
          <p>A better and safer version of SafeWay! </p>
            <p> <img class="logo" src="https://media.discordapp.net/attachments/539601348082139148/545324701195436032/unknown.png" alt="My_Logo" style="width: 1000px;height: 200px;">
            </p>
-       
-    </main>
 
-    
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-    <!-- Load our React component. -->
-    <script src="features/like_button.js"></script>
+    </main>
+    <div id="exampleReactComponent"></div>
+    <script type="text/babel" src="features/exampleReactComponent.js"></script>
+
+
+
 
     <footer>
       <ul>
@@ -47,4 +50,3 @@
     </footer>
   </body>
 </html>
-

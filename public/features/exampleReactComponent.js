@@ -4,7 +4,7 @@
 class Root extends React.Component {
   constructor(props) {
     super(props);
-    this.msg = 'THIS IS MY REACT EXAMPLE TEXT' ;
+    this.msg = props.msg ;
   }
 
   render() {
@@ -19,4 +19,4 @@ class Root extends React.Component {
 
 
 
-ReactDOM.render(<Root/>, document.getElementById('exampleReactComponent'));
+ReactDOM.render(<Root msg="test message"/>, document.getElementById('exampleReactComponent'));

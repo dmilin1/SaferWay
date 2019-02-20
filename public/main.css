@@ -26,8 +26,9 @@ main {
   padding: 5em 1em 1em 1em;
 }
 
-header a {
+header img {
   text-decoration: none;
+  padding-top: 14px;
 }
 
 header li {

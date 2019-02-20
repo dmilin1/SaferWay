@@ -4,7 +4,7 @@
 class Root extends React.Component {
   constructor(props) {
     super(props);
-    this.msg = props.msg ;
+    this.msg = "derp";
   }
 
   render() {

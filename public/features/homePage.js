@@ -19,4 +19,4 @@ class Root extends React.Component {
 
 
 
-ReactDOM.render(<Root/>, document.getElementById('exampleReactComponent'));
+ReactDOM.render(<Root/>, document.getElementById('homePage'));

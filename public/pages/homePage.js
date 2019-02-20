@@ -1,10 +1,11 @@
 'use strict';
 
+import dropdown from './components/dropdown';
 
 class Root extends React.Component {
   constructor(props) {
     super(props);
-    this.msg = "test1";
+    this.msg = "test";
   }
 
   render() {
@@ -13,6 +14,8 @@ class Root extends React.Component {
       <div>
       Example: {this.msg}
       </div>
+      <dropdown/>
+
     );
   }
 }

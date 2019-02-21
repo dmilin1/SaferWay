@@ -1,0 +1,5 @@
+.titlebar  {
+  display: flex;
+  border-bottom-style: solid;
+  border-width: 3px;
+}

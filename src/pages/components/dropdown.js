@@ -1,45 +1,58 @@
-import React, { Component } from 'react';
-
-export default class Dropdown extends Component {
-  constructor(){
-      super();
-
-      this.state = {
-        showMenu: false,
-      }
-
-      this.showMenu = this.showMenu.bind(this);
-      this.closeMenu = this.closeMenu.bind(this);
-    }
+import React from 'react';
+import './style.css';
 
 
-    showMenu(event) {
-      event.preventDefault();
+class Dropdown extends React.Component {
+constructor(){
+ super();
 
-      this.setState({ showMenu: true }, () => {
-        document.addEventListener('click', this.closeMenu);
-      });
-    }
+ this.state = {
+       displayMenu: false,
+     };
 
-    closeMenu() {
-      this.setState({ showMenu: false }, () => {
-        document.removeEventListener('click', this.closeMenu);
-      });
-    }
+  this.showDropdownMenu = this.showDropdownMenu.bind(this);
+  this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
+
+};
+
+showDropdownMenu(event) {
+    event.preventDefault();
+    this.setState({ displayMenu: true }, () => {
+    document.addEventListener('click', this.hideDropdownMenu);
+    });
+  }
+
+  hideDropdownMenu() {
+    this.setState({ displayMenu: false }, () => {
+      document.removeEventListener('click', this.hideDropdownMenu);
+    });
+
+  }
 
   render() {
     return (
-      <div>
-        <button>
-          Show menu
-        </button>
+        <div  className="dropdown" style = {{background:"white",width:"200px"}} >
+         <div className="button" onClick={this.showDropdownMenu}> Categories</div>
 
-        <div className="menu">
-          <button> Menu item 1 </button>
-          <button> Menu item 2 </button>
-          <button> Menu item 3 </button>
-        </div>
-      </div>
+          { this.state.displayMenu ? (
+          <ul>
+         <li><a href="Women">Women</a></li>
+         <li><a href="Men">Men</a></li>
+         <li><a href="Young Adult">Young Adult</a></li>
+         <li><a href="Kids">Kids</a></li>
+         <li><a href="Baby">Baby</a></li>
+         <li><a href="Electronics">Electronics</a></li>
+          </ul>
+        ):
+        (
+          null
+        )
+        }
+
+       </div>
+
     );
   }
 }
+
+export default Dropdown;

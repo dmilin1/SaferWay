@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './titlebar.css'
-import Dropdown from './dropdown.js'
+import Dropdown from './dropdown'
 import logo from "./../../images/1.png"
 console.log(logo)
 

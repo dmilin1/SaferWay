@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './dropdownStyle.css';
 
 
 class Dropdown extends React.Component {
@@ -12,6 +12,7 @@ constructor(){
 
   this.showDropdownMenu = this.showDropdownMenu.bind(this);
   this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
+
 
 };
 
@@ -29,14 +30,15 @@ showDropdownMenu(event) {
 
   }
 
+
   render() {
     return (
         <div  className="dropdown" style = {{background:"white",width:"200px"}} >
-         <div className="button" onClick={this.showDropdownMenu}> Categories</div>
+         <div className="button" style={{cursor: 'pointer'}} onClick={this.showDropdownMenu}> Categories</div>
 
           { this.state.displayMenu ? (
           <ul>
-         <li><a href="Women">Women</a></li>
+         <li><a href="#Women">Women</a></li>
          <li><a href="Men">Men</a></li>
          <li><a href="Young Adult">Young Adult</a></li>
          <li><a href="Kids">Kids</a></li>

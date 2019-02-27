@@ -1,23 +1,9 @@
-ul.componentList{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-ul.componentList li{
-  float: left;
+.componentList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .individualComponent{
   margin: 0.5em;
-}
-
-.individualComponent a{
-  text-decoration: none;
-  color: black;
-}
-
-.individualComponent a:hover{
-  text-decoration: underline;
-  color: blue;
 }

@@ -1,30 +1,49 @@
-const express = require('express');
+require('./config/config');
+
+var { mongoose } = require('./mongoose/mongoose');
+var User = require('./model/user');
+var port = process.env.PORT;
+
+const _ = require('lodash');
 const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')();
-const mongoose = require('mongoose');
+const express = require('express');
 
-const port = 3001;
+var app = express();
 
-function launchServer() {
-  const app = express();
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(pino);
+app.use(bodyParser.json());
 
-  app.listen(port, () =>
-    console.log('Express server is running on localhost:3001')
-  );
-}
-
-mongoose.connect('mongodb://localhost/saferway');
-
-var db = mongoose.connection;
-
-db.on('error', function () {
-  console.log('Failed to connect to database')
-  launchServer()
+app.get('/',(req,res)=>{
+  res.send('hi');
 });
 
-db.once('open', function () {
-   console.log('Connected to database');
-   launchServer()
+
+app.post('/signup', (req, res) => {
+  const body = _.pick(req.body, ['email', 'password']);
+  const user = new User(body);
+
+  user.save()
+    .then(user => {
+      res.send(user);
+    })
+    .catch(err => {
+      res.status(401).send(err);
+    });
+});
+
+app.post('/login',(req,res)=>{
+  var body=_.pick(req.body, ['email','password']);
+
+  User.findByCredentials(body.email, body.password)
+  .then(user=>{
+    return user.generateAuthToken().then(token=>{
+      res.header('x-auth',token).send(user);
+    })
+  })
+  .catch(err=>{
+    res.status(401).send(err);
+  })
+});
+
+app.listen(port,()=>{
+  console.log(`Server is running on ${port}`);
 });

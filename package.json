@@ -21,15 +21,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-<<<<<<< HEAD
-    "server": "node-env-run --exec 'nodemon ./server/server.js'",
+    "server": "nodemon ./server/server.js",
     "start": "run-p server frontend",
     "dev-server": "nodemon server/server",
     "dev-test": "export NODE_ENV=test || set NODE_ENV=test && mocha server/**/*.test.js"
-=======
-    "server": "nodemon ./server/server.js",
-    "start": "run-p server frontend"
->>>>>>> master
   },
   "eslintConfig": {
     "extends": "react-app"

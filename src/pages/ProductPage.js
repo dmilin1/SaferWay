@@ -80,9 +80,11 @@ export default class ProductPage extends Component {
 function ProductComponent(props){
   return(
     <div className="individualComponent">
-      <img src={props.imgsrc} alt={props.alt}/>
-      <p>{props.title}</p>
-      <p>{props.price}</p>
+      <a href="#">
+        <img src={props.imgsrc} alt={props.alt}/>
+        <p>{props.title}</p>
+        <p>{props.price}</p>
+      </a>
     </div>
   );
 }

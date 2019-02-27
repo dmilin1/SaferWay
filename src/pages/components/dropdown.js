@@ -33,7 +33,7 @@ showDropdownMenu(event) {
 
   render() {
     return (
-        <div  className="dropdown" style = {{background:"white",width:"200px"}} >
+        <div  className="dropdown">
          <div className="button" style={{cursor: 'pointer'}} onClick={this.showDropdownMenu}> Categories</div>
 
           { this.state.displayMenu ? (

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import './ProductPage.css';
 
 export default class ProductPage extends Component {
 
   render() {
     return (
-      <div className="productList">
+      <div>
         <ul>
           <li>
             <ProductComponent
@@ -47,7 +46,7 @@ export default class ProductPage extends Component {
 
 function ProductComponent(props){
   return(
-    <div className="individualComponent">
+    <div>
       <img src={props.imgsrc} alt={props.alt}/>
       <p>{props.title}</p>
       <p>{props.price}</p>

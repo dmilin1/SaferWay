@@ -9,7 +9,6 @@ export default class HomePage extends Component {
         <div className="container">
 
             <div className="box">
-
                 <div className="icon"><i className="fa fa-user" aria-hidden="true"></i></div>
                 <div className="content">
                   <a href="/login" to="/login">

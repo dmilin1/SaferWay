@@ -58,7 +58,8 @@ UserSchema.pre('save', function(next){
 UserSchema.methods.generateAuthToken = function() {
     var user = this;
     var access = 'auth';
-    var token = jwt.sign({_id:user._id.toHexString(), access}, 'secretkey').toString();
+    var token = jwt.sign({_id:user._id.toHexString(), access}, 'secretkey',
+    {expiresIn: '60'}).toString();
     user.tokens = user.tokens.concat ([{token,access}]);
 
     return user.save().then(()=>{
@@ -96,6 +97,7 @@ UserSchema.statics.findByCredentials = function(email, password) {
             return new Promise((resolve,reject)=>{
                 bcrypt.compare(password,user.password, (err,result)=>{
                     if(result){
+                        console.log(result);
                         resolve(result);
                     }else{
                         reject(err);
@@ -105,6 +107,16 @@ UserSchema.statics.findByCredentials = function(email, password) {
         }
     });
 };
+
+UserSchema.methods.removeToken = function(token){
+    var user = this;
+
+    return user.update({
+        $pull:{
+            tokens:{token}
+        }
+    });
+}
 var user = mongoose.model('User', UserSchema);
 
 module.exports = user;

@@ -23,16 +23,25 @@ app.post('/signup', (req, res) => {
 
   user.save()
     .then(user => {
-      console.log(user);
-      return user.generateAuthToken();
-    })
-    .then(token => {
-      console.log(token);
-      res.header('x-auth', token).send(user);
+      res.send(user);
     })
     .catch(err => {
       res.status(401).send(err);
     });
+});
+
+app.post('/login',(req,res)=>{
+  var body=_.pick(req.body, ['email','password']);
+
+  User.findByCredentials(body.email, body.password)
+  .then(user=>{
+    return user.generateAuthToken().then(token=>{
+      res.header('x-auth',token).send(user);
+    })
+  })
+  .catch(err=>{
+    res.status(401).send(err);
+  })
 });
 
 app.listen(port,()=>{

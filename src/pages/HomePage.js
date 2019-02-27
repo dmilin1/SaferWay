@@ -7,7 +7,7 @@ export default class HomePage extends Component {
     return (
     <div>
         <div className="container">
-            <div className="box">
+            <div className="box" onClick={console.log('derp')}>
                 <div className="icon"><i className="fa fa-user" aria-hidden="true"></i></div>
                 <div className="content">
                     <h3>Log In</h3>

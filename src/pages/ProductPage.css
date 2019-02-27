@@ -1,0 +1,13 @@
+ul.componentList{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+ul.componentList li {
+  float: left;
+}
+
+.individualComponent{
+  margin: 0.5em;
+}

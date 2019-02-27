@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './CustomNavbar.css';
-import Dropdown from './components/dropdown.js'
 
 export default class CustomNavbar extends Component {
 

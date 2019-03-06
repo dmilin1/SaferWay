@@ -2,7 +2,7 @@ require('./config/config');
 
 var { mongoose } = require('./mongoose/mongoose');
 var User = require('./model/user');
-var port = process.env.PORT;
+var port = 3001;
 
 const {authenticate} = require('./middleware/authenticate');
 const _ = require('lodash');
@@ -41,7 +41,7 @@ app.post('/signup', (req, res) => {
 
 app.post('/login',(req,res)=>{
   var body=_.pick(req.body, ['email','password']);
-  
+
   User.findByCredentials(body.email, body.password)
     .then(user => {
       user.generateAuthToken()

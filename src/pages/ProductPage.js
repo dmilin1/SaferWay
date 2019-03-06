@@ -25,36 +25,7 @@ export default class ProductPage extends Component {
             title="Milk"
             price="$1.99"
           />
-          <ProductComponent
-            imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
-            alt="milk"
-            title="Milk"
-            price="$1.99"
-          />
-          <ProductComponent
-            imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
-            alt="milk"
-            title="Milk"
-            price="$1.99"
-          />
-          <ProductComponent
-            imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
-            alt="milk"
-            title="Milk"
-            price="$1.99"
-          />
-          <ProductComponent
-            imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
-            alt="milk"
-            title="Milk"
-            price="$1.99"
-          />
-          <ProductComponent
-            imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
-            alt="milk"
-            title="Milk"
-            price="$1.99"
-          />
+          
         </div>
       </div>
     );

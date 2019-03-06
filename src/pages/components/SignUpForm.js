@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class SignUpForm extends Component{
     constructor() {
@@ -11,8 +12,25 @@ class SignUpForm extends Component{
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);  
+        this.onSignup = this.onSignup.bind(this);
+    }
+    onSignup = async(email, password) => {
+        console.log('signup');
+        console.log(email);
+        console.log(password);
+        await axios.post('//localhost:3000/signup', {
+            email,
+            password
+        })
+        .then(res=>{
+            console.log(res.data);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
     }
       handleChange(e) {
+          console.log('change');
         let target = e.target;
         let value = target.type === 'checkbox' ? target.checked : target.value;
         let name = target.name;
@@ -22,10 +40,13 @@ class SignUpForm extends Component{
       }
       handleSubmit(e) {
         e.preventDefault();
-        console.log('The form was submitted with the following data:');
-        console.log(this.state);
+        console.log('submit');
+        const res = this.onSignup(this.state.email, this.state.pass);
+        console.log(res);
+        // console.log('The form was submitted with the following data:');
+        // console.log(this.state);
       }
-    render(){
+    render(){   
         return(
             <div>
                 <div className="FormCenter">

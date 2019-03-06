@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import './LoginPage.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import SignUpForm from './components/SignUpForm'
+import axios from 'axios';
+
 export default class LoginPage extends Component {
   constructor() {
     super();
 
     this.state = {
-        email: '',
-        pass: ''
+      email: '',
+      pass: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);  
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e) {
     let target = e.target;
@@ -23,10 +25,22 @@ export default class LoginPage extends Component {
       [name]: value
     });
   }
-  handleSubmit(e) {
+  handleSubmit = async(e) => {
     e.preventDefault();
-    console.log('The form was submitted with the following data:');
-    console.log(this.state);
+    console.log(this.state.email,this.state.pass);
+    await axios.post('//localhost:3000/login', {
+      email: this.state.email,
+      password: this.state.pass
+    })
+    .then(res=>{
+      console.log(res.data);
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+    // this.onSignin(this.state.email, this.state.pass);
+    // console.log('The form was submitted with the following data:');
+    // console.log(this.state);
   }
   render() {
     return (

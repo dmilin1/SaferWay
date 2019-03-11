@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ProductPage.css';
-
+import './COutProductPage.css'
 export default class ProductPage extends Component {
 
   loadProducts = () => {
@@ -20,9 +20,13 @@ export default class ProductPage extends Component {
 
   render() {
     return (
-      <div>
-        <div className="componentList">
-          {this.loadProducts()}
+      <div className = 'AppS'>
+        <div className = 'AppS__Aside'>
+          <div className = 'FormField__Label' htmlFor="name">Products
+            <div className="componentList">
+              {this.loadProducts()}
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -31,6 +35,7 @@ export default class ProductPage extends Component {
 
 function ProductComponent(props){
   return(
+
     <div style={{padding:".5em", margin:".5em", borderStyle:"solid", borderRadius:"25px", borderColor:"#cccccc"}}>
       <span className="border">
         <a href="#" style={{textDecoration:"none", color:"black"}}>

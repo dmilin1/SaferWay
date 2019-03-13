@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ProductPage.css';
-import './COutProductPage.css'
+
 export default class ProductPage extends Component {
 
   loadProducts = () => {
@@ -20,9 +20,10 @@ export default class ProductPage extends Component {
 
   render() {
     return (
-      <div className = 'AppS'>
-        <div className = 'AppS__Aside'>
-          <div className = 'FormField__Label' htmlFor="name">Products
+      <div>
+        <div>
+          <div  htmlFor="name">
+            <h1 style={{margin:"20px 135px"}}>Products</h1>
             <div className="componentList">
               {this.loadProducts()}
             </div>

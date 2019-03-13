@@ -82,21 +82,66 @@ body {
     text-align: center;
     color: #fff;
 }
+
 .container .box:nth-child(1) .icon{
     background: #319635;
 }
 .container .box:nth-child(1){
     background: #4caf50;
 }
+
 .container .box:nth-child(2) .icon{
     background: #d03852;
 }
 .container .box:nth-child(2){
     background: #f54967;
 }
+
 .container .box:nth-child(3) .icon{
     background: #23798e;
 }
 .container .box:nth-child(3){
     background: #328fa5;
+}
+
+.container .box:nth-child(4) .icon{
+    background: #366cc4;
+}
+.container .box:nth-child(4){
+    background: #4286f4;
+}
+
+.container .box:nth-child(5) .icon{
+    background: #c46036;
+}
+.container .box:nth-child(5){
+    background: #dd7244;
+}
+
+.container .box:nth-child(6) .icon{
+    background: #d6b95c;
+}
+.container .box:nth-child(6){
+    background: #e8c966;
+}
+
+.container .box:nth-child(7) .icon{
+    background: #c953cc;
+}
+.container .box:nth-child(7){
+    background: #dd60e0;
+}
+
+.container .box:nth-child(8) .icon{
+    background: #6d34e2;
+}
+.container .box:nth-child(8){
+    background: #8955f4;
+}
+
+.container .box:nth-child(9) .icon{
+    background: #1e604b;
+}
+.container .box:nth-child(9){
+    background: #437263;
 }

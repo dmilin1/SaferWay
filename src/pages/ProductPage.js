@@ -21,8 +21,18 @@ export default class ProductPage extends Component {
   render() {
     return (
       <div>
+<<<<<<< HEAD
         <div className="componentList">
           {this.loadProducts()}
+=======
+        <div>
+          <div  htmlFor="name">
+            <h1 style={{margin:"20px 135px"}}>Products</h1>
+            <div className="componentList">
+              {this.loadProducts()}
+            </div>
+          </div>
+>>>>>>> 388cffd3c1265771c20fc783aa76a06b46821c7c
         </div>
       </div>
     );

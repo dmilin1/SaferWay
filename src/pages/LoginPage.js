@@ -49,6 +49,7 @@ export default class LoginPage extends Component {
           <div className="AppS__Aside">
             <div className="FormCenter">
               <form className="FormField" onSubmit={this.handleSubmit}>
+                <label className="FormField__Label" htmlFor="name">Login</label>
                 <div className="FormField">
                   <label className="FormField__Label" htmlFor="name">Email</label>
                   <input type="text" id="email" className="FormField__Input" placeholder="Enter Your Email" name="email" value={this.state.email}  onChange={this.handleChange}></input>

@@ -34,7 +34,7 @@ export default class CustomNavbar extends Component {
               <div>
                   { this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }
 
-                  <button className="open-modal-btn" onClick={this.openModalHandler}>Open Modal</button>
+                  <button className="open-modal-btn" onClick={this.openModalHandler}>Search</button>
 
                   <SearchModal
                       className="modal"

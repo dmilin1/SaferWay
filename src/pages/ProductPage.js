@@ -35,7 +35,7 @@ export default class ProductPage extends Component {
 
 function ProductComponent(props){
   return(
-    //test
+    //testing
     <div style={{padding:".5em", margin:".5em", borderStyle:"solid", borderRadius:"25px", borderColor:"#cccccc"}}>
       <span className="border">
         <a href="#" style={{textDecoration:"none", color:"black"}}>

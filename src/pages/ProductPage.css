@@ -1,15 +1,49 @@
-.componentList{
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+.componentList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 
-.individualComponent{
+.individualComponent {
   margin: 0.5em;
 }
 
+.overlayContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s;
+}
 
-.productImage{
-  width: 20vw;
+.imageOverlay {
+  background: rgba(255,255,255,0);
+  transition: background 0.25s;
+}
+
+.imageOverlay:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.productTitle {
+  transition: opacity 0.25s;
+  opacity: 0;
+}
+
+.imageOverlay:hover ~ .productTitle {
+  opacity: 1;
+}
+
+.productPrice {
+  transition: opacity 0.25s;
+  opacity: 0;
+}
+
+.imageOverlay:hover ~ .productPrice {
+  opacity: 1;
 }

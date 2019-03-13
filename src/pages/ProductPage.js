@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './ProductPage.css';
-import './COutProductPage.css'
+
 export default class ProductPage extends Component {
 
   loadProducts = () => {
     var productList = []
     for (var i = 0; i < 20; i++) {
       productList.push(
-        <ProductComponent
+        <Product
           imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
           alt="milk"
           title="Milk"
@@ -20,38 +20,72 @@ export default class ProductPage extends Component {
 
   render() {
     return (
-      <div className = 'AppS'>
-        <div className = 'AppS__Aside'>
-          <div className = 'FormField__Label' htmlFor="name">Products
-            <div className="componentList">
-              {this.loadProducts()}
-            </div>
-          </div>
+      <div>
+        <div className="componentList">
+          {this.loadProducts()}
         </div>
       </div>
     );
   }
 }
 
-function ProductComponent(props){
-  return(
-    //testing
-    <div style={{padding:".5em", margin:".5em", borderStyle:"solid", borderRadius:"25px", borderColor:"#cccccc"}}>
-      <span className="border">
-        <a href="#" style={{textDecoration:"none", color:"black"}}>
-          <div className="card">
-            <img className="card-img-top" src={props.imgsrc} alt={props.alt} style={{borderRadius:"20px"}}></img>
-            <div className="card-body">
-              <h5 className="card-title" style={{fontSize:"16pt"}}>{props.title}</h5>
-              <a href="#" class="btn btn-primary" style={{background:"#2b5138", borderRadius:"20px"}} onClick = {()=>{
-                alert("Added to Cart: 1 x " + props.title + " (" + props.price + ")");
-              }}>
-                {props.price}
-              </a>
-            </div>
+
+class Product extends Component {
+  render() {
+    return(
+      <div style={styles.productContainer}>
+        <div className="overlayContainer">
+          <div className="imageOverlay" style={styles.imageOverlay}/>
+          <div className="productTitle" style={styles.productTitle}>
+          {this.props.title}
           </div>
-        </a>
-      </span>
-    </div>
-  );
+          <div className="productPrice" style={styles.productPrice}>
+          {this.props.price}
+          </div>
+        </div>
+        <img className="productImg" src={this.props.imgsrc} alt={this.props.alt} style={styles.productImg}/>
+      </div>
+    )
+  }
+}
+
+const styles = {
+  productContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '20vw',
+    margin: '2vw',
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  imgContainer: {
+  },
+  productImg: {
+    width: '100%',
+    borderRadius: '2vw',
+  },
+  imageOverlay: {
+    borderRadius: '2vw',
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+  },
+  productTitle: {
+    position: 'absolute',
+    zIndex: 1,
+    fontSize: '5vw',
+    pointerEvents: 'none',
+    fontFamily: 'Roboto',
+    fontWeight: '300',
+  },
+  productPrice: {
+    position: 'absolute',
+    zIndex: 1,
+    fontSize: '2vw',
+    paddingTop: '18vw',
+    pointerEvents: 'none',
+    fontFamily: 'Roboto',
+    fontWeight: '500',
+  },
 }

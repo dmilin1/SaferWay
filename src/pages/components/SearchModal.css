@@ -2,13 +2,12 @@
     background: white;
     border: 1px solid #d0cccc;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
-    margin: 100px auto 0;
-    transition: all .8s;
+    margin: -90px auto 0;
     width: 60%;
 }
 
 .modal-header {
-    background: #2b5138;
+    background: white;
     height: 40px;
     line-height: 40px;
     padding: 5px 20px;
@@ -16,7 +15,7 @@
 }
 
 .modal-header h3 {
-    color: white;
+    color: black;
     float: left;
     margin: 0;
     padding: 0;
@@ -34,7 +33,7 @@
 }
 
 .close-modal-btn {
-    color: white;
+    color: black;
     cursor: pointer;
     float: right;
     font-size: 30px;

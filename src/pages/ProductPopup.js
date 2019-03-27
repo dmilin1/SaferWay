@@ -3,18 +3,20 @@ import React, { Component } from 'react';
 export default class ProductPopup extends Component {
 
   render() {
-    console.log(this.props.product)
     return (
       <div
       style={{
         position: 'absolute',
-        backgroundColor: 'green',
-        width: "100%",
-        height: "100%",
+        backgroundColor: 'white',
         zIndex: 100,
         display: this.props.product ? 'flex' : 'none',
       }}>
 
+        <img className="productImg" src={'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg'} style={styles.productImg}/>
+
+        <div style={styles.exitButton} onClick={this.props.closeWindow}>
+        X
+        </div>
 
 
       </div>
@@ -24,11 +26,12 @@ export default class ProductPopup extends Component {
 
 
 const styles = {
-  main: {
-    position: 'absolute',
-    backgroundColor: 'green',
-    width: "100%",
-    height: "100%",
-    zIndex: 100,
+  exitButton: {
+    fontSize: 20,
+    fontWeight: 900,
+    padding: 10,
   },
+  productImg: {
+    alignSelf: 'center',
+  }
 }

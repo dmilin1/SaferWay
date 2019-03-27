@@ -29,11 +29,15 @@ export default class ProductPage extends Component {
     this.setState({ selectedProduct : theProduct })
   }
 
+  closeWindow = () => {
+    this.setState({ selectedProduct : null })
+  }
+
   render() {
     return (
       <div>
-        <ProductPopup product={this.state.selectedProduct}/>
-        <div className="componentList">
+        <ProductPopup product={this.state.selectedProduct} closeWindow={this.closeWindow}/>
+        <div style={{ display : !this.state.selectedProduct ? 'flex' : 'none' }} className="componentList">
           {this.loadProducts()}
         </div>
       </div>

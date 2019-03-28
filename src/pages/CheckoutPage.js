@@ -27,13 +27,36 @@ export default class CheckoutPage extends Component {
     }
 
    render() {
+
+     var myForm = (
+       <form className="myForm">
+          First name:
+          <input type="text" name="firstName" />
+          <br/>
+          Last name:
+          <input type="text" name="lastName" />
+          <br/>
+          Address:
+          <input type="text" name="address" />
+          <br/>
+          Email:
+          <input type="text" name="email" />
+          <br/>
+          Phone:
+          <input type="text" name="phone" />
+          <br/>
+          <Button type="submit" name="Submit">Place Order</Button>
+       </form>
+     )
+
      return (
        <div>
-         <Button color="success" onClick={this.showPopup.bind(this)}>Checkout</Button>
+         <Button color="success" onClick={this.showPopup.bind(this)}>Guest Checkout</Button>
          {
            this.state.show ?
            <Popup
-             text='Checkout'
+             title="Guest Checkout"
+             text={myForm}
              closePopup={this.closePopup.bind(this)}
            />
            :

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import './ProductPage.css';
+import ProductPopup from './ProductPopup.js'
 
 export default class ProductPage extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { selectedProduct : null };
+  }
 
   loadProducts = () => {
     var productList = []
@@ -12,16 +18,26 @@ export default class ProductPage extends Component {
           alt="milk"
           title="Milk"
           price="$1.99"
+          productClicked={this.productClicked}
         />
       )
     }
     return productList
   }
 
+  productClicked = (theProduct) => {
+    this.setState({ selectedProduct : theProduct })
+  }
+
+  closeWindow = () => {
+    this.setState({ selectedProduct : null })
+  }
+
   render() {
     return (
       <div>
-        <div className="componentList">
+        <ProductPopup product={this.state.selectedProduct} closeWindow={this.closeWindow}/>
+        <div style={{ display : !this.state.selectedProduct ? 'flex' : 'none' }} className="componentList">
           {this.loadProducts()}
         </div>
       </div>
@@ -31,10 +47,15 @@ export default class ProductPage extends Component {
 
 
 class Product extends Component {
+
+  handleClick = (event) => {
+    this.props.productClicked("this should be the product ID");
+  }
+
   render() {
     return(
       <div style={styles.productContainer}>
-        <div className="overlayContainer">
+        <div className="overlayContainer" onClick={this.handleClick}>
           <div className="imageOverlay" style={styles.imageOverlay}/>
           <div className="productTitle" style={styles.productTitle}>
           {this.props.title}

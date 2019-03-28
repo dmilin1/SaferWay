@@ -29,7 +29,6 @@ export default class CheckoutPage extends Component {
    render() {
      return (
        <div>
-         <h1>Guest Checkout</h1>
          <Button color="success" onClick={this.showPopup.bind(this)}>Checkout</Button>
          {
            this.state.show ?

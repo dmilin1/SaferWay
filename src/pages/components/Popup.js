@@ -1,0 +1,20 @@
+import React from 'react';
+import {Button} from 'react-bootstrap';
+import './Popup.css';
+
+class Popup extends React.Component{
+  render(){
+    return(
+      <div className="popup">
+        <div className="popup_inner">
+          <h1>
+            {this.props.text}
+            <Button onClick={this.props.closePopup} className="popupCloseButton">X</Button>
+          </h1>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Popup

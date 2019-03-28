@@ -1,52 +1,46 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import './COutProductPage.css'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Modal, Button} from 'react-bootstrap';
+import Popup from './components/Popup';
+import {Button} from 'react-bootstrap';
 
 export default class CheckoutPage extends Component {
 
-  constructor(props, context) {
-     super(props, context);
+  constructor() {
+      super();
+      this.state = {
+        show: false,
+      };
 
-     this.handleShow = this.handleShow.bind(this);
-     this.handleClose = this.handleClose.bind(this);
+      this.showPopup = this.showPopup.bind(this);
+      this.closePopup = this.closePopup.bind(this);
+    }
 
-     this.state = {
-       show: false,
-     };
-   }
+    showPopup(){
+      this.setState({
+        show: true
+      });
+    }
 
-   handleClose() {
-     this.setState({ show: false });
-   }
-
-   handleShow() {
-     this.setState({ show: true });
-   }
+    closePopup(){
+      this.setState({
+        show: false
+      });
+    }
 
    render() {
      return (
-       <>
-         <Button variant="primary" onClick={this.handleShow}>
-           Launch demo modal
-         </Button>
-
-         <Modal show={this.state.show} onHide={this.handleClose}>
-           <Modal.Header closeButton>
-             <Modal.Title>Modal heading</Modal.Title>
-           </Modal.Header>
-           <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-           <Modal.Footer>
-             <Button variant="secondary" onClick={this.handleClose}>
-               Close
-             </Button>
-             <Button variant="primary" onClick={this.handleClose}>
-               Save Changes
-             </Button>
-           </Modal.Footer>
-         </Modal>
-       </>
+       <div>
+         <h1>Guest Checkout</h1>
+         <Button color="success" onClick={this.showPopup.bind(this)}>Checkout</Button>
+         {
+           this.state.show ?
+           <Popup
+             text='Checkout'
+             closePopup={this.closePopup.bind(this)}
+           />
+           :
+           null
+         }
+       </div>
      );
    }
 }

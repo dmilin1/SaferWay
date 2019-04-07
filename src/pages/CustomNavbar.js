@@ -41,7 +41,7 @@ export default class CustomNavbar extends Component {
                 </li>
 
                 <li class="nav-item">
-                  <a href="/login" to="/login" class="nav-link" style={{margin:'0 1em'}}><i className="fa fa-user fa-lg" aria-hidden="true"></i></a>
+                  <a href="/login#/sign-in" to="/login" class="nav-link" style={{margin:'0 1em'}}><i className="fa fa-user fa-lg" aria-hidden="true"></i></a>
                 </li>
 
                 <li class="nav-item">

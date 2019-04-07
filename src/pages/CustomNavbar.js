@@ -33,21 +33,43 @@ export default class CustomNavbar extends Component {
               <ul class="navbar-nav mx-auto">
 
                 <li class="nav-item">
-                  <a href="/" to="/" class="nav-link" style={{margin:'0 1em', align:"right"}} ><i class="fa fa-home fa-lg"></i></a>
+                  <a href="/" to="/" class="nav-link" style={{ align:"right"}}>
+                    <ul style={{listStyleType:"none"}}>
+                      <li><i class="fa fa-home fa-lg"></i></li>
+                      <li><p style={{margin:"0 0 -16px -9px"}}>Home</p></li>
+                    </ul>
+                  </a>
                 </li>
 
                 <li class="nav-item">
-                  <a href="/product" to="/product" class="nav-link" style={{margin:'0 1em'}}><i class="fas fa-pizza-slice fa-lg"></i></a>
+                  <a href="/product" to="/product" class="nav-link">
+                    <ul style={{listStyleType:"none"}}>
+                      <li><i class="fas fa-pizza-slice fa-lg"></i></li>
+                      <li><p style={{margin:"0 0 -16px -20px"}}>Products</p></li>
+                    </ul>
+                  </a>
                 </li>
 
                 <li class="nav-item">
-                  <a href="/login#/sign-in" to="/login" class="nav-link" style={{margin:'0 1em'}}><i className="fa fa-user fa-lg" aria-hidden="true"></i></a>
+                  <a href="/login#/sign-in" to="/login" class="nav-link" >
+                    <ul style={{listStyleType:"none"}}>
+                      <li><i className="fa fa-user fa-lg"></i></li>
+                      <li><p style={{margin:"0 0 -16px -7px"}}>User</p></li>
+                    </ul>
+                  </a>
                 </li>
 
                 <li class="nav-item">
-                  <a href="/checkout" to="/checkout" class="nav-link" style={{margin:'0 1em'}}><i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
+                  <a href="/checkout" to="/checkout" class="nav-link" >
+                    <ul style={{listStyleType:"none"}}>
+                      <li><i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></li>
+                      <li><p style={{margin:"0 0 -16px 0"}}>Cart</p></li>
+                    </ul>
+                  </a>
                 </li>
+
               </ul>
+
               <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

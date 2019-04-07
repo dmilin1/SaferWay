@@ -105,13 +105,13 @@ export default class CheckoutPage extends Component {
           Phone:
           <input type="text" name="phone" onChange={this.handleChangePhone}/>
           <br/>
-          <Button type="submit" name="Submit">Place Order</Button>
+          <Button type="submit" name="Submit" style={{background:"#2b5238"}}>Place Order</Button>
        </form>
      )
 
      return (
        <div>
-         <Button color="success" onClick={this.showGuestPopup.bind(this)}>Guest Checkout</Button>
+         <Button style={{background:"#2b5238", margin:"1em"}} onClick={this.showGuestPopup.bind(this)}>Guest Checkout</Button>
          {
            this.state.showGuestCheckoutForm ?
            <Popup

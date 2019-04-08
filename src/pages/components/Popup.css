@@ -28,8 +28,19 @@ html, body, .app {
   bottom: 25%;
   margin: auto;
   background: white;
-  padding:10px;
+  padding:20px;
 }
 .popupCloseButton {
   float: right;
+}
+
+.popup_inner input {
+  margin:1em;
+}
+
+.popup_inner .myForm Button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1em;
 }

@@ -8,20 +8,18 @@
     width: 50%;
     background-color: #4C5D72;
     padding: 120px 0px 0px 40px;
-
   }
   
   .AppS__Form {
     width: 50%;
     background-color: #2E4158;
     padding: 25px 40px;
-    overflow: auto;
   }
 
   .PageSwitcher {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 10%;
+    margin-bottom: 10px;
   }
 
   .PageSwitcher__Item {
@@ -120,5 +118,5 @@
     padding: 15px 70px;
     font-size: .8em;
     font-weight: 500;
-    margin:10px;
+    margin:15px 0px;
   }

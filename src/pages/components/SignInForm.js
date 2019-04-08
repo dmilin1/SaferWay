@@ -10,7 +10,7 @@ class SignInForm extends Component{
             password: '',
         };
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);  
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.onSignin = this.onSignin.bind(this);
     }
     onSignin = async(email, password) => {
@@ -49,9 +49,9 @@ class SignInForm extends Component{
         // console.log('The form was submitted with the following data:');
         // console.log(this.state);
       }
-    render(){   
+    render(){
         return(
-            <div className="FormCenter">
+            <div>
                 <form className="FormField" onSubmit={this.handleSubmit}>
                   <div className="FormField">
                     <label className="FormField__Label" htmlFor="name">Email</label>
@@ -59,7 +59,7 @@ class SignInForm extends Component{
                   </div>
                   <div className="FormField">
                     <label className="FormField__Label" htmlFor="pass">Password</label>
-                    <input type="text" id="pass" className="FormField__Input" placeholder="Enter Your Password" name="pass" value={this.state.pass}  onChange={this.handleChange}></input>
+                    <input type="password" id="pass" className="FormField__Input" placeholder="Enter Your Password" name="pass" value={this.state.pass}  onChange={this.handleChange}></input>
                   </div>
                   <div className="FormField">
                     <button className="FormField__Button" >Sign In</button>

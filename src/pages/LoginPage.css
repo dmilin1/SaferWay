@@ -5,9 +5,9 @@
   }
 
   .AppS__Aside {
-    width: 50%;
+    width: 100%;
     background-color: #4C5D72;
-    padding: 120px 0px 0px 40px;
+    padding: 20px 0px 0px 40px;
 
   }
 
@@ -120,9 +120,5 @@
     padding: 15px 70px;
     font-size: .8em;
     font-weight: 500;
-<<<<<<< HEAD
     margin:10px;
-=======
-    margin:15px 0px;
->>>>>>> b87d34e4402cbc24e4823b9ab59af32d796eb273
   }

@@ -35,12 +35,12 @@ export default class ProductPage extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <ProductPopup product={this.state.selectedProduct} closeWindow={this.closeWindow}/>
         <div style={{ display : !this.state.selectedProduct ? 'flex' : 'none' }} className="componentList">
           {this.loadProducts()}
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

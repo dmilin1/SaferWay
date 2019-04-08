@@ -26,7 +26,7 @@ export default class CustomNavbar extends Component {
 
     render () {
         return (
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="navbar navbar-expand-lg navbar-light bg-light" style={{ minHeight: 66 }}>
             <img class="navbar-brand" href="#" src="https://i.ibb.co/Fz04SyP/1.png" height="50px" width="200px" />
 
             <div class="collapse navbar-collapse">
@@ -75,7 +75,7 @@ export default class CustomNavbar extends Component {
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
             </div>
-          </nav>
+          </div>
         );
 
     }

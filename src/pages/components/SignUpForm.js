@@ -14,7 +14,7 @@ class SignUpForm extends Component{
             agree: false
         };
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);  
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.onSignup = this.onSignup.bind(this);
     }
     onSignup = async(email, password,name,address,phone) => {
@@ -59,7 +59,7 @@ class SignUpForm extends Component{
         // console.log('The form was submitted with the following data:');
         // console.log(this.state);
       }
-    render(){   
+    render(){
         return(
                 <div className="FormCenter">
                     <form className="FormField" onSubmit={this.handleSubmit}>
@@ -88,7 +88,7 @@ class SignUpForm extends Component{
                             <div className="FormField">
                                 <button className="FormField__Button" >Sign Up</button>
                             </div>
-                        </label>  
+                        </label>
                     </form>
                 </div>
         );

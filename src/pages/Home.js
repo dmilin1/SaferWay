@@ -12,7 +12,7 @@ export default class Home extends Component {
   render() {
     return (
       <Router>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%'}}>
           <Navbar />
           <Route exact path ="/" component = {HomePage}></Route>
           <Route path ="/login" component = {LoginPage}></Route>

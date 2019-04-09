@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './HomePage.css';
-import Navbar from './CustomNavbar.js'
+//import Navbar from './CustomNavbar.js'
 
 export default class HomePage extends Component {
 

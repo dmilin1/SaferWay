@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './CustomNavbar.css';
-import SearchModal from './components/SearchModal';
+//import SearchModal from './components/SearchModal';
 
 export default class CustomNavbar extends Component {
 

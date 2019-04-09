@@ -76,7 +76,7 @@ export default class CheckoutPage extends Component {
     }
 
     handleSubmit(event) {
-      if(this.state.firstName=='' || this.state.lastName=='' || this.state.address=='' || this.state.email=='' || this.state.phone==''){
+      if(this.state.firstName==='' || this.state.lastName==='' || this.state.address==='' || this.state.email==='' || this.state.phone===''){
         alert("Can't leave any field blank");
       }
       else{

@@ -6,14 +6,14 @@
 
   .AppS__Aside {
     width: 50%;
-    background-color: #4C5D72;
-    padding: 20px 0px 0px 40px;
+    background-color: white;
+    padding: 26px 0px 0px 120px;
 
   }
 
   .AppS__Form {
     width: 50%;
-    background-color: #2E4158;
+    background-color: white;
     padding: 25px 40px;
     overflow: auto;
   }
@@ -25,8 +25,8 @@
   }
 
   .PageSwitcher__Item {
-    background-color: #4C5D72;
-    color: #9DA6B1;
+    background-color: #5ED18C;
+    color: white;
     padding: 10px 25px;
     cursor: pointer;
     font-size: .9em;
@@ -37,7 +37,7 @@
   }
 
   .PageSwitcher__Item--Active {
-    background-color: #5ED0C0;
+    background-color: #28A745;
     color: white;
   }
 
@@ -72,15 +72,15 @@
     display: block;
     text-transform: none;
     font-size: 2.0em;
-    color: white;
+    color: black;
     padding-top: 10px;
     padding-left: 10px;
   }
   .FormField__Input {
-    width: 85%;
+    width: 100%;
     background-color: transparent;
     border: none;
-    color: white;
+    color: black;
     outline: none;
     border-bottom: 1px solid #445366;
     font-size: 1em;
@@ -103,7 +103,7 @@
   }
 
 .FormField__TermsLink {
-    color: white;
+    color: blue;
     border-bottom: 1px solid #199087;
     text-decoration: none;
     display: inline-block;
@@ -112,13 +112,24 @@
   }
 
   .FormField__Button {
-    background-color: #52C4B9;
-    color: white;
-    border: none;
+    background-color: white;
+    color: #28A745;
+    border-color: #28A745;
     outline: none;
-    border-radius: 25px;
+    border-radius: 12px;
     padding: 15px 70px;
-    font-size: .8em;
+    font-size: 15px;
     font-weight: 500;
     margin:10px;
+  }
+
+  .FormField__Button:hover{
+    background-color:#28A745;
+    color: white;
+  }
+
+  .imgA{
+    width:400px;
+    height:500px;
+    border-radius: 10px;
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {Link } from 'react-router-dom';
+//import {Link } from 'react-router-dom';
 import axios from 'axios';
+import './SignInForm.css';
 
 class SignInForm extends Component{
     constructor() {
@@ -51,7 +52,7 @@ class SignInForm extends Component{
       }
     render(){
         return(
-            <div>
+            <div className="Box">
                 <form className="FormField" onSubmit={this.handleSubmit}>
                   <div className="FormField">
                     <label className="FormField__Label" htmlFor="name">Email</label>

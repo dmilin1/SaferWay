@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {Link } from 'react-router-dom';
+//import {Link } from 'react-router-dom';
 import axios from 'axios';
+import './SignUpForm.css';
 
 class SignUpForm extends Component{
     constructor() {
@@ -45,10 +46,6 @@ class SignUpForm extends Component{
         let name = target.name;
         this.setState({
           [name]: value,
-        //   [address]: value,
-        //   [phone]: value,
-        //   [email]: value,
-        //   [password]: value,
         });
       }
       handleSubmit(e) {
@@ -62,6 +59,7 @@ class SignUpForm extends Component{
     render(){
         return(
                 <div className="FormCenter">
+                    <div className="BoxSignUp">
                     <form className="FormField" onSubmit={this.handleSubmit}>
                         <div className="FormField">
                             <label className="FormField__Label" htmlFor="name">Full Name</label>
@@ -90,6 +88,7 @@ class SignUpForm extends Component{
                             </div>
                         </label>
                     </form>
+                    </div>
                 </div>
         );
     }

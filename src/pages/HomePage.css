@@ -18,7 +18,7 @@ body {
     height: calc(300px - 30px);
     background: #000;
     float: left;
-    margin: 15px;
+    margin: 5px;
     box-sizing: border-box;
     overflow: hidden;
     border-radius: 10px;
@@ -82,13 +82,13 @@ body {
 }
 .container .box:nth-child(1) .icon{
   background:
-    /* top, transparent red, faked with gradient */
+    /* dark overlay */
     linear-gradient(
       rgba(60, 60, 60, 0.45),
       rgba(60, 60, 60, 0.45)
     ),
-    /* bottom, image */
-    url("https://img1.cookinglight.timeinc.net/sites/default/files/1502826406/1708w-getty-fruit-closeup-CarstenSchanter-EyeEm.jpg");
+    /* image */
+    url("https://cdn1.medicalnewstoday.com/content/images/articles/308/308796/mixed-fruits.jpg");
     background-size: 400px 300px;
 }
 .container .box:nth-child(1){

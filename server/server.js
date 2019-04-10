@@ -1,15 +1,7 @@
-require('./config/config');
-
-var { mongoose } = require('./mongoose/mongoose');
-var User = require('./model/user');
-var port = 3001;
-
-const {authenticate} = require('./middleware/authenticate');
-const _ = require('lodash');
-const bodyParser = require('body-parser');
 const express = require('express');
-
-var app = express();
+const bodyParser = require('body-parser');
+const pino = require('express-pino-logger')();
+const mongoose = require('mongoose');
 
 const port = 3001;
 String.prototype.hashCode = function() {// gotten from stackoverflow
@@ -26,40 +18,28 @@ String.prototype.hashCode = function() {// gotten from stackoverflow
 }
 
 
+function launchServer() {
+  const app = express();
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(pino);
 
-app.post('/signup', (req, res) => {
-  const body = _.pick(req.body, ['email', 'password']);
-  const user = new User(body);
+  app.listen(port, () =>
+    console.log('Express server is running on localhost:3001')
+  );
+}
 
 mongoose.connect('mongodb://localhost/saferway', { useNewUrlParser: true });
 
-app.post('/login',(req,res)=>{
-  var body=_.pick(req.body, ['email','password']);
+var db = mongoose.connection;
 
-  User.findByCredentials(body.email, body.password)
-    .then(user => {
-      user.generateAuthToken()
-        .then(token => {
-          res.header('x-auth', token).send(token);
-        })
-    })
-    .catch(e => {
-      res.status(400).send({ e: 'nah~' });
-    })
+db.on('error', function () {
+  console.log('Failed to connect to database')
+  launchServer()
 });
 
-app.delete('/users/token', authenticate, (req,res)=>{
-  req.user.removeToken(req.token)
-  .then((what)=>{
-    res.send(what);
-  })
-  .catch(err=>{
-    res.status(401).send("err");
-  })
-});
-
-app.listen(port,()=>{
-  console.log(`Server is running on ${port}`);
+db.once('open', function () {
+   console.log('Connected to database');
+   launchServer()
 });
 
 var db = mongoose.connection;
@@ -108,9 +88,9 @@ db.once('open', function() {
   });
   var UserId = mongoose.model('UserId', userIds);
   /*
-  var initID = new UserId({ 
+  var initID = new UserId({
     userID: 1,
-    name: "null", 
+    name: "null",
   });
   initID.save(function (err, initID) {
     if (err) return console.error(err);
@@ -254,7 +234,7 @@ db.once('open', function() {
       }
     }
   }
-  
+
   /*
   function removeCart(productName, id) {
     getCart(id, deleteFromCart);

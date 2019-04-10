@@ -3,17 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "mongoose": "^5.4.16",
-=======
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.3.1",
     "jsonwebtoken": "^8.5.0",
     "lodash": "^4.17.11",
     "mongodb": "^3.1.13",
-    "mongoose": "^5.4.14",
->>>>>>> baac22d6446b00a4080cb1d5694b5c742e7027aa
+    "mongoose": "^5.4.16",
     "react": "^16.8.2",
     "react-bootstrap": "^1.0.0-beta.6",
     "react-dom": "^16.8.2",

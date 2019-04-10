@@ -67,7 +67,6 @@ db.once('open', function() {
      email: { type: String, unique: true },
      address: String,
      cartId: Number,
-     cartSize: Number,
      updated: { type: Date, default: Date.now },
   });
   var Login = mongoose.model('Login', login);
@@ -82,6 +81,21 @@ db.once('open', function() {
     picPath: String,
     updated: { type: Date, default: Date.now },
   });
+
+  var userIds = new mongoose.Schema({
+    userID: Number,
+    name: String,
+  });
+  var UserId = mongoose.model('UserId', userIds);
+  /*
+  var initID = new UserId({ 
+    userID: 1,
+    name: "null", 
+  });
+  initID.save(function (err, initID) {
+    if (err) return console.error(err);
+  });
+  */
 
   //Working
   function search(findName, callback) {
@@ -139,24 +153,41 @@ db.once('open', function() {
     });
   }
 
+  var num = null;
+
   //Working
   function addUser(firstName, lastName, password, email, address) {
     searchLogin(email, newUser)
     function newUser(result) {
       if (result == "false") {
-        var temp = new Login({
-          firstName: firstName,
-          lastName: lastName,
-          password: password,
-          email: email,
-          address: address,
-          cartId: String(email.hashCode()),
-          cartSize: 0,
-        })
-        temp.save(function (err, temp) {
-          if (err) return console.error(err);
+        var id;
+        var query = { name: "null" }
+        UserId.findOne(query, function(err, result) {
+           if (err) throw err;
+           if (result) {
+             id = result.userID + 1;
+             UserId.findOneAndUpdate({name: "null"}, {$set:{userID : id}}, function(err, doc) {
+               if (err) return console.error(err);
+             })
+             var temp = new Login({
+              firstName: firstName,
+              lastName: lastName,
+              password: password,
+              email: email,
+              address: address,
+              cartId: id,
+             })
+             temp.save(function (err, temp) {
+              if (err) return console.error(err);
+             });
+             var Cart = mongoose.model( String(id), cart);
+             return true;
+           }
+           else {
+             console.log("Error");
+             return false;
+           }
         });
-        var Cart = mongoose.model(String(email.hashCode()), cart);
       }
       else {
         console.log("User already in Database");
@@ -164,58 +195,58 @@ db.once('open', function() {
     }
   }
 
+  function getCart(id, callback) {
+    var Cart = mongoose.model( String(id), cart);
+    Cart.find(function(err, result) {
+      if (err) throw err;
+      if (result) {
+        callback(Cart);
+        return true;
+      }
+      else {
+        callback("false");
+        //console.log("Cart not found");
+        return false;
+      }
+   });
+  }
+
+  //TO DO: ADD TO CART METHOD
+  function addCart(productName, price, category, aisle, size, amount, picPath, id) {
+    getCart(id, updateCart);
+    function updateCart(result) {
+      if (result == "false") {
+          console.log("Cart not found");
+      }
+      else {
+        var temp = new result({
+          name: productName,
+          price: price,
+          category: category,
+          aisle: aisle,
+          size: size,
+          inventoryCount: amount,
+          picPath: picPath,
+       })
+       temp.save(function (err, temp) {
+          if (err) return console.error(err);
+       });
+      }
+    }
+  }
+  
   /*
-  //Not working
-  function searchCart(cartNumber, productName, callback) {
-    var query = { name: productName };
-    String(cartNumber).findOne(query, function(err, result) {
-       if (err) throw err;
-       if (result) {
-         callback("true")
-         return true;
-       }
-       else {
-         callback("false")
-         return false;
-       }
-    });
+  function removeCart(productName, id) {
+    getCart(id, deleteFromCart);
+    function deleteFromCart(result) {
+      if (result == "false") {
+        console.log("Cart not found");
+      }
+      else {
+        result.findOneAndDelete()
+      }
   }
-
-  //NEXT TIME TRY TO INSERT RESULT FROM SEARCHING FOR AN ITEM
-  //THIS METHOD IS FUCKED UP!!! FIX IT!!!
-  function updateUserCart(userEmail, productName, quantity) {
-    var query = { email: userEmail };
-    var cart1;
-    Login.findOne(query, function(err, result) {
-       if (err) throw err;
-       if (result) {
-         cart1 = result.cartId;
-         var Cart2 = mongoose.model(cart1,cart);
-         //db.cart1.findOne();
-         console.log(cart1);
-         var q2 = { name: productName };
-         db.findOne(cart1, function(err, result2) {
-            if (err) throw err;
-            if (result2) {
-              return true;
-            }
-            else {
-              return false;
-            }
-         });
-         console.log("Cart found");
-         return true;
-       }
-       else {
-         console.log("Cart not found");
-         return false;
-       }
-    });
-  }
-  */
-
-
-
+*/
 
 
   //Working but can be improved
@@ -248,7 +279,6 @@ db.once('open', function() {
 
   //Working
   function productSold(productName, quantity) {
-    console.log("derp")
     var count;
     var query = { name: productName };
     Product.findOne(query, function(err, result) {
@@ -288,7 +318,7 @@ db.once('open', function() {
   }
 
   //userSearch("ttt");
-
+  /*
   insertProduct("Milk", 2.89, "Dairy", 1, "1 gallon", 100, "/⁨productPics⁩/milk.jpeg");
   insertProduct("Apple", 0.99, "Fruit", 2, "1", 100, "/⁨productPics⁩/apple.jpeg");
   insertProduct("Peanut Butter", 3.89, "Spreads", 3, "16 oz", 100, "/⁨productPics⁩/peanutButter.jpeg");
@@ -296,8 +326,9 @@ db.once('open', function() {
   insertProduct("Potato", 0.89, "Vegetable", 2, "1", 100, "/⁨productPics⁩/potato.jpeg");
   insertProduct("Lettuce", 1.29, "Vegetable", 2, "1", 100, "/⁨productPics⁩/lettuce.jpeg");
   insertProduct("Eggs", 3.59, "Deli", 1, "12 count", 100, "/⁨productPics⁩/eggs.jpeg");
+  */
 
-
-  addUser("Bob", "Jackson", "password", "bob@gmail.com", "321 10th St. Santa Clara, CA 91123");
-  addUser("John", "Smith", "password", "test@yahoo.com", "123 1st St. San Jose, CA 95123");
+  //addUser("Bob", "Jackson", "password", "bob@gmail.com", "321 10th St. Santa Clara, CA 91123");
+  //addUser("John", "Smith", "password", "test@yahoo.com", "123 1st St. San Jose, CA 95123");
+  //addUser("James", "Johnson", "password", "blah@hotmail.com", "987 2nd St. Sunnyvale, CA 94567");
 });

@@ -24,8 +24,15 @@ function launchServer() {
   app.use(pino);
 
   app.listen(port, () =>
-    console.log('Express server is running on localhost:3001')
+    console.log('Express server is running on localhost:' + port)
   );
+
+  app.get('/api/getAllProducts', function (req, res) {
+    Product.find({}).exec(function(err, products){
+      res.send(products);
+    });
+  })
+
 }
 
 mongoose.connect('mongodb://localhost/saferway', { useNewUrlParser: true });
@@ -42,51 +49,60 @@ db.once('open', function () {
    launchServer()
 });
 
+
+
+
+var products = new mongoose.Schema({
+  name: { type: String, unique: true },
+  price: Number,
+  category: String,
+  aisle: Number,
+  size: String,
+  inventoryCount: Number,
+  picPath: String,
+  updated: { type: Date, default: Date.now },
+});
+var Product = mongoose.model('Product', products);
+
+var login = new mongoose.Schema({
+   firstName: String,
+   lastName: String,
+   password: String,
+   email: { type: String, unique: true },
+   address: String,
+   cartId: Number,
+   updated: { type: Date, default: Date.now },
+});
+var Login = mongoose.model('Login', login);
+
+var cart = new mongoose.Schema({
+  name: { type: String, unique: true },
+  price: Number,
+  category: String,
+  aisle: Number,
+  size: String,
+  inventoryCount: Number,
+  picPath: String,
+  updated: { type: Date, default: Date.now },
+});
+
+var userIds = new mongoose.Schema({
+  userID: Number,
+  name: String,
+});
+var UserId = mongoose.model('UserId', userIds);
+
+
+
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   //console.log("connected")
 //   // we're connected!
 
-  var products = new mongoose.Schema({
-    name: { type: String, unique: true },
-    price: Number,
-    category: String,
-    aisle: Number,
-    size: String,
-    inventoryCount: Number,
-    picPath: String,
-    updated: { type: Date, default: Date.now },
-  });
-  var Product = mongoose.model('Product', products);
 
-  var login = new mongoose.Schema({
-     firstName: String,
-     lastName: String,
-     password: String,
-     email: { type: String, unique: true },
-     address: String,
-     cartId: Number,
-     updated: { type: Date, default: Date.now },
-  });
-  var Login = mongoose.model('Login', login);
 
-  var cart = new mongoose.Schema({
-    name: { type: String, unique: true },
-    price: Number,
-    category: String,
-    aisle: Number,
-    size: String,
-    inventoryCount: Number,
-    picPath: String,
-    updated: { type: Date, default: Date.now },
-  });
-
-  var userIds = new mongoose.Schema({
-    userID: Number,
-    name: String,
-  });
-  var UserId = mongoose.model('UserId', userIds);
   /*
   var initID = new UserId({
     userID: 1,

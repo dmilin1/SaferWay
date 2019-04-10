@@ -14,6 +14,7 @@ export default class ProductPage extends Component {
     for (var i = 0; i < 20; i++) {
       productList.push(
         <Product
+          key={i.toString()}
           imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
           alt="milk"
           title="Milk"

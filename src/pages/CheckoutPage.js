@@ -169,14 +169,14 @@ export default class CheckoutPage extends Component {
                   <div className="col-xs-6 col-xs-height col-top">
                     <div className="btn-secondary btn-block selectable-option">
                       <div className="selectable-option-text textCenter">
-                        <i class="fa fa-credit-card" aria-hidden="true"></i>
+                        <i className="fa fa-credit-card" aria-hidden="true"></i>
                       </div>
                     </div>
                   </div>
                   <div className="col-xs-6 col-xs-height col-top">
                     <div className="btn-secondary btn-block selectable-option">
                       <div className="selectable-option-text textCenter">
-                      <i class="fa fa-briefcase" aria-hidden="true"></i>
+                      <i className="fa fa-briefcase" aria-hidden="true"></i>
                       </div>
                     </div>
                   </div>

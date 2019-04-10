@@ -32,6 +32,7 @@ body {
     background: #f00;
     transition: 0.5s;
 }
+/*
 .container .box:hover .icon{
     top: 20px;
     left: 140px;
@@ -39,6 +40,7 @@ body {
     height: 80px;
     border-radius:50%;
   }
+  */
 .container .box .icon .fa{
     position: absolute;
     top: 50%;
@@ -79,55 +81,127 @@ body {
     color: #fff;
 }
 .container .box:nth-child(1) .icon{
-    background: #319635;
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(60, 60, 60, 0.45),
+      rgba(60, 60, 60, 0.45)
+    ),
+    /* bottom, image */
+    url("https://img1.cookinglight.timeinc.net/sites/default/files/1502826406/1708w-getty-fruit-closeup-CarstenSchanter-EyeEm.jpg");
+    background-size: 400px 300px;
 }
 .container .box:nth-child(1){
-    background: #4caf50;
+    background-color: #121212;
 }
 .container .box:nth-child(2) .icon{
-    background: #d03852;
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(60, 60, 60, 0.45),
+      rgba(60, 60, 60, 0.45)
+    ),
+    /* bottom, image */
+    url("https://www.vegetables.co.nz/assets/Uploads/vegetables.jpg");
+    background-size: 400px 300px;
 }
 .container .box:nth-child(2){
     background: #f54967;
 }
 .container .box:nth-child(3) .icon{
-    background: #23798e;
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(60, 60, 60, 0.45),
+      rgba(60, 60, 60, 0.45)
+    ),
+    /* bottom, image */
+    url("https://cdn1.medicalnewstoday.com/content/images/articles/323/323073/dairy-products.jpg");
+    background-size: 400px 300px;
 }
 .container .box:nth-child(3){
     background: #328fa5;
 }
 .container .box:nth-child(4) .icon{
-    background: #366cc4;
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(60, 60, 60, 0.45),
+      rgba(60, 60, 60, 0.45)
+    ),
+    /* bottom, image */
+    url("https://katzjcc.org/app/uploads/2019/01/ice-cream-101.jpg");
+    background-size:600px 300px;
 }
 .container .box:nth-child(4){
     background: #4286f4;
 }
 .container .box:nth-child(5) .icon{
-    background: #c46036;
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(60, 60, 60, 0.45),
+      rgba(60, 60, 60, 0.45)
+    ),
+    /* bottom, image */
+    url("https://www.rd.com/wp-content/uploads/2018/12/The-5-Best-Meats-to-Eat—and-2-to-Avoid-6.jpg");
+    background-size: 400px 300px;
 }
 .container .box:nth-child(5){
     background: #dd7244;
 }
 .container .box:nth-child(6) .icon{
-    background: #d6b95c;
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(60, 60, 60, 0.45),
+      rgba(60, 60, 60, 0.45)
+    ),
+    /* bottom, image */
+    url("https://www.hygiena.com/images/images_j25/industries/Other/OPT1/cosmeticspersonal.jpg");
+    background-size: 800px 300px;
 }
 .container .box:nth-child(6){
     background: #e8c966;
 }
 .container .box:nth-child(7) .icon{
-    background: #c953cc;
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(60, 60, 60, 0.45),
+      rgba(60, 60, 60, 0.45)
+    ),
+    /* bottom, image */
+    url("https://cdn3.tmbi.com/toh/GoogleImagesPostCard/Country-White-Bread_EXPS_HCA17_208_B12_15_5b.jpg");
+    background-size: 400px 300px;
 }
 .container .box:nth-child(7){
     background: #dd60e0;
 }
 .container .box:nth-child(8) .icon{
-    background: #6d34e2;
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(60, 60, 60, 0.45),
+      rgba(60, 60, 60, 0.45)
+    ),
+    /* bottom, image */
+    url("https://images-gmi-pmc.edge-generalmills.com/087d17eb-500e-4b26-abd1-4f9ffa96a2c6.jpg");
+    background-size: 500px 300px;
 }
 .container .box:nth-child(8){
     background: #8955f4;
 }
 .container .box:nth-child(9) .icon{
-    background: #1e604b;
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(60, 60, 60, 0.45),
+      rgba(60, 60, 60, 0.45)
+    ),
+    /* bottom, image */
+    url("https://images.food52.com/7IdGoHDbUnC_rrjeU2OUxLP_wDY=/66d7ec92-9a01-443c-9a54-f09c5bd0a910--lUKtRQ6TlYPh3ljQoAW-U8J4my30tBtn9eKkhwCwgHrTh1bs_Z-IZCGZHOvPSOBs31RCYPyYpDVXR_JByGx-s942");
+    background-size: 600px 300px;
 }
 .container .box:nth-child(9){
     background: #437263;

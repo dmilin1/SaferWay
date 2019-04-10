@@ -36,7 +36,7 @@ export default class CustomNavbar extends Component {
                   <a href="/" to="/" class="nav-link" style={{ align:"right"}}>
                     <ul style={{listStyleType:"none"}}>
                       <li><i class="fa fa-home fa-lg"></i></li>
-                      <li><p style={{margin:"0 0 -16px -9px"}}>Home</p></li>
+                      <li><p style={{margin:"0 0 -16px -9px", color:"#7c7c7d"}}>Home</p></li>
                     </ul>
                   </a>
                 </li>
@@ -45,7 +45,7 @@ export default class CustomNavbar extends Component {
                   <a href="/product" to="/product" class="nav-link">
                     <ul style={{listStyleType:"none"}}>
                       <li><i class="fas fa-pizza-slice fa-lg"></i></li>
-                      <li><p style={{margin:"0 0 -16px -20px"}}>Products</p></li>
+                      <li><p style={{margin:"0 0 -16px -20px", color:"#7c7c7d"}}>Products</p></li>
                     </ul>
                   </a>
                 </li>
@@ -54,7 +54,7 @@ export default class CustomNavbar extends Component {
                   <a href="/login#/sign-in" to="/login" class="nav-link" >
                     <ul style={{listStyleType:"none"}}>
                       <li><i className="fa fa-user fa-lg"></i></li>
-                      <li><p style={{margin:"0 0 -16px -7px"}}>User</p></li>
+                      <li><p style={{margin:"0 0 -16px -7px", color:"#7c7c7d"}}>User</p></li>
                     </ul>
                   </a>
                 </li>
@@ -63,7 +63,7 @@ export default class CustomNavbar extends Component {
                   <a href="/checkout" to="/checkout" class="nav-link" >
                     <ul style={{listStyleType:"none"}}>
                       <li><i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></li>
-                      <li><p style={{margin:"0 0 -16px 0"}}>Cart</p></li>
+                      <li><p style={{margin:"0 0 -16px 0", color:"#7c7c7d"}}>Cart</p></li>
                     </ul>
                   </a>
                 </li>

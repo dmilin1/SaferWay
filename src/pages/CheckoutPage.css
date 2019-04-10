@@ -109,7 +109,7 @@ h2{
     line-height: 15px;
 }
 p{
-    font-size:12px;
+    font-size:16px;
 }
 h3{
     color: black;
@@ -118,8 +118,7 @@ h4{
     color:black;
 }
 h5{
-    color: gray;
-    font-size: 12px;
+  
 }
 h6{
     color: gray;

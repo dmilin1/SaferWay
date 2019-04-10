@@ -1,53 +1,52 @@
 .dropdown {
-     position: relative;
-     display: inline-block;
+    position: relative;
+    display: inline-block;
 }
- ul {
-     list-style-type: none;
-     margin: 0;
-     padding: 0;
-     top:45px;
-     right:0px;
-     width: 200px;
-     background-color: white;
-     font-weight:bold;
-     position: absolute;
-
-     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-     z-index: 2;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    top:45px;
+    right:0px;
+    width: 200px;
+    background-color: white;
+    font-weight:bold;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
 }
- li a {
-   display: block;
-     color: #000;
-     text-decoration: none;
-     padding: 8px 16px;
+li a {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    padding: 8px 16px;
 }
- li {
-     border-bottom: 1px solid #e5e5e5;
+li {
+    border-bottom: 1px solid #e5e5e5;
 }
- li:last-child {
-     border-bottom: none;
+li:last-child {
+    border-bottom: none;
 }
- li:hover {
-     background-color: #e5e5e5;
-     color: white;
+li:hover {
+    background-color: #e5e5e5;
+    color: white;
 }
- .button{
-     width:210px;
-     height:40px;
-     background-color:green ;
-     padding:12px;
-     border-radius:5px;
-     font-weight:bold;
-     color:white;
+.button{
+    width:210px;
+    height:40px;
+    background-color:green ;
+    padding:12px;
+    border-radius:5px;
+    font-weight:bold;
+    color:white;
 }
- .button:before{
-     content:"";
-     position:absolute;
-     width:0px;
-     height:0px;
-     border: 10px solid;
-     border-color: white transparent transparent transparent;
-     right:6px;
-     top:18px;
+.button:before{
+    content:"";
+    position:absolute;
+    width:0px;
+    height:0px;
+    border: 10px solid;
+    border-color: white transparent transparent transparent;
+    right:6px;
+    top:18px;
 }

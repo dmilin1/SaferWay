@@ -1,7 +1,6 @@
 .topnav {
   background-color: #333;
 }
-
 /* Style the links inside the navigation bar */
 .topnav a {
   float: right;
@@ -11,7 +10,6 @@
   text-decoration: none;
   font-size: 17px;
 }
-
 /* Change the color of links on hover */
 .topnav a:hover {
   background-color: #ddd;

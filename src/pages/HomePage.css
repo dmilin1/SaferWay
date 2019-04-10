@@ -3,11 +3,9 @@ body {
     padding: 0;
     font-family: sans-serif;
 }
-
 .box:hover {
   cursor: pointer;
 }
-
 .container {
     position: relative;
     width: 1200px;
@@ -33,8 +31,7 @@ body {
     height: 100%;
     background: #f00;
     transition: 0.5s;
-  }
-
+}
 .container .box:hover .icon{
     top: 20px;
     left: 140px;
@@ -42,7 +39,6 @@ body {
     height: 80px;
     border-radius:50%;
   }
-
 .container .box .icon .fa{
     position: absolute;
     top: 50%;
@@ -51,7 +47,7 @@ body {
     font-size: 80px;
     transition: 0.5s;
     color: #fff;
-  }
+}
 .container .box:hover .icon .fa{
     font-size: 40px;
 }
@@ -82,63 +78,54 @@ body {
     text-align: center;
     color: #fff;
 }
-
 .container .box:nth-child(1) .icon{
     background: #319635;
 }
 .container .box:nth-child(1){
     background: #4caf50;
 }
-
 .container .box:nth-child(2) .icon{
     background: #d03852;
 }
 .container .box:nth-child(2){
     background: #f54967;
 }
-
 .container .box:nth-child(3) .icon{
     background: #23798e;
 }
 .container .box:nth-child(3){
     background: #328fa5;
 }
-
 .container .box:nth-child(4) .icon{
     background: #366cc4;
 }
 .container .box:nth-child(4){
     background: #4286f4;
 }
-
 .container .box:nth-child(5) .icon{
     background: #c46036;
 }
 .container .box:nth-child(5){
     background: #dd7244;
 }
-
 .container .box:nth-child(6) .icon{
     background: #d6b95c;
 }
 .container .box:nth-child(6){
     background: #e8c966;
 }
-
 .container .box:nth-child(7) .icon{
     background: #c953cc;
 }
 .container .box:nth-child(7){
     background: #dd60e0;
 }
-
 .container .box:nth-child(8) .icon{
     background: #6d34e2;
 }
 .container .box:nth-child(8){
     background: #8955f4;
 }
-
 .container .box:nth-child(9) .icon{
     background: #1e604b;
 }

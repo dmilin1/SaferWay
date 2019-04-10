@@ -1,32 +1,10 @@
 import React, { Component } from 'react';
 import './CustomNavbar.css';
-//import SearchModal from './components/SearchModal';
 
 export default class CustomNavbar extends Component {
-
-  constructor() {
-        super();
-
-        this.state = {
-            isShowing: false
-        }
-    }
-
-    openModalHandler = () => {
-        this.setState({
-            isShowing: true
-        });
-    }
-
-    closeModalHandler = () => {
-        this.setState({
-            isShowing: false
-        });
-    }
-
     render () {
         return (
-          <div class="navbar navbar-expand-lg navbar-light bg-light" style={{ minHeight: 66 }}>
+          <div class="navbar navbar-expand-lg navbar-light bg-light" style={{ minHeight:66 }}>
             <img class="navbar-brand" href="#" src="https://i.ibb.co/Fz04SyP/1.png" height="50px" width="200px" />
 
             <div class="collapse navbar-collapse">
@@ -77,6 +55,5 @@ export default class CustomNavbar extends Component {
             </div>
           </div>
         );
-
     }
 }

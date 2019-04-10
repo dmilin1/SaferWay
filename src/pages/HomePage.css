@@ -94,60 +94,50 @@ body {
 
 .container .box:nth-child(2) .icon{
   background:
-    /* top, transparent red, faked with gradient */
     linear-gradient(
       rgba(60, 60, 60, 0.45),
       rgba(60, 60, 60, 0.45)
     ),
-    /* bottom, image */
     url("https://www.vegetables.co.nz/assets/Uploads/vegetables.jpg");
     background-size: 400px 300px;
 }
 
 .container .box:nth-child(3) .icon{
   background:
-    /* top, transparent red, faked with gradient */
     linear-gradient(
       rgba(60, 60, 60, 0.45),
       rgba(60, 60, 60, 0.45)
     ),
-    /* bottom, image */
     url("https://cdn1.medicalnewstoday.com/content/images/articles/323/323073/dairy-products.jpg");
     background-size: 400px 300px;
 }
 
 .container .box:nth-child(4) .icon{
   background:
-    /* top, transparent red, faked with gradient */
     linear-gradient(
       rgba(60, 60, 60, 0.45),
       rgba(60, 60, 60, 0.45)
     ),
-    /* bottom, image */
     url("https://katzjcc.org/app/uploads/2019/01/ice-cream-101.jpg");
     background-size:600px 300px;
 }
 
 .container .box:nth-child(5) .icon{
   background:
-    /* top, transparent red, faked with gradient */
     linear-gradient(
       rgba(60, 60, 60, 0.45),
       rgba(60, 60, 60, 0.45)
     ),
-    /* bottom, image */
     url("https://www.rd.com/wp-content/uploads/2018/12/The-5-Best-Meats-to-Eat—and-2-to-Avoid-6.jpg");
     background-size: 450px 300px;
 }
 
 .container .box:nth-child(6) .icon{
   background:
-    /* dark overlay */
     linear-gradient(
       rgba(60, 60, 60, 0.45),
       rgba(60, 60, 60, 0.45)
     ),
-    /* image */
     url("https://www.hygiena.com/images/images_j25/industries/Other/OPT1/cosmeticspersonal.jpg");
     background-size: 800px 300px;
 }
@@ -155,34 +145,28 @@ body {
 
 .container .box:nth-child(7) .icon{
   background:
-    /* top, transparent red, faked with gradient */
     linear-gradient(
       rgba(60, 60, 60, 0.45),
       rgba(60, 60, 60, 0.45)
     ),
-    /* bottom, image */
     url("https://cdn3.tmbi.com/toh/GoogleImagesPostCard/Country-White-Bread_EXPS_HCA17_208_B12_15_5b.jpg");
     background-size: 400px 300px;
 }
 .container .box:nth-child(8) .icon{
   background:
-    /* top, transparent red, faked with gradient */
     linear-gradient(
       rgba(60, 60, 60, 0.45),
       rgba(60, 60, 60, 0.45)
     ),
-    /* bottom, image */
     url("https://images-gmi-pmc.edge-generalmills.com/087d17eb-500e-4b26-abd1-4f9ffa96a2c6.jpg");
     background-size: 500px 300px;
 }
 .container .box:nth-child(9) .icon{
   background:
-    /* top, transparent red, faked with gradient */
     linear-gradient(
       rgba(60, 60, 60, 0.45),
       rgba(60, 60, 60, 0.45)
     ),
-    /* bottom, image */
     url("https://images.food52.com/7IdGoHDbUnC_rrjeU2OUxLP_wDY=/66d7ec92-9a01-443c-9a54-f09c5bd0a910--lUKtRQ6TlYPh3ljQoAW-U8J4my30tBtn9eKkhwCwgHrTh1bs_Z-IZCGZHOvPSOBs31RCYPyYpDVXR_JByGx-s942");
     background-size: 600px 300px;
 }

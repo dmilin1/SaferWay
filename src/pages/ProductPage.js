@@ -18,6 +18,7 @@ export default class ProductPage extends Component {
     products: null,
   };
 
+<<<<<<< HEAD
    componentDidMount() {
 
      var productList = []
@@ -53,6 +54,24 @@ export default class ProductPage extends Component {
        })
      });
    }
+=======
+  loadProducts = () => {
+    var productList = []
+    for (var i = 0; i < 20; i++) {
+      productList.push(
+        <Product
+          key={i.toString()}
+          imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
+          alt="milk"
+          title="Milk"
+          price="$1.99"
+          productClicked={this.productClicked}
+        />
+      )
+    }
+    return productList
+  }
+>>>>>>> 2c49525384894e9e266ffab9608e96e8b6904f27
 
   productClicked = (theProduct) => {
     this.setState({ selectedProduct : theProduct })

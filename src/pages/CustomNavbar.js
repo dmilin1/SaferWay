@@ -49,8 +49,13 @@ export default class CustomNavbar extends Component {
               </ul>
 
               <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" id="searchValue"/>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onClick={() => {
+                  console.log(document.getElementById("searchValue").value);
+                  window.location.href = "/product?search=" + document.getElementById("searchValue").value;
+                }}>
+                  Search
+                </button>
               </form>
             </div>
           </div>

@@ -10,6 +10,9 @@ class SignUpForm extends Component{
             email: '',
             name: '',
             address: '',
+            city: '',
+            stateAddress: '',
+            zip: '',
             phone: '',
             password: '',
             agree: false
@@ -18,16 +21,22 @@ class SignUpForm extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onSignup = this.onSignup.bind(this);
     }
-    onSignup = async(email, password,name,address,phone) => {
+    onSignup = async(email, password,name,address,city,stateAddress,zip,phone) => {
         console.log('signup');
         console.log(name);
         console.log(address);
+        console.log(city);
+        console.log(stateAddress);
+        console.log(zip);
         console.log(phone);
         console.log(email);
         console.log(password);
         await axios.post('//localhost:3000/signup', {
             name,
             address,
+            city,
+            stateAddress,
+            zip,
             phone,
             email,
             password
@@ -51,7 +60,7 @@ class SignUpForm extends Component{
       handleSubmit(e) {
         e.preventDefault();
         console.log('submit');
-        const res = this.onSignup(this.state.email, this.state.password, this.state.name, this.state.address, this.state.phone);
+        const res = this.onSignup(this.state.email, this.state.password, this.state.name, this.state.address, this.state.city, this.state.stateAddress, this.state.zip, this.state.phone);
         console.log(res);
         // console.log('The form was submitted with the following data:');
         // console.log(this.state);
@@ -68,6 +77,18 @@ class SignUpForm extends Component{
                         <div className="FormField">
                             <label className="FormField__Label" htmlFor="address">Full Address</label>
                             <input type="text" id="address" className="FormField__Input" placeholder="Enter Your Full Address" name="address" value={this.state.address} onChange={this.handleChange}></input>
+                        </div>
+                        <div className="FormField">
+                            <label className="FormField__Label" htmlFor="city">City</label>
+                            <input type="text" id="city" className="FormField__Input" placeholder="Enter Your City" name="city" value={this.state.city} onChange={this.handleChange}></input>
+                        </div>
+                        <div className="FormField">
+                            <label className="FormField__Label" htmlFor="stateAddress">State</label>
+                            <input type="text" id="stateAddress" className="FormField__Input" placeholder="Enter Your State" name="stateAddress" value={this.state.stateAddress} onChange={this.handleChange}></input>
+                        </div>
+                        <div className="FormField">
+                            <label className="FormField__Label" htmlFor="zip">ZIP Code</label>
+                            <input type="text" id="zip" className="FormField__Input" placeholder="Enter Your ZIP Code" name="zip" value={this.state.zip} onChange={this.handleChange}></input>
                         </div>
                         <div className="FormField">
                             <label className="FormField__Label" htmlFor="phone">Phone</label>

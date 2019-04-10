@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './ProductPopup.css';
 
 export default class ProductPopup extends Component {
 
@@ -36,6 +37,9 @@ class ProductContainer extends Component {
           <div style={styles.descriptionText}>
             Milk is a liquid that comes out of mamals and for some weird reason, humans drink the liquid that comes out of cows. This particular milk is cow liquid. Please enjoy.
           </div>
+          <div className="addToCart" style={styles.addToCart}>
+            Add To Cart
+          </div>
         </div>
       </div>
     );
@@ -67,6 +71,7 @@ const styles = {
     justifyContent: 'center',
     flexDirection: 'column',
     paddingRight: '10%',
+    alignItems: 'center',
   },
   productImg: {
     alignSelf: 'center',
@@ -99,5 +104,7 @@ const styles = {
     fontFamily: 'Lato',
     fontSize: '4.5vw',
     fontWeight: 300,
+  },
+  addToCart: {
   },
 }

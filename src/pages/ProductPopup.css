@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Heebo:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900');
+
+.addToCart {
+  border-color: #28a745;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px;
+  color: #28a745;
+  font-size: 1.5vw;
+  cursor: pointer;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.addToCart:hover {
+  background-color: rgb(40, 167, 69);
+  color: white;
+}

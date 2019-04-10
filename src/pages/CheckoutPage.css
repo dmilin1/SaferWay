@@ -1,0 +1,293 @@
+.App{
+    height: 91.5vh;
+    display: flex;
+    color: white;
+  }
+.App__Aside{
+    width: 50%;
+    background-color: white;
+    padding: 25px 40px;
+
+}
+.App__Form{
+    width: 50%;
+    background-color: white;
+    padding: 25px 40px;
+}
+.page-header{
+    text-align: left;
+    margin: 26px 0 18px;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-size: 1.875em;
+    line-height: 34px;
+    color: black;
+}
+.cart-item-img{
+    padding-left: 0;
+    padding-right: 0;
+}
+.col-xs-height{
+    display: table-cell;
+    float: none;
+}
+p{
+    color: black;
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+h2{
+    color: black;
+    margin: 26px 0px 18px;
+    font-size: 30px;
+}
+.cart-item-info{
+    position: relative;
+    padding-left: 20px;
+    padding-right: 0;
+}
+.col-xs-4{
+    width: 33.33333333%;
+}
+.col-md-4, .col-lg-3{
+    position: relative;
+    min-height: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+    letter-spacing: .5px;
+}
+.col-top{
+    vertical-align: top;
+}
+.productCheckout{
+    width: 158px;
+    height: 169px;
+}
+.img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.col-xs-8{
+    width: 66.66666667%;
+    float: left;
+}
+.col-xs-height{
+    display: table-cell;
+    float: none;
+}
+.col-md-8{
+    position: relative;
+    min-height: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+    letter-spacing: .5px;
+}
+.col-lg-9{
+    position: relative;
+    min-height: 1px;
+    padding-right: 5px;
+    padding-left: 27px;
+    padding-top: 16px;
+    letter-spacing: .5px;
+}
+.cart-item-info-container{
+    width: 100%;
+}
+.container-xs-height{
+    display: table;
+    padding-right: 0;
+    padding-left: 0;
+}
+.cart-item-price{
+    padding-left: 0;
+    margin: 4px 0;
+}
+.cart-item-product-details{
+    color: #888;
+    font-size: .6875em;
+    line-height: 15px;
+}
+p{
+    font-size:16px;
+}
+h3{
+    color: black;
+}
+h4{
+    color:black;
+}
+h5{
+  
+}
+h6{
+    color: gray;
+}
+.list-inline{
+    margin-left: -5px;
+}
+.__ef422{
+    padding-top: 4px;
+    line-height: 1.5;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+.__ef422, .__ef422 li{
+    margin-left: 0;
+}
+.__ef422 .cart-item-btn-edit{
+    border-right: 1px solid #ccc;
+    padding-right: 10px;
+}
+.clickable, .hoverable{
+    cursor: pointer;
+}
+.BoxAddress{
+    width: 564px;
+    height: 111px;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+}
+.shipping-method-options, .shipping-method-option{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.shipping-method-options, .shipping-method-option{
+    font-size: 0.75em;
+}
+.shipping-method-option--Active{
+    border: 1px solid black;
+  }
+.selectable-option{
+    width: 100%;
+    display: table;
+    margin: 0 0 14px;
+    cursor: pointer;
+    text-align: left;
+    z-index: 0;
+    position: relative;
+    box-shadow: 0 0 0 1px #ccc inset;
+    -o-transition: 'box-shadow' .4s ease-in;
+    -webkit-transition: 'box-shadow' .4s ease-in;
+    transition: 'box-shadow' .4s ease-in;
+    font-size: .75em;
+    padding: 14px 15px;
+}
+.shipping-method-options .selectable-option-text{
+    width: 100%;
+}
+.shipping-method-options .shipping-method-option .delivery-details{
+    text-transform: none;
+}
+.shipping-method-options .shipping-method-option .delivery-details .delivery-method-name{
+    text-transform: uppercase;
+    padding-right: 4px;
+}
+.shipping-method-options .shipping-method-option .delivery-details .delivery-speed{
+    display: block;
+}
+.text-bold{
+    font-family: "Avenir Next Demi","Helvetica Neue Medium";
+}
+.text-right{
+    text-align: right;
+}
+.col-xs-2{
+    padding-right: 0;
+    padding-left: 0;
+}
+span{
+    color: black;
+    font-size: 12px;
+}
+.radius{
+    border-radius: 5px;
+}
+.BoxOrderSummary{
+    width: 564px;
+    height: 232px;
+    border: 1px solid black;
+    padding: 20px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+.order-subtotal-container{
+    width: 100%;
+}
+.container-xs-height{
+    display: table;
+    padding-right: 0;
+    padding-left: 0;
+}
+.order-summary-row{
+    padding: 0;
+}
+.row-xs-height{
+    display: table-row;
+}
+.order-summary-row .col-xs-height{
+    font-size: .875em;
+}
+.order-summary-row-title, .order-summary-row-value{
+    padding-top: 0px;
+    padding-bottom: 13px;
+}
+.text-right{
+    text-align: right;
+}
+.col-middle{
+    vertical-align: middle;
+}
+.BoxInfoPayment{
+    width: 564px;
+    height: 165px;
+    border: 1px solid black;
+    padding: 20px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+.section-payment-methods{
+    height: 12%;
+}
+.container-xs-height{
+    display: table;
+    padding-right: 0;
+    padding-left: 0;
+}
+.full-width{
+    width: 100%!important;
+}
+.row-xs-height{
+    display: table-row;
+}
+.btn-secondary{
+    color: #000;
+    background: #fff;
+    border-color: #000;
+    -webkit-box-shadow: inset 0 0 0 1px #000;
+    box-shadow: inset 0 0 0 1px #000;
+}
+.btn-block{
+    display: block;
+}
+.section-payment-methods .payment-method-paypal-btn .payment-method-paypal-icon{
+    width: 78px;
+    height: 19px;
+    text-align: center;
+}
+.textCenter{
+    text-align: center;
+}
+.btn-primary{
+    color: #fff;
+    background: #000;
+    border-color: #000;
+    -webkit-box-shadow: inset 0 0 0 1px #000;
+    box-shadow: inset 0 0 0 1px #000;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.btn-block{
+    display: block;
+}

@@ -3,12 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "mongoose": "^5.4.16",
+=======
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.3.1",
+    "jsonwebtoken": "^8.5.0",
+    "lodash": "^4.17.11",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.14",
+>>>>>>> baac22d6446b00a4080cb1d5694b5c742e7027aa
     "react": "^16.8.2",
-    "react-bootstrap": "^1.0.0-beta.5",
+    "react-bootstrap": "^1.0.0-beta.6",
     "react-dom": "^16.8.2",
+    "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5"
+    "react-scripts": "^2.1.8",
+    "redux": "^4.0.1",
+    "validator": "^10.11.0"
   },
   "proxy": "http://127.0.0.1:3001",
   "scripts": {
@@ -16,8 +29,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node-env-run --exec 'nodemon ./server/server.js'",
-    "start": "run-p server frontend"
+    "server": "nodemon ./server/server.js",
+    "start": "run-p server frontend",
+    "dev-server": "nodemon server/server",
+    "dev-test": "export NODE_ENV=test || set NODE_ENV=test && mocha server/**/*.test.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +50,17 @@
     "node-env-run": "^3.0.2",
     "nodemon": "^1.18.10",
     "npm-run-all": "^4.1.5"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmilin1/SaferWay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmilin1/SaferWay/issues"
+  },
+  "homepage": "https://github.com/dmilin1/SaferWay#readme"
 }

@@ -18,13 +18,12 @@ export default class ProductPage extends Component {
     products: null,
   };
 
-<<<<<<< HEAD
    componentDidMount() {
 
      var productList = []
 
      axios.get('/api/getAllProducts')
-     .then(function (res) {
+     .then((res) => {
        // handle success
        console.log(res);
        var products = res.data;
@@ -37,13 +36,14 @@ export default class ProductPage extends Component {
              alt="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
              title="Milk"
              price="$1.99"
-             // productClicked={this.productClicked}
+             product={products[i]}
+             productClicked={this.productClicked}
            />
          )
        }
 
      })
-     .catch(function (error) {
+     .catch((error) => {
        // handle error
        console.log(error);
      })
@@ -54,24 +54,6 @@ export default class ProductPage extends Component {
        })
      });
    }
-=======
-  loadProducts = () => {
-    var productList = []
-    for (var i = 0; i < 20; i++) {
-      productList.push(
-        <Product
-          key={i.toString()}
-          imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
-          alt="milk"
-          title="Milk"
-          price="$1.99"
-          productClicked={this.productClicked}
-        />
-      )
-    }
-    return productList
-  }
->>>>>>> 2c49525384894e9e266ffab9608e96e8b6904f27
 
   productClicked = (theProduct) => {
     this.setState({ selectedProduct : theProduct })
@@ -84,7 +66,7 @@ export default class ProductPage extends Component {
   render() {
     return (
       <React.Fragment>
-        <ProductPopup product={this.state.selectedProduct} closeWindow={this.closeWindow}/>
+        <ProductPopup images={images} product={this.state.selectedProduct} closeWindow={this.closeWindow}/>
         <div style={{ display : !this.state.selectedProduct ? 'flex' : 'none' }} className="componentList">
           {this.state.products}
         </div>
@@ -97,7 +79,7 @@ export default class ProductPage extends Component {
 class Product extends Component {
 
   handleClick = (event) => {
-    this.props.productClicked("this should be the product ID");
+    this.props.productClicked(this.props.product);
   }
 
   render() {

@@ -4,7 +4,7 @@ import './CustomNavbar.css';
 export default class CustomNavbar extends Component {
     render () {
         return (
-          <div className="navbar navbar-expand-lg navbar-light bg-light" style={{ minHeight:66 }}>
+          <div className="navbar navbar-expand-lg sticky-top navbar-light bg-light" style={{ minHeight:66, boxShadow: '0px 1px 10px #999'}}>
             <img className="navbar-brand" href="#" src="https://i.ibb.co/Fz04SyP/1.png" height="50px" width="200px" />
 
             <div className="collapse navbar-collapse">

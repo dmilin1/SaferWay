@@ -1,29 +1,59 @@
 import React, { Component } from 'react';
 import './ProductPage.css';
 import ProductPopup from './ProductPopup.js'
+const axios = require('axios');
+
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+  return images;
+}
+const images = importAll(require.context('./../productPics', false, /\.(png|jpe?g|svg)$/));
+
 
 export default class ProductPage extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { selectedProduct : null };
-  }
+  state = {
+    selectedProduct : null,
+    products: null,
+  };
 
-  loadProducts = () => {
-    var productList = []
-    for (var i = 0; i < 20; i++) {
-      productList.push(
-        <Product
-          imgsrc="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
-          alt="milk"
-          title="Milk"
-          price="$1.99"
-          productClicked={this.productClicked}
-        />
-      )
-    }
-    return productList
-  }
+   componentDidMount() {
+
+     var productList = []
+
+     axios.get('/api/getAllProducts')
+     .then((res) => {
+       // handle success
+       console.log(res);
+       var products = res.data;
+
+       for (var i = 0; i < products.length; i++) {
+         console.log(products[i].picPath.split('/⁨productPics⁩/')[1])
+         productList.push(
+           <Product
+             imgsrc={images[products[i].picPath.split('/⁨productPics⁩/')[1]]}
+             alt="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
+             title="Milk"
+             price="$1.99"
+             product={products[i]}
+             productClicked={this.productClicked}
+           />
+         )
+       }
+
+     })
+     .catch((error) => {
+       // handle error
+       console.log(error);
+     })
+     .then(() => {
+       console.log(productList)
+       this.setState({
+         products: productList
+       })
+     });
+   }
 
   productClicked = (theProduct) => {
     this.setState({ selectedProduct : theProduct })
@@ -36,9 +66,9 @@ export default class ProductPage extends Component {
   render() {
     return (
       <React.Fragment>
-        <ProductPopup product={this.state.selectedProduct} closeWindow={this.closeWindow}/>
+        <ProductPopup images={images} product={this.state.selectedProduct} closeWindow={this.closeWindow}/>
         <div style={{ display : !this.state.selectedProduct ? 'flex' : 'none' }} className="componentList">
-          {this.loadProducts()}
+          {this.state.products}
         </div>
       </React.Fragment>
     );
@@ -49,7 +79,7 @@ export default class ProductPage extends Component {
 class Product extends Component {
 
   handleClick = (event) => {
-    this.props.productClicked("this should be the product ID");
+    this.props.productClicked(this.props.product);
   }
 
   render() {

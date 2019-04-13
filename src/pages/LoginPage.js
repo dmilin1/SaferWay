@@ -12,21 +12,21 @@ export default class LoginPage extends Component {
         <div className="AppS">
           <div className="AppS__Aside">
             <h3 style={{color:"black", padding:"16px 0 38px 0"}}>Benefits of an account:</h3>
-              <ul class="list-group" style={{color:"black"}}>
-                <li class="list-group-item">
-                  <h5>Permanent Shopping Cart <i class="fas fa-cart-plus" style={{margin:"0 0 0 8px"}}></i> </h5>
+              <ul className="list-group" style={{color:"black"}}>
+                <li className="list-group-item">
+                  <h5>Permanent Shopping Cart <i className="fas fa-cart-plus" style={{margin:"0 0 0 8px"}}></i> </h5>
                   <p>Continue shopping from where you left off last time.</p>
                 </li>
-                <li class="list-group-item">
-                  <h5>Shopping History <i class="fas fa-history" style={{margin:"0 0 0 8px"}}></i> </h5>
+                <li className="list-group-item">
+                  <h5>Shopping History <i className="fas fa-history" style={{margin:"0 0 0 8px"}}></i> </h5>
                   <p>View what items you've bought in the past.</p>
                 </li>
-                <li class="list-group-item">
-                  <h5>Faster Checkout <i class="fas fa-shipping-fast" style={{margin:"0 0 0 8px"}}></i> </h5>
+                <li className="list-group-item">
+                  <h5>Faster Checkout <i className="fas fa-shipping-fast" style={{margin:"0 0 0 8px"}}></i> </h5>
                   <p>Checkout your shopping cart faster and more easily.</p>
                 </li>
-                <li class="list-group-item">
-                  <h5>Personal Info <i class="fas fa-user-check" style={{margin:"0 0 0 8px"}}></i></h5>
+                <li className="list-group-item">
+                  <h5>Personal Info <i className="fas fa-user-check" style={{margin:"0 0 0 8px"}}></i></h5>
                   <p>Never enter your personal shipping info twice.</p>
                 </li>
               </ul>

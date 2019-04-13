@@ -282,7 +282,7 @@ export default class CheckoutPage extends Component {
               </div>
             </div>
             <hr></hr>
-            <h2>Order Summary</h2>
+            <h2>Order Summary!</h2>
             <hr></hr>
             <div className="BoxOrderSummary">
               <div className="order-subtotal-container container-xs-height">

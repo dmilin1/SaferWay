@@ -5,6 +5,7 @@ import LoginPage from './LoginPage.js'
 import CheckoutPage from './CheckoutPage.js'
 import ProductPage from './ProductPage.js'
 import Navbar from './CustomNavbar.js'
+import Profile from './components/Profile';
 import SearchPage from './SearchPage.js'
 
 export default class Home extends Component {
@@ -19,6 +20,7 @@ export default class Home extends Component {
           <Route path ="/product" component = {ProductPage}></Route>
           <Route path ="/checkout" component = {CheckoutPage}></Route>
           <Route path ="/search" component = {SearchPage}></Route>
+          <Route path ="/profile" component = {Profile}></Route>
         </div>
       </Router>
     );

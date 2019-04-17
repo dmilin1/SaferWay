@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import './CustomNavbar.css';
 
 export default class CustomNavbar extends Component {
+  onClick = () => {
+    window.location.href='/login#/sign-in';
+    var loginState = JSON.parse(localStorage.getItem('loginState'));
+
+      if(loginState.loggedin){
+        window.location.href='/profile';
+      }else{
+        window.location.href='/login#/sign-in';
+      }
+  }
     render () {
         return (
           <div className="navbar navbar-expand-lg sticky-top navbar-light bg-light" style={{ minHeight:66, boxShadow: '0px 1px 10px #c1c1c1'}}>
@@ -29,12 +39,14 @@ export default class CustomNavbar extends Component {
                 </li>
 
                 <li className="nav-item">
-                  <a href="/login#/sign-in" to="/login" className="nav-link" >
-                    <ul style={{listStyleType:"none"}}>
-                      <li><i className="fa fa-user fa-lg"></i></li>
-                      <li><p style={{margin:"0 0 -16px -7px", color:"#7c7c7d"}}>User</p></li>
-                    </ul>
-                  </a>
+                  {
+                    <button className="nav-link" onClick={this.onClick}>
+                      <ul style={{ listStyleType: "none" }}>
+                        <li><i className="fa fa-user fa-lg"></i></li>
+                        <li><p style={{ margin: "0 0 -16px -7px", color: "#7c7c7d" }}>User</p></li>
+                      </ul>
+                    </button>
+                  }
                 </li>
 
                 <li className="nav-item">

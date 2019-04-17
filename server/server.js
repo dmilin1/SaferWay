@@ -2,6 +2,138 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 const mongoose = require('mongoose');
+var validator = require('validator');
+var jwt = require('jsonwebtoken');
+var _ = require('lodash');
+var bcrypt = require('bcryptjs');
+
+var login = new mongoose.Schema({
+  address: String,
+  cartId: Number,
+  updated: { type: Date, default: Date.now },
+  address: {
+   type: String,
+   required: true
+},
+name: {
+   type: String,
+   trim: true,
+   required: true
+},
+updated: { type: Date, default: Date.now },
+email: {
+   type: String,
+   trim: true,
+   required: true,
+   unique: true,
+   validate: {
+       validator: (value => {
+           return validator.isEmail(value);
+       }),
+       messsage: `Not a valid email address type`
+   }
+},
+password: {
+   type: String,
+   trim: true,
+   required: true,
+   minlength: 6
+},
+tokens: [
+   {
+       token: {
+           type: String,
+           required: true
+       },
+       access: {
+           type: String,
+           required: true
+       }
+   }
+]
+});
+
+login.pre('save', function(next){
+ var user = this;
+
+ if(user.isModified('password')){
+     bcrypt.genSalt(10, (err,salt)=>{
+         bcrypt.hash(user.password, salt, (err, hash)=>{
+             if(hash){
+                 user.password = hash;
+             }
+             next();
+         })
+     });
+ } else{
+     next();
+ }
+});
+// User instance methods
+login.methods.generateAuthToken = function() {
+ var user = this;
+ var access = 'auth';
+ var token = jwt.sign({_id:user._id.toHexString(), access}, 'secretkey',
+ {expiresIn: '1h'}).toString();
+ user.tokens = user.tokens.concat ([{token,access}]);
+
+ return user.save().then(()=>{
+     return token;
+ });
+};
+
+login.methods.toJSON = function(){
+ var user = this;
+ var userObject = user.toObject();
+ return _.pick(userObject,['_id','email','password']);
+}
+
+// User static methods
+login.statics.findByToken = function(token) {
+ var User = this;
+ var decoded;
+
+ try{
+     decoded = jwt.verify(token,'secretkey');
+ } catch (err) {
+     return Promise.reject(err);
+ }
+
+ return User.findById({_id:decoded._id});
+};
+
+login.statics.findByCredentials = function (email, password) {
+ var User = this;
+
+ return User.findOne({ email }).then((user) => {
+     if (!user) {
+         return Promise.reject();
+     }
+
+     return new Promise((resolve, reject) => {
+         // Use bcrypt.compare to compare password and user.password
+         bcrypt.compare(password, user.password, (err, res) => {
+             if (res) {
+                 resolve(user);
+             } else {
+                 reject();
+             }
+         });
+     });
+ });
+};
+
+login.methods.removeToken = function(token){
+ var user = this;
+
+ return user.update({
+     $pull:{
+         tokens:{token}
+     }
+ });
+};
+
+var Login = mongoose.model('Login', login);
 
 const port = 3001;
 String.prototype.hashCode = function() {// gotten from stackoverflow
@@ -20,8 +152,54 @@ String.prototype.hashCode = function() {// gotten from stackoverflow
 
 function launchServer() {
   const app = express();
-  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
   app.use(pino);
+  app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+  
+    // Pass to next layer of middleware
+    next();
+  });
+  app.post('/signup', (req, res) => {
+    const body = _.pick(req.body, ['email', 'password','address','name']);
+    if(body.address === undefined){
+      body.address = 'address';
+    }
+    const user = new Login(body);
+    user.save()
+    .then(doc=>{
+      res.send(doc);
+    })
+    .catch(err=>{
+      res.status(404).send(err);
+    })
+  });
+  
+  //////LOGIN
+  app.post('/login',(req,res)=>{
+    var body=_.pick(req.body, ['email','password']);
+    Login.findByCredentials(body.email, body.password)
+      .then(user => {
+        console.log(user);
+        res.send(user);
+      })
+      .catch(e => {
+        console.log(e);
+        res.status(404).send({ e: 'nah~' });
+      })
+  });
 
   app.listen(port, () =>
     console.log('Express server is running on localhost:' + port)
@@ -64,16 +242,7 @@ var products = new mongoose.Schema({
 });
 var Product = mongoose.model('Product', products);
 
-var login = new mongoose.Schema({
-   firstName: String,
-   lastName: String,
-   password: String,
-   email: { type: String, unique: true },
-   address: String,
-   cartId: Number,
-   updated: { type: Date, default: Date.now },
-});
-var Login = mongoose.model('Login', login);
+
 
 var cart = new mongoose.Schema({
   name: { type: String, unique: true },

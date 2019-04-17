@@ -34,10 +34,27 @@ export default class ProductPage extends Component {
            <Product
              imgsrc={images[products[i].picPath.split('/⁨productPics⁩/')[1]]}
              alt="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg"
-             title="Milk"
-             price="$1.99"
+             title={products[i].name}
+             price={'$'+products[i].price}
              product={products[i]}
              productClicked={this.productClicked}
+           />
+         )
+       }
+
+       for (var i = 0; i < productList.length % 4; i++) {
+         productList.push(
+           <div
+           style={{
+             display: 'flex',
+             alignItems: 'center',
+             justifyContent: 'center',
+             width: '20vw',
+             margin: '2vw',
+             position: 'relative',
+             overflow: 'hidden',
+             borderWidth: 2,
+           }}
            />
          )
        }
@@ -109,6 +126,10 @@ const styles = {
     margin: '2vw',
     position: 'relative',
     overflow: 'hidden',
+    borderWidth: 2,
+    borderColor: '#909090',
+    borderStyle: 'solid',
+    borderRadius: 10,
   },
   imgContainer: {
   },
@@ -129,12 +150,13 @@ const styles = {
     pointerEvents: 'none',
     fontFamily: 'Roboto',
     fontWeight: '300',
+    textAlign: 'center',
+    lineHeight: '5vw',
   },
   productPrice: {
     position: 'absolute',
     zIndex: 1,
     fontSize: '2vw',
-    paddingTop: '18vw',
     pointerEvents: 'none',
     fontFamily: 'Roboto',
     fontWeight: '500',

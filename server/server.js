@@ -153,7 +153,7 @@ db.once('open', function() {
         }
       });
     }
-    sortProducts('aisle','asc');
+    //sortProducts('aisle','asc');
 
     //Working
     function searchLogin(findEmail, callback) {
@@ -217,6 +217,7 @@ db.once('open', function() {
       db.collection('products').find( { category: { $eq: cat} }).toArray(function(err, result) {
         if (err) throw err;
         console.log(result);
+        return result;
       });
     }
     //searchCategory("Vegetable");
@@ -397,13 +398,24 @@ db.once('open', function() {
       });
     }
 
-    //Working. Use this for Search bar
-    function userSearch(input) {
-      var query = { name: {$regex: '.*' + input + '.*', '$options' : 'i'} };
-      Product.find(query, function(err, result) {
+    //Working. Use this for Search bar. Leave fields blank if unused
+    //input is text entered in search bar, cat is category is user selects;
+    //attribute is attribute to sort by, order is 'asc' or 'desc'
+    function userSearch(input,cat,attribute,order) {
+      var query;
+      if (cat === "") {
+        query = { name: {$regex: '.*' + input + '.*', '$options' : 'i'}};
+      }
+      else {
+        query = { name: {$regex: '.*' + input + '.*', '$options' : 'i'}, category: cat };
+      }
+      if(attribute === "") {
+        attribute = 'name';
+      }
+      Product.find(query).sort({ [attribute] : order }).exec(function(err,result) {
          if (err) throw err;
          if (result) {
-           if(result == "") {
+           if(result === "") {
              console.log("No products found");
            }
            else {
@@ -417,40 +429,40 @@ db.once('open', function() {
       });
     }
 
-    //userSearch("ttt");
-
-    // insertProduct("Milk", 2.89, "Dairy", 1, "1 gallon", 100, "/⁨productPics⁩/milk.jpeg");
-    // insertProduct("Apple", 0.99, "Fruit", 2, "1", 100, "/⁨productPics⁩/apple.jpeg");
-    // insertProduct("Peanut Butter", 3.89, "Spreads", 3, "16 oz", 100, "/⁨productPics⁩/peanutButter.jpeg");
-    // insertProduct("Cookies", 4.49, "Snacks", 4, "16", 100, "/⁨productPics⁩/cookies.jpeg");
-    // insertProduct("Potato", 0.89, "Vegetable", 2, "1", 100, "/⁨productPics⁩/potato.jpeg");
-    // insertProduct("Lettuce", 1.29, "Vegetable", 2, "1", 100, "/⁨productPics⁩/lettuce.jpeg");
-    // insertProduct("Eggs", 3.59, "Deli", 1, "12 count", 100, "/⁨productPics⁩/eggs.jpeg");
-    // insertProduct("Bacon", 4.49, "Meat", 5, "8 pieces", 100, "/⁨productPics⁩/bacon.png");
-    // insertProduct("Banana", 0.19, "Fruit", 2, "1", 100, "/⁨productPics⁩/banana.jpeg");
-    // insertProduct("Bounty Paper Towels", 5.99, "Cleaning", 6, "12 count", 100, "/⁨productPics⁩/bounty.jpeg");
-    // insertProduct("Brownies", 2.59, "Snacks", 4, "12 count", 100, "/⁨productPics⁩/brownies.jpg");
-    // insertProduct("Toilet Paper", 9.69, "Cleaning", 6, "24 rolls", 100, "/⁨productPics⁩/toiletPaper.jpg");
-    // insertProduct("Clorox Wipes", 2.99, "Cleaning", 1, "1", 100, "/⁨productPics⁩/clorox.jpeg");
-    // insertProduct("Coca Cola", 0.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/cocacola.png");
-    // insertProduct("Doritos", 1.99, "Snacks", 4, "1 Family Size", 100, "/⁨productPics⁩/doritos.jpg");
-    // insertProduct("Dreyers Chocolate Ice Cream", 3.59, "Frozen", 8, "1.5 qts", 100, "/⁨productPics⁩/dreyersChocolateIceCream.png");
-    // insertProduct("Dreyers Vanilla Ice Cream", 3.59, "Frozen", 8, "1.5 qts", 100, "/⁨productPics⁩/dreyersVanillaIceCream.png");
-    // insertProduct("Lays", 1.99, "Snacks", 4, "1 Family Size", 100, "/⁨productPics⁩/lays.jpg");
-    // insertProduct("Pepsi", 0.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/pepsi.jpg");
-    // insertProduct("Strawberries", 2.79, "Fruits", 2, "20 count", 100, "/⁨productPics⁩/strawberry.jpg");
-    // insertProduct("Apple Juice", 1.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/appleJuice.jpeg");
-    // insertProduct("Avocado", 1.99, "Fruit", 2, "1", 100, "/⁨productPics⁩/avocado.jpeg");
-    // insertProduct("Corona", 9.99, "Alcohol", 8, "12 Pack", 100, "/⁨productPics⁩/corona.jpeg");
-    // insertProduct("Crown Royal", 35.99, "Alcohol", 8, "1.75 Liter", 100, "/⁨productPics⁩/crownRoyal.jpg");
-    // insertProduct("Don Julio 1942", 129.99, "Alcohol", 8, "750 ml", 100, "/⁨productPics⁩/donJulio1942.jpg");
-    // insertProduct("Jameson", 45.89, "Alcohol", 8, "1.75 Liter", 100, "/⁨productPics⁩/jameson.jpg");
-    // insertProduct("Hersheys", 1.29, "Snacks", 4, "1.55 oz", 100, "/⁨productPics⁩/hersheys.jpg");
-    // insertProduct("Kit Kat", 1.29, "Snacks", 4, "1.5 oz", 100, "/⁨productPics⁩/kitkat.jpeg");
-    // insertProduct("Orange Juice", 1.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/orangeJuice.png");
-    // insertProduct("Oranges", 2.99, "Fruit", 2, "12 count", 100, "/⁨productPics⁩/oranges.jpg");
-    // insertProduct("Spinach", 1.99, "Vegetable", 2, "10 oz", 100, "/⁨productPics⁩/spinach.jpg");
-
+    //userSearch("","","",'');
+    /*
+    insertProduct("Milk", 2.89, "Dairy", 1, "1 gallon", 100, "/⁨productPics⁩/milk.jpeg");
+    insertProduct("Apple", 0.99, "Fruit", 2, "1", 100, "/⁨productPics⁩/apple.jpeg");
+    insertProduct("Peanut Butter", 3.89, "Spreads", 3, "16 oz", 100, "/⁨productPics⁩/peanutButter.jpeg");
+    insertProduct("Cookies", 4.49, "Snacks", 4, "16", 100, "/⁨productPics⁩/cookies.jpeg");
+    insertProduct("Potato", 0.89, "Vegetable", 2, "1", 100, "/⁨productPics⁩/potato.jpeg");
+    insertProduct("Lettuce", 1.29, "Vegetable", 2, "1", 100, "/⁨productPics⁩/lettuce.jpeg");
+    insertProduct("Eggs", 3.59, "Deli", 1, "12 count", 100, "/⁨productPics⁩/eggs.jpeg");
+    insertProduct("Bacon", 4.49, "Meat", 5, "8 pieces", 100, "/⁨productPics⁩/bacon.png");
+    insertProduct("Banana", 0.19, "Fruit", 2, "1", 100, "/⁨productPics⁩/banana.jpeg");
+    insertProduct("Bounty Paper Towels", 5.99, "Cleaning", 6, "12 count", 100, "/⁨productPics⁩/bounty.jpeg");
+    insertProduct("Brownies", 2.59, "Snacks", 4, "12 count", 100, "/⁨productPics⁩/brownies.jpg");
+    insertProduct("Toilet Paper", 9.69, "Cleaning", 6, "24 rolls", 100, "/⁨productPics⁩/toiletPaper.jpg");
+    insertProduct("Clorox Wipes", 2.99, "Cleaning", 1, "1", 100, "/⁨productPics⁩/clorox.jpeg");
+    insertProduct("Coca Cola", 0.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/cocacola.png");
+    insertProduct("Doritos", 1.99, "Snacks", 4, "1 Family Size", 100, "/⁨productPics⁩/doritos.jpg");
+    insertProduct("Dreyers Chocolate Ice Cream", 3.59, "Frozen", 8, "1.5 qts", 100, "/⁨productPics⁩/dreyersChocolateIceCream.png");
+    insertProduct("Dreyers Vanilla Ice Cream", 3.59, "Frozen", 8, "1.5 qts", 100, "/⁨productPics⁩/dreyersVanillaIceCream.png");
+    insertProduct("Lays", 1.99, "Snacks", 4, "1 Family Size", 100, "/⁨productPics⁩/lays.jpg");
+    insertProduct("Pepsi", 0.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/pepsi.jpg");
+    insertProduct("Strawberries", 2.79, "Fruits", 2, "20 count", 100, "/⁨productPics⁩/strawberry.jpg");
+    insertProduct("Apple Juice", 1.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/appleJuice.jpeg");
+    insertProduct("Avocado", 1.99, "Fruit", 2, "1", 100, "/⁨productPics⁩/avocado.jpeg");
+    insertProduct("Corona", 9.99, "Alcohol", 8, "12 Pack", 100, "/⁨productPics⁩/corona.jpeg");
+    insertProduct("Crown Royal", 35.99, "Alcohol", 8, "1.75 Liter", 100, "/⁨productPics⁩/crownRoyal.jpg");
+    insertProduct("Don Julio 1942", 129.99, "Alcohol", 8, "750 ml", 100, "/⁨productPics⁩/donJulio1942.jpg");
+    insertProduct("Jameson", 45.89, "Alcohol", 8, "1.75 Liter", 100, "/⁨productPics⁩/jameson.jpg");
+    insertProduct("Hersheys", 1.29, "Snacks", 4, "1.55 oz", 100, "/⁨productPics⁩/hersheys.jpg");
+    insertProduct("Kit Kat", 1.29, "Snacks", 4, "1.5 oz", 100, "/⁨productPics⁩/kitkat.jpeg");
+    insertProduct("Orange Juice", 1.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/orangeJuice.png");
+    insertProduct("Oranges", 2.99, "Fruit", 2, "12 count", 100, "/⁨productPics⁩/oranges.jpg");
+    insertProduct("Spinach", 1.99, "Vegetable", 2, "10 oz", 100, "/⁨productPics⁩/spinach.jpg");
+    */
     //addUser("Bob", "Jackson", "password", "bob@gmail.com", "321 10th St. Santa Clara, CA 91123");
     //addUser("John", "Smith", "password", "test@yahoo.com", "123 1st St. San Jose, CA 95123");
     //addUser("James", "Johnson", "password", "johnson@hotmail.com", "987 2nd St. Sunnyvale, CA 94567");

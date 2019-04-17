@@ -103,7 +103,7 @@ db.once('open', function() {
 
 
 
-    //Working. Searches products list
+    //Working
     function search(findName, callback) {
       var query = { name: findName };
       Product.findOne(query, function(err, result) {
@@ -143,19 +143,6 @@ db.once('open', function() {
         }
     }
 
-    //FIX!!!
-    function sortProducts(parametersw, order) {
-      var Product = mongoose.model('products',products);
-      Product.find().sort({ 'name': order }).exec(function(err,result)
-      {
-        if(result) {
-          console.log(result);
-        }
-      });
-    }
-    //sortProducts('name','desc');
-    //sortProducts('name',-1);
-
     //Working
     function searchLogin(findEmail, callback) {
       var query = { email: findEmail };
@@ -172,6 +159,7 @@ db.once('open', function() {
       });
     }
 
+    var num = null;
 
     //Working
     function addUser(firstName, lastName, password, email, address) {
@@ -213,22 +201,12 @@ db.once('open', function() {
       }
     }
 
-    //Working
-    function searchCategory(cat) {
-      db.collection('products').find( { category: { $eq: cat} }).toArray(function(err, result) {
-        if (err) throw err;
-        console.log(result);
-      });
-    }
-    //searchCategory("Vegetable");
-
-    //Working
     function getCart(id, callback) {
       var Cart = mongoose.model( String(id), cart);
       Cart.find(function(err, result) {
         if (err) throw err;
         if (result) {
-          callback(result);
+          callback(Cart);
           return true;
         }
         else {
@@ -239,27 +217,9 @@ db.once('open', function() {
      });
     }
 
-    //Working
-    function cartTotal(id) {
-      var total = 0;
-      getCart(id, sum);
-      function sum(result) {
-        if (result === "false") {
-            console.log("Cart not found");
-            return;
-        }
-        else {
-          for(var i=0;i<result.length;i++)
-          {
-              total = total + result[i].price;
-          }
-          total = (total * 1.0925).toFixed(2);
-          console.log("$" + total);
-          return total;
-        }
-      }
+    function searchCart(productName, id, callback) {
+
     }
-    //cartTotal(3);
 
     //Working
     function addCart(productName, price, category, aisle, size, amount, picPath, id) {
@@ -323,34 +283,6 @@ db.once('open', function() {
     }
 
     //Working
-    function updateAddress(email, newAddress) {
-       Login.findOneAndUpdate({email: email}, {$set:{address: newAddress}}, function(err, doc) {
-         if (err) return console.error(err);
-       })
-    }
-
-    //Working
-    function updateEmail(email, newEmail) {
-       Login.findOneAndUpdate({email: email}, {$set:{email: newEmail}}, function(err, doc) {
-         if (err) return console.error(err);
-       })
-    }
-
-    //Working
-    function updateFirstName(email, newFirst) {
-       Login.findOneAndUpdate({email: email}, {$set:{firstName: newFirst}}, function(err, doc) {
-         if (err) return console.error(err);
-       })
-    }
-
-    //Working
-    function updateLastName(email, newLast) {
-       Login.findOneAndUpdate({email: email}, {$set:{lastName: newLast}}, function(err, doc) {
-         if (err) return console.error(err);
-       })
-    }
-
-    //Working
     function updatePrice(productName, newPrice) {
        Product.findOneAndUpdate({name: productName}, {$set:{price: newPrice}}, function(err, doc) {
          if (err) return console.error(err);
@@ -360,13 +292,6 @@ db.once('open', function() {
     //Working
     function updateSize(productName, newSize) {
        Product.findOneAndUpdate({name: productName}, {$set:{size: newSize}}, function(err, doc) {
-         if (err) return console.error(err);
-       })
-    }
-
-    //Working
-    function updateAisle(productName, newAisle) {
-       Product.findOneAndUpdate({name: productName}, {$set:{aisle: newAisle}}, function(err, doc) {
          if (err) return console.error(err);
        })
     }
@@ -419,7 +344,7 @@ db.once('open', function() {
     }
 
     //userSearch("ttt");
-
+    /*
     insertProduct("Milk", 2.89, "Dairy", 1, "1 gallon", 100, "/⁨productPics⁩/milk.jpeg");
     insertProduct("Apple", 0.99, "Fruit", 2, "1", 100, "/⁨productPics⁩/apple.jpeg");
     insertProduct("Peanut Butter", 3.89, "Spreads", 3, "16 oz", 100, "/⁨productPics⁩/peanutButter.jpeg");
@@ -427,34 +352,11 @@ db.once('open', function() {
     insertProduct("Potato", 0.89, "Vegetable", 2, "1", 100, "/⁨productPics⁩/potato.jpeg");
     insertProduct("Lettuce", 1.29, "Vegetable", 2, "1", 100, "/⁨productPics⁩/lettuce.jpeg");
     insertProduct("Eggs", 3.59, "Deli", 1, "12 count", 100, "/⁨productPics⁩/eggs.jpeg");
-    insertProduct("Bacon", 4.49, "Meat", 5, "8 pieces", 100, "/⁨productPics⁩/bacon.png");
-    insertProduct("Banana", 0.19, "Fruit", 2, "1", 100, "/⁨productPics⁩/banana.jpeg");
-    insertProduct("Bounty Paper Towels", 5.99, "Cleaning", 6, "12 count", 100, "/⁨productPics⁩/bounty.jpeg");
-    insertProduct("Brownies", 2.59, "Snacks", 4, "12 count", 100, "/⁨productPics⁩/brownies.jpg");
-    insertProduct("Toilet Paper", 9.69, "Cleaning", 6, "24 rolls", 100, "/⁨productPics⁩/toiletPaper.jpg");
-    insertProduct("Clorox Wipes", 2.99, "Cleaning", 1, "1", 100, "/⁨productPics⁩/clorox.jpeg");
-    insertProduct("Coca Cola", 0.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/cocacola.png");
-    insertProduct("Doritos", 1.99, "Snacks", 4, "1 Family Size", 100, "/⁨productPics⁩/doritos.jpg");
-    insertProduct("Dreyers Chocolate Ice Cream", 3.59, "Frozen", 8, "1.5 qts", 100, "/⁨productPics⁩/dreyersChocolateIceCream.png");
-    insertProduct("Dreyers Vanilla Ice Cream", 3.59, "Frozen", 8, "1.5 qts", 100, "/⁨productPics⁩/dreyersVanillaIceCream.png");
-    insertProduct("Lays", 1.99, "Snacks", 4, "1 Family Size", 100, "/⁨productPics⁩/lays.jpg");
-    insertProduct("Pepsi", 0.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/pepsi.jpg");
-    insertProduct("Strawberries", 2.79, "Fruits", 2, "20 count", 100, "/⁨productPics⁩/strawberry.jpg");
-    insertProduct("Apple Juice", 1.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/appleJuice.jpeg");
-    insertProduct("Avocado", 1.99, "Fruit", 2, "1", 100, "/⁨productPics⁩/avocado.jpeg");
-    insertProduct("Corona", 9.99, "Alcohol", 8, "12 Pack", 100, "/⁨productPics⁩/corona.jpeg");
-    insertProduct("Crown Royal", 35.99, "Alcohol", 8, "1.75 Liter", 100, "/⁨productPics⁩/crownRoyal.jpg");
-    insertProduct("Don Julio 1942", 129.99, "Alcohol", 8, "750 ml", 100, "/⁨productPics⁩/donJulio1942.jpg");
-    insertProduct("Jameson", 45.89, "Alcohol", 8, "1.75 Liter", 100, "/⁨productPics⁩/jameson.jpg");
-    insertProduct("Hersheys", 1.29, "Snacks", 4, "1.55 oz", 100, "/⁨productPics⁩/hersheys.jpg");
-    insertProduct("Kit Kat", 1.29, "Snacks", 4, "1.5 oz", 100, "/⁨productPics⁩/kitkat.jpeg");
-    insertProduct("Orange Juice", 1.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/orangeJuice.png");
-    insertProduct("Oranges", 2.99, "Fruit", 2, "12 count", 100, "/⁨productPics⁩/oranges.jpg");
-    insertProduct("Spinach", 1.99, "Vegetable", 2, "10 oz", 100, "/⁨productPics⁩/spinach.jpg");
+    */
 
     //addUser("Bob", "Jackson", "password", "bob@gmail.com", "321 10th St. Santa Clara, CA 91123");
     //addUser("John", "Smith", "password", "test@yahoo.com", "123 1st St. San Jose, CA 95123");
-    //addUser("James", "Johnson", "password", "johnson@hotmail.com", "987 2nd St. Sunnyvale, CA 94567");
+    //addUser("James", "Johnson", "password", "blah@hotmail.com", "987 2nd St. Sunnyvale, CA 94567");
 
     //addCart("Apple", 0.99, "Fruit", 2, "1", 2, "/⁨productPics⁩/apple.jpeg", 1);
     //addCart("Milk", 2.89, "Dairy", 1, "1 gallon", 2, "/⁨productPics⁩/milk.jpeg", 1);
@@ -462,3 +364,4 @@ db.once('open', function() {
 
     //MOVE TO OUTSIDE db.once FUNCTION
   });
+  

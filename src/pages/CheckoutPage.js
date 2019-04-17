@@ -2,27 +2,22 @@ import React, { Component } from 'react';
 import Popup from './components/Popup';
 import {Button} from 'react-bootstrap';
 import './CheckoutPage.css';
+import './ProductPage.css';
+const axios = require('axios');
+
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+  return images;
+}
+const images = importAll(require.context('./../productPics', false, /\.(png|jpe?g|svg)$/));
 
 export default class CheckoutPage extends Component {
 
   constructor() {
-      super();
-      /*
-      this.state = {
-        showGuestCheckoutForm: false,
-        orderPlaced: false,
-        firstName:'',
-        lastName:'',
-        address:'',
-        email:'',
-        phone:''
-      };
-      */
-     this.state = {
-      productName: "Apple",
-      productPrice: 1,
-      productID: 11164321,
-      productQuantity: 1,
+    super();
+    this.state = {
+      shoppingBag: [],
       name: "Gregory Mayo",
       phone: 9259111234,
       address: "235 Camelback Road",
@@ -50,6 +45,7 @@ export default class CheckoutPage extends Component {
         this.setState({ productQuantity: this.state.productQuantity - 1 });
       }
     }
+
     removeProduct() {
       //this.setState({ quantity: this.state.quantity.filter(quantity => quantity == 0)});
     }
@@ -114,10 +110,37 @@ export default class CheckoutPage extends Component {
       event.preventDefault();
     }
 
+    componentDidMount() {
+      var productList = []
+
+      axios.get('/api/getAllProducts')
+      .then((res) => {
+        var products = res.data;
+
+        for (var i = 0; i < products.length; i++) {
+          console.log(products[i].name)
+          productList.push(
+            <div>
+              <img src={images[products[i].picPath.split('/⁨productPics⁩/')[1]]} alt={products[i].alt} style={{height:"100px"}}/>
+              <h3>{products[i].name} - {products[i].price}</h3>
+            </div>
+          )
+        }
+
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .then(() => {
+        this.setState({
+          shoppingBag: productList
+        })
+      });
+    }
 
    render() {
      var myForm = (
-       <form className="myForm" onSubmit={this.handleSubmit}>
+       <form className="myForm" style={{color:'black'}} onSubmit={this.handleSubmit}>
           First name:
           <input type="text" name="firstName" onChange={this.handleChangeFirstName}/>
           <br/>
@@ -196,7 +219,7 @@ export default class CheckoutPage extends Component {
                         <span className="shipping-method-price text-bold text-right col-xs-2">$20.00</span>
                       </div>
                     </div>
-                  </div>
+                </div>
               </div>
               <h3>3. Payment Info</h3>
               <hr></hr>
@@ -212,7 +235,7 @@ export default class CheckoutPage extends Component {
                   <div className="col-xs-6 col-xs-height col-top">
                     <div className="btn-secondary btn-block selectable-option">
                       <div className="selectable-option-text textCenter">
-                      <i class="fa fa-university" aria-hidden="true"></i>
+                      <i className="fa fa-university" aria-hidden="true"></i>
                       </div>
                     </div>
                   </div>
@@ -228,8 +251,11 @@ export default class CheckoutPage extends Component {
               <button className="btn-primary btn-block">Place Order</button>
               <hr></hr>
             </div>
-          <div className="App__Form">
+        <div className="App__Form">
           <h2>SHOPPING BAG</h2>
+          {this.state.shoppingBag}
+
+          {/*
             <hr></hr>
             <div className="cart-item-img col-xs-height col-xs-4 col-md-4 col-lg-3 col-top">
                 <img className="productCheckout imageResponsive"src="https://i.ibb.co/YbGHtVj/apple.jpg"></img>
@@ -246,9 +272,9 @@ export default class CheckoutPage extends Component {
                     <h5>Quantity: {this.state.productQuantity}</h5>
                     <ul className="list-inline __ef422">
                     <li>
-                        <button onClick={this.increaseProduct}><i class="fa fa-plus" aria-hidden="true"></i></button>
-                        <button onClick={this.decreaseProduct}><i class="fa fa-minus" aria-hidden="true"></i></button>
-                        <button onClick={this.removeProduct}><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <button onClick={this.increaseProduct}><i className="fa fa-plus" aria-hidden="true"></i></button>
+                        <button onClick={this.decreaseProduct}><i className="fa fa-minus" aria-hidden="true"></i></button>
+                        <button onClick={this.removeProduct}><i className="fa fa-times" aria-hidden="true"></i></button>
                       </li>
                     </ul>
                   </div>
@@ -271,15 +297,16 @@ export default class CheckoutPage extends Component {
                     <h5>Quantity: {this.state.productQuantity}</h5>
                     <ul className="list-inline __ef422">
                     <li>
-                        <button onClick={this.increaseProduct}><i class="fa fa-plus" aria-hidden="true"></i></button>
-                        <button onClick={this.decreaseProduct}><i class="fa fa-minus" aria-hidden="true"></i></button>
-                        <button onClick={this.removeProduct}><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <button onClick={this.increaseProduct}><i className="fa fa-plus" aria-hidden="true"></i></button>
+                        <button onClick={this.decreaseProduct}><i className="fa fa-minus" aria-hidden="true"></i></button>
+                        <button onClick={this.removeProduct}><i className="fa fa-times" aria-hidden="true"></i></button>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
+            */}
             <hr></hr>
             <h2>Order Summary!</h2>
             <hr></hr>

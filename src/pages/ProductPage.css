@@ -31,7 +31,7 @@
 }
 
 .imageOverlay:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.5);
 }
 
 .productTitle {
@@ -44,10 +44,12 @@
 }
 
 .productPrice {
-  transition: opacity 0.25s;
+  transition: opacity 0.25s, padding-top 0.25s;
   opacity: 0;
+  padding-top: 25vw;
 }
 
 .imageOverlay:hover ~ .productPrice {
+  padding-top: 18vw;
   opacity: 1;
 }

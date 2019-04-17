@@ -23,7 +23,7 @@ export default class CheckoutPage extends Component {
       address: "235 Camelback Road",
       city: "San Jose",
       stateAddress: "California",
-      zip: 925116
+      zip: 925116,
     }
       this.showGuestPopup = this.showGuestPopup.bind(this);
       this.closeGuestPopup = this.closeGuestPopup.bind(this);
@@ -49,7 +49,6 @@ export default class CheckoutPage extends Component {
     removeProduct() {
       //this.setState({ quantity: this.state.quantity.filter(quantity => quantity == 0)});
     }
-
     showGuestPopup(){
       this.setState({
         showGuestCheckoutForm: true
@@ -191,7 +190,7 @@ export default class CheckoutPage extends Component {
                       </div>
                     </div>
                 </div>
-                <div className="shipping-method-option selectable-test radius">
+                <div className="shipping-method-option selectable-option radius">
                     <div className="selectable-option-text">
                       <div className="delivery-details">
                         <span className="delivery-method-name">Standard</span>

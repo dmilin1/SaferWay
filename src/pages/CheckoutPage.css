@@ -150,6 +150,7 @@ h6{
     padding: 20px;
     border-radius: 10px;
 }
+
 .shipping-method-options, .shipping-method-option{
     margin-top: 30px;
     margin-bottom: 30px;
@@ -160,6 +161,7 @@ h6{
 .shipping-method-option--Active{
     border: 1px solid black;
   }
+
 .selectable-option{
     width: 100%;
     display: table;
@@ -175,6 +177,12 @@ h6{
     font-size: .75em;
     padding: 14px 15px;
 }
+.selectable-option:hover{
+
+/*  box-shadow: 0 0 11px rgba(33,33,33,.2);*/
+    box-shadow: 0 0 0 3px black inset;
+}
+/*
 .selectable-test{
     width: 100%;
     display: table;
@@ -190,6 +198,7 @@ h6{
     font-size: .75em;
     padding: 14px 15px;
 }
+*/
 .shipping-method-options .selectable-option-text{
     width: 100%;
 }

@@ -143,11 +143,10 @@ db.once('open', function() {
         }
     }
 
-    /*
     //FIX!!!
     function sortProducts(parametersw, order) {
       var Product = mongoose.model('products',products);
-      Product.find().sort({ String(parametersw) : order }).exec(function(err,result)
+      Product.find().sort({ 'name': order }).exec(function(err,result)
       {
         if(result) {
           console.log(result);
@@ -156,7 +155,6 @@ db.once('open', function() {
     }
     //sortProducts('name','desc');
     //sortProducts('name',-1);
-    */
 
     //Working
     function searchLogin(findEmail, callback) {
@@ -421,6 +419,7 @@ db.once('open', function() {
     }
 
     //userSearch("ttt");
+
     insertProduct("Milk", 2.89, "Dairy", 1, "1 gallon", 100, "/⁨productPics⁩/milk.jpeg");
     insertProduct("Apple", 0.99, "Fruit", 2, "1", 100, "/⁨productPics⁩/apple.jpeg");
     insertProduct("Peanut Butter", 3.89, "Spreads", 3, "16 oz", 100, "/⁨productPics⁩/peanutButter.jpeg");

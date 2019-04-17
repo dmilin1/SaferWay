@@ -142,26 +142,21 @@ db.once('open', function() {
           }
         }
     }
+
     /*
     //FIX!!!
     function sortProducts(parametersw, order) {
       var Product = mongoose.model('products',products);
       Product.find().sort({ String(parametersw) : order }).exec(function(err,result)
       {
-        if(result)
-        {
-
-          for(var i=0;i<result.length;i++)
-          {
-            console.log(result[i].name);
-          }
-         console.log(result);
+        if(result) {
+          console.log(result);
         }
-      })
+      });
     }
-    */
     //sortProducts('name','desc');
     //sortProducts('name',-1);
+    */
 
     //Working
     function searchLogin(findEmail, callback) {
@@ -426,7 +421,6 @@ db.once('open', function() {
     }
 
     //userSearch("ttt");
-    
     insertProduct("Milk", 2.89, "Dairy", 1, "1 gallon", 100, "/⁨productPics⁩/milk.jpeg");
     insertProduct("Apple", 0.99, "Fruit", 2, "1", 100, "/⁨productPics⁩/apple.jpeg");
     insertProduct("Peanut Butter", 3.89, "Spreads", 3, "16 oz", 100, "/⁨productPics⁩/peanutButter.jpeg");
@@ -454,7 +448,7 @@ db.once('open', function() {
     insertProduct("Don Julio 1942", 129.99, "Alcohol", 8, "750 ml", 100, "/⁨productPics⁩/donJulio1942.jpg");
     insertProduct("Jameson", 45.89, "Alcohol", 8, "1.75 Liter", 100, "/⁨productPics⁩/jameson.jpg");
     insertProduct("Hersheys", 1.29, "Snacks", 4, "1.55 oz", 100, "/⁨productPics⁩/hersheys.jpg");
-    insertProduct("Kit Kate", 1.29, "Snacks", 4, "1.5 oz", 100, "/⁨productPics⁩/kitkat.jpeg");
+    insertProduct("Kit Kat", 1.29, "Snacks", 4, "1.5 oz", 100, "/⁨productPics⁩/kitkat.jpeg");
     insertProduct("Orange Juice", 1.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/orangeJuice.png");
     insertProduct("Oranges", 2.99, "Fruit", 2, "12 count", 100, "/⁨productPics⁩/oranges.jpg");
     insertProduct("Spinach", 1.99, "Vegetable", 2, "10 oz", 100, "/⁨productPics⁩/spinach.jpg");

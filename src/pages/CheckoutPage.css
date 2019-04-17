@@ -118,10 +118,11 @@ h4{
     color:black;
 }
 h5{
-  
+    color: gray;
+    font-size: 12px;
 }
 h6{
-    color: gray;
+    color: black;
 }
 .list-inline{
     margin-left: -5px;
@@ -149,6 +150,7 @@ h6{
     padding: 20px;
     border-radius: 10px;
 }
+
 .shipping-method-options, .shipping-method-option{
     margin-top: 30px;
     margin-bottom: 30px;
@@ -159,6 +161,7 @@ h6{
 .shipping-method-option--Active{
     border: 1px solid black;
   }
+
 .selectable-option{
     width: 100%;
     display: table;
@@ -174,6 +177,28 @@ h6{
     font-size: .75em;
     padding: 14px 15px;
 }
+.selectable-option:hover{
+
+/*  box-shadow: 0 0 11px rgba(33,33,33,.2);*/
+    box-shadow: 0 0 0 3px black inset;
+}
+/*
+.selectable-test{
+    width: 100%;
+    display: table;
+    margin: 0 0 14px;
+    cursor: pointer;
+    text-align: left;
+    z-index: 0;
+    position: relative;
+    box-shadow: 0 0 0 3px black inset;
+    -o-transition: 'box-shadow' .4s ease-in;
+    -webkit-transition: 'box-shadow' .4s ease-in;
+    transition: 'box-shadow' .4s ease-in;
+    font-size: .75em;
+    padding: 14px 15px;
+}
+*/
 .shipping-method-options .selectable-option-text{
     width: 100%;
 }
@@ -281,7 +306,7 @@ span{
 }
 .btn-primary{
     color: #fff;
-    background: #000;
+    background: black;
     border-color: #000;
     -webkit-box-shadow: inset 0 0 0 1px #000;
     box-shadow: inset 0 0 0 1px #000;

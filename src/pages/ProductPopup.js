@@ -14,7 +14,7 @@ export default class ProductPopup extends Component {
         <div style={styles.exitButton} onClick={this.props.closeWindow}>
         X
         </div>
-        <ProductContainer/>
+        <ProductContainer images={this.props.images} product={this.props.product}/>
       </div>
     );
   }
@@ -22,26 +22,29 @@ export default class ProductPopup extends Component {
 
 class ProductContainer extends Component {
   render () {
+    console.log(this.props.images)
     return (
-      <div style={styles.container}>
-        <div style={styles.leftColumn}>
-          <img className="productImg" src={'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/220px-Milk_glass.jpg'} style={styles.productImg}/>
-        </div>
-        <div style={styles.rightColumn}>
-          <div style={styles.titleText}>
-            Milk -{" "}
-            <span style={styles.priceText}>
-              $1.99
-            </span>
+      this.props.product ? (
+        <div style={styles.container}>
+          <div style={styles.leftColumn}>
+            <img className="productImg" src={this.props.images[this.props.product.picPath.split('/⁨productPics⁩/')[1]]} style={styles.productImg}/>
           </div>
-          <div style={styles.descriptionText}>
-            Milk is a liquid that comes out of mamals and for some weird reason, humans drink the liquid that comes out of cows. This particular milk is cow liquid. Please enjoy.
+          <div style={styles.rightColumn}>
+            <div style={styles.titleText}>
+              {this.props.product.name} -{" "}
+              <span style={styles.priceText}>
+                ${this.props.product.price}
+              </span>
+            </div>
+            <div style={styles.descriptionText}>
+              Milk is a liquid that comes out of mamals and for some weird reason, humans drink the liquid that comes out of cows. This particular milk is cow liquid. Please enjoy.
+            </div>
+            <div className="addToCart" style={styles.addToCart}>
+              Add To Cart
+            </div>
           </div>
-          <div className="addToCart" style={styles.addToCart}>
-            Add To Cart
-          </div>
-        </div>
-      </div>
+        </div> )
+      : (null)
     );
   }
 }

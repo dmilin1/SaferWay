@@ -75,7 +75,6 @@ export default class ProductPage extends Component {
   }
 }
 
-
 class Product extends Component {
 
   handleClick = (event) => {

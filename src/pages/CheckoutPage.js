@@ -90,7 +90,7 @@ export default class CheckoutPage extends Component {
 
    render() {
      var myForm = (
-       <form className="myForm" onSubmit={this.handleSubmit}>
+       <form className="myForm" style={{color:'black'}} onSubmit={this.handleSubmit}>
           First name:
           <input type="text" name="firstName" onChange={this.handleChangeFirstName}/>
           <br/>

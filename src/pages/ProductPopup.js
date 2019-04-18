@@ -21,6 +21,12 @@ export default class ProductPopup extends Component {
 }
 
 class ProductContainer extends Component {
+
+  addToCart = () => {
+    var loginState = JSON.parse(localStorage.getItem('loginState')).loggedin;
+    console.log(loginState)
+  }
+
   render () {
     console.log(this.props.images)
     return (
@@ -39,7 +45,7 @@ class ProductContainer extends Component {
             <div style={styles.descriptionText}>
               Milk is a liquid that comes out of mamals and for some weird reason, humans drink the liquid that comes out of cows. This particular milk is cow liquid. Please enjoy.
             </div>
-            <div className="addToCart" style={styles.addToCart}>
+            <div className="addToCart" style={styles.addToCart} onClick={this.addToCart}>
               Add To Cart
             </div>
           </div>

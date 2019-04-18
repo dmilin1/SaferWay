@@ -40,12 +40,12 @@ export default class CustomNavbar extends Component {
 
                 <li className="nav-item">
                   {
-                    <button className="nav-link" onClick={this.onClick}>
-                      <ul style={{ listStyleType: "none" }}>
+                    <div className="nav-link" onClick={this.onClick}>
+                      <ul style={{ listStyleType: "none", cursor: 'pointer' }}>
                         <li><i className="fa fa-user fa-lg"></i></li>
                         <li><p style={{ margin: "0 0 -16px -7px", color: "#7c7c7d" }}>User</p></li>
                       </ul>
-                    </button>
+                    </div>
                   }
                 </li>
 

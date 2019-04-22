@@ -43,7 +43,12 @@ class ProductContainer extends Component {
               </span>
             </div>
             <div style={styles.descriptionText}>
-              Milk is a liquid that comes out of mamals and for some weird reason, humans drink the liquid that comes out of cows. This particular milk is cow liquid. Please enjoy.
+              Category: <span style={styles.descriptionDataText}>{this.props.product.category}</span>
+              <br/>
+              Aisle: <span style={styles.descriptionDataText}>{this.props.product.aisle}</span>
+              <br/>
+              Size: <span style={styles.descriptionDataText}>{this.props.product.size}</span>
+              <br/>
             </div>
             <div className="addToCart" style={styles.addToCart} onClick={this.addToCart}>
               Add To Cart
@@ -101,6 +106,16 @@ const styles = {
     borderColor: '#CCC',
     borderStyle: 'solid',
     padding: 5,
+    fontWeight: 500,
+  },
+  descriptionDataText: {
+    fontFamily: 'Roboto',
+    fontSize: '1.8vw',
+    float: 'right',
+    paddingLeft: 40,
+    minWidth: 100,
+    textAlign: 'center',
+    fontWeight: 300,
   },
   horizontalBar: {
     width: '80%',

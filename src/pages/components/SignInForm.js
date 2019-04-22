@@ -22,7 +22,9 @@ class SignInForm extends Component{
         .then(res=>{
             var loginState = { 'loggedin': true };
             localStorage.setItem('loginState', JSON.stringify(loginState));
-            window.location.href = '/';
+            localStorage.setItem('account', res.data);
+            console.log(res.data)
+            // window.location.href = '/profile';
         })
         .catch(err=>{
             console.log(err);

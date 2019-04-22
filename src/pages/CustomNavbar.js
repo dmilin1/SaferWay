@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LogoutButton from './components/LogoutButton';
 import './CustomNavbar.css';
 
 export default class CustomNavbar extends Component {
@@ -68,6 +69,12 @@ export default class CustomNavbar extends Component {
                 }}>
                   Search
                 </button>
+                {
+                  JSON.parse(localStorage.getItem('loginState')).loggedin == true ?
+                  <LogoutButton />
+                  :
+                  null
+                }
               </form>
             </div>
           </div>

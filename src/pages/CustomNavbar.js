@@ -14,6 +14,9 @@ export default class CustomNavbar extends Component {
       }
   }
     render () {
+
+        var loginState = JSON.parse(localStorage.getItem('loginState'));
+
         return (
           <div className="navbar navbar-expand-lg sticky-top navbar-light bg-light" style={{ minHeight:66, boxShadow: '0px 1px 10px #c1c1c1'}}>
             <img className="navbar-brand" href="#" src="https://i.ibb.co/Fz04SyP/1.png" height="50px" width="200px" />
@@ -70,7 +73,7 @@ export default class CustomNavbar extends Component {
                   Search
                 </button>
                 {
-                  JSON.parse(localStorage.getItem('loginState')).loggedin == true ?
+                  loginState && loginState.loggedin == true ?
                   <LogoutButton />
                   :
                   null

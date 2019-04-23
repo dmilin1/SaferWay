@@ -12,7 +12,7 @@ export default class ProductPopup extends Component {
         flex: 1,
       }}>
         <div style={styles.exitButton} onClick={this.props.closeWindow}>
-        <i class="fas fa-chevron-left fa-2x" style={{margin:".5em"}}></i>
+        <i className="fas fa-chevron-left fa-2x" style={{margin:".5em"}}></i>
         </div>
         <ProductContainer images={this.props.images} product={this.props.product}/>
       </div>

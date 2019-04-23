@@ -6,6 +6,11 @@ import './SignUpForm.css';
 class UserProfile extends Component{
     constructor() {
         super();
+        var loginState = JSON.parse(localStorage.getItem('loginState'));
+
+          if(!loginState.loggedin){
+            window.location.href='/login#/sign-in';
+          }
     }
    onClick = () =>{
        var loginState = { 'loggedin': false };

@@ -9,7 +9,7 @@ class LogoutButton extends Component{
    logout = () =>{
        var loginState = { 'loggedin': false };
        localStorage.setItem('loginState', JSON.stringify(loginState));
-       window.location.href='/';
+       window.location.href='/product';
    }
     render(){
         return(

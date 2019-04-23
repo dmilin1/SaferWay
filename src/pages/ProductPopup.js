@@ -23,7 +23,13 @@ export default class ProductPopup extends Component {
 class ProductContainer extends Component {
 
   addToCart = () => {
-    var loginState = JSON.parse(localStorage.getItem('loginState')).loggedin;
+    try {
+      var loginState = JSON.parse(localStorage.getItem('loginState')).loggedin;
+      var account = JSON.parse(localStorage.getItem('account'));
+      console.log(account._id);
+    } catch {
+      var loginState = false;
+    }
     console.log(loginState)
   }
 

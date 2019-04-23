@@ -23,7 +23,7 @@ class SignInForm extends Component{
 
           var loginState = { 'loggedin': true };
           localStorage.setItem('loginState', JSON.stringify(loginState));
-          localStorage.setItem('account', res.data);
+          localStorage.setItem('account', JSON.stringify(res.data));
           console.log(res.data)
           window.location.href = '/profile';
         })

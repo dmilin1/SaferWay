@@ -110,32 +110,50 @@ export default class CheckoutPage extends Component {
       event.preventDefault();
     }
 
-    componentDidMount() {
+    prepRender = (products) => {
       var productList = []
 
-      axios.get('/api/getAllProducts')
-      .then((res) => {
-        var products = res.data;
-
-        for (var i = 0; i < products.length; i++) {
-          console.log(products[i].name)
-          productList.push(
-            <div>
-              <img src={images[products[i].picPath.split('/⁨productPics⁩/')[1]]} alt={products[i].alt} style={{height:"100px"}}/>
-              <h3>{products[i].name} - {products[i].price}</h3>
-            </div>
-          )
-        }
-
+      for (var i = 0; i < products.length; i++) {
+        console.log(products[i].name)
+        productList.push(
+          <div>
+            <img src={images[products[i].picPath.split('/⁨productPics⁩/')[1]]} alt={products[i].alt} style={{height:"100px"}}/>
+            <h3>{products[i].name} - {products[i].price}</h3>
+          </div>
+        )
+      }
+      this.setState({
+        shoppingBag: productList
       })
-      .catch((error) => {
-        console.log(error);
-      })
-      .then(() => {
-        this.setState({
-          shoppingBag: productList
+    }
+
+    componentDidMount() {
+
+
+      try {
+        var loginState = JSON.parse(localStorage.getItem('loginState')).loggedin;
+        var account = JSON.parse(localStorage.getItem('account'));
+        console.log(account._id);
+      } catch {
+        var loginState = false;
+      }
+
+      if (loginState == true) {
+        axios.post('/api/getDetailedCart', {
+          id: account
         })
-      });
+        .then((res) => {
+          var products = res.data;
+
+          this.prepRender(products)
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+      } else {
+        
+      }
+
     }
 
    render() {

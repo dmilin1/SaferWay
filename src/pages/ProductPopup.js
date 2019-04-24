@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './ProductPopup.css';
+const axios = require('axios');
 
 export default class ProductPopup extends Component {
 
@@ -30,7 +31,37 @@ class ProductContainer extends Component {
     } catch {
       var loginState = false;
     }
-    console.log(loginState)
+
+    if (loginState == true) {
+      axios.post('/api/getCart', {
+        id: account
+      })
+      .then((res) => {
+        var cart = res.data.products;
+        if (cart == undefined) {cart = {}}
+        if (cart[this.props.product.name]) {
+          cart[this.props.product.name].count += 1;
+        } else {
+          cart[this.props.product.name] = { count: 1 }
+        }
+        console.log(cart)
+
+        axios.post('/api/setCart', {
+          id: account,
+          products: cart,
+        })
+        .then((res) => {
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+
   }
 
   render () {

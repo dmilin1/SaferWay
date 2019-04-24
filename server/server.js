@@ -158,17 +158,17 @@ function launchServer() {
 
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  
+
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  
+
     // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  
+
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
-  
+
     // Pass to next layer of middleware
     next();
   });
@@ -186,7 +186,7 @@ function launchServer() {
       res.status(404).send(err);
     })
   });
-  
+
   //////LOGIN
   app.post('/login',(req,res)=>{
     var body=_.pick(req.body, ['email','password']);
@@ -210,6 +210,76 @@ function launchServer() {
       res.send(products);
     });
   })
+
+  app.post('/api/getCart', function (req, res) {
+    request = req.body;
+    getCart(request.id, function(cart){
+      res.send(cart);
+    });
+  })
+
+  app.post('/api/setCart', function (req, res) {
+    request = req.body;
+    setCart(request.id, request.products, function(cart){
+      res.send(cart);
+    });
+  })
+
+  app.post('/api/getDetailedCart', function (req, res) {
+    request = req.body;
+
+    getCart(request.id, function(cart){
+      console.log(cart.products)
+      var regex = '';
+      for (var i = 0; i < Object.keys(cart.products).length; i++) {
+        regex += Object.keys(cart.products)[i]
+        if (i < Object.keys(cart.products).length - 1) {
+          regex += '|'
+        }
+      }
+      regex = new RegExp(regex);
+      console.log(regex)
+      Product.find({ name: { $regex: regex } }).exec((err, theProduct) => {
+        res.send(theProduct);
+      });
+    });
+  });
+
+
+  //Working
+  function getCart(id, callback) {
+    Cart.findOne({ id: id }, function(err, result) {
+      if (err) throw err;
+      if (result) {
+        console.log("cart exists")
+        callback(result);
+        return true;
+      }
+      else {
+        //console.log("Cart not found");
+        console.log("made new cart")
+        var newCart = new Cart({
+           id: id,
+           products: {}
+        })
+        newCart.save((err, temp) => {
+           if (err) return console.error(err);
+           callback(newCart);
+        });
+        return false;
+      }
+   });
+  }
+
+  function setCart(id, cart, callback) {
+    console.log(cart)
+    console.log("DERP")
+    Cart.updateOne({ id: id }, { products: cart }, function(err, result) {
+      if (err) throw err;
+      console.log(result);
+      callback(cart);
+   });
+  }
 
 }
 
@@ -240,20 +310,18 @@ var products = new mongoose.Schema({
   picPath: String,
   updated: { type: Date, default: Date.now },
 });
+
 var Product = mongoose.model('Product', products);
 
 
 
-var cart = new mongoose.Schema({
-  name: { type: String, unique: true },
-  price: Number,
-  category: String,
-  aisle: Number,
-  size: String,
-  inventoryCount: Number,
-  picPath: String,
-  updated: { type: Date, default: Date.now },
+var carts = new mongoose.Schema({
+  id: String,
+  products: {},
 });
+
+var Cart = mongoose.model('Cart', carts);
+
 
 var userIds = new mongoose.Schema({
   userID: Number,
@@ -391,22 +459,7 @@ db.once('open', function() {
     }
     //searchCategory("Vegetable");
 
-    //Working
-    function getCart(id, callback) {
-      var Cart = mongoose.model( String(id), cart);
-      Cart.find(function(err, result) {
-        if (err) throw err;
-        if (result) {
-          callback(result);
-          return true;
-        }
-        else {
-          callback("false");
-          //console.log("Cart not found");
-          return false;
-        }
-     });
-    }
+
 
     //Working
     function cartTotal(id) {

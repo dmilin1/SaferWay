@@ -50,7 +50,8 @@ tokens: [
            required: true
        }
    }
-]
+],
+history: []
 });
 
 login.pre('save', function(next){
@@ -226,24 +227,68 @@ function launchServer() {
   })
 
   app.post('/api/getDetailedCart', function (req, res) {
-    request = req.body;
-
-    getCart(request.id, function(cart){
-      console.log(cart.products)
+    var cart = req.body.cart;
+    if (cart && Object.keys(cart).length > 0) {
       var regex = '';
-      for (var i = 0; i < Object.keys(cart.products).length; i++) {
-        regex += Object.keys(cart.products)[i]
-        if (i < Object.keys(cart.products).length - 1) {
+      for (var i = 0; i < Object.keys(cart).length; i++) {
+        regex += Object.keys(cart)[i]
+        if (i < Object.keys(cart).length - 1) {
           regex += '|'
         }
       }
       regex = new RegExp(regex);
       console.log(regex)
-      Product.find({ name: { $regex: regex } }).exec((err, theProduct) => {
-        res.send(theProduct);
+      Product.find({ name: { $regex: regex } }).exec((err, products) => {
+
+        var returnData = [];
+
+        for (var i = 0; i < products.length; i++) {
+          products[i]['count'] = cart[products[i].name].count;
+          console.log(cart[products[i].name])
+          returnData.push({
+            aisle: products[i]['aisle'],
+            category: products[i]['category'],
+            inventoryCount: products[i]['inventoryCount'],
+            name: products[i]['name'],
+            picPath: products[i]['picPath'],
+            price: products[i]['price'],
+            size: products[i]['size'],
+            updated: products[i]['updated'],
+            count: cart[products[i].name].count,
+          })
+        }
+
+        console.log(returnData)
+
+        res.send(returnData);
+      });
+    } else {
+      res.send({})
+    }
+  });
+
+  app.post('/api/getHistory', function (req, res) {
+    id = req.body.id;
+
+    Login.findById( id , (err, account) => {
+      res.send(account.history);
+    });
+  })
+
+  app.post('/api/addToHistory', function (req, res) {
+    id = req.body.id;
+    cart = req.body.cart;
+
+    Login.findById( id , (err, account) => {
+      history = account.history;
+      history.push(cart)
+      console.log(history);
+      Login.updateOne({ _id: id }, { history: history }, (err, result) => {
+        if (err) throw err;
+        res.send(history);
       });
     });
-  });
+  })
 
 
   //Working
@@ -272,13 +317,11 @@ function launchServer() {
   }
 
   function setCart(id, cart, callback) {
-    console.log(cart)
-    console.log("DERP")
     Cart.updateOne({ id: id }, { products: cart }, function(err, result) {
       if (err) throw err;
       console.log(result);
       callback(cart);
-   });
+    });
   }
 
 }

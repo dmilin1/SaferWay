@@ -18,12 +18,16 @@ export default class CheckoutPage extends Component {
     super();
     this.state = {
       shoppingBag: [],
+      cartData: [],
       name: "Gregory Mayo",
       phone: 9259111234,
       address: "235 Camelback Road",
       city: "San Jose",
       stateAddress: "California",
       zip: 925116,
+      shippingOption: 0,
+      loginState: false,
+      account: null,
     }
       this.showGuestPopup = this.showGuestPopup.bind(this);
       this.closeGuestPopup = this.closeGuestPopup.bind(this);
@@ -33,6 +37,31 @@ export default class CheckoutPage extends Component {
       this.handleChangeAddress = this.handleChangeAddress.bind(this);
       this.handleChangeLastName = this.handleChangeLastName.bind(this);
       this.handleChangeFirstName = this.handleChangeFirstName.bind(this);
+    }
+
+    placeOrder = () => {
+
+      axios.post('/api/setCart', {
+        id: this.state.account,
+        cart: {},
+      })
+      .then((res) => {
+
+        axios.post('/api/addToHistory', {
+          id: this.state.account,
+          cart: this.state.cartData,
+        })
+        .then((res) => {
+          this.setState({orderPlaced: true})
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+
+      })
+      .catch((error) => {
+        console.log(error);
+      })
     }
 
     increaseProduct = (productQuantity) => {
@@ -110,20 +139,32 @@ export default class CheckoutPage extends Component {
       event.preventDefault();
     }
 
+    setShipping = (type) => {
+      this.setState({
+        shippingOption: type,
+      })
+    }
+
+   formatMoney = (num) => {
+     var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (2 || -1) + '})?');
+     return num.toString().match(re)[0];
+   }
+
     prepRender = (products) => {
       var productList = []
-
+      console.log(products)
       for (var i = 0; i < products.length; i++) {
-        console.log(products[i].name)
+
         productList.push(
           <div>
             <img src={images[products[i].picPath.split('/⁨productPics⁩/')[1]]} alt={products[i].alt} style={{height:"100px"}}/>
-            <h3>{products[i].name} - {products[i].price}</h3>
+            <h3>{products[i]['count']}x {products[i].name} - ${this.formatMoney(products[i].count*products[i].price)}</h3>
           </div>
         )
       }
       this.setState({
-        shoppingBag: productList
+        shoppingBag: productList,
+        cartData: products,
       })
     }
 
@@ -133,30 +174,86 @@ export default class CheckoutPage extends Component {
       try {
         var loginState = JSON.parse(localStorage.getItem('loginState')).loggedin;
         var account = JSON.parse(localStorage.getItem('account'));
+
+        this.setState({
+          loginState: loginState,
+          account: account,
+        })
         console.log(account._id);
       } catch {
         var loginState = false;
       }
 
       if (loginState == true) {
-        axios.post('/api/getDetailedCart', {
+        axios.post('/api/getCart', {
           id: account
         })
         .then((res) => {
+          var products = res.data.products;
+          console.log(products);
+
+          axios.post('/api/getDetailedCart', {
+            cart: products
+          })
+          .then((res) => {
+            var products = res.data;
+            console.log(products);
+            this.prepRender(products)
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+      } else {
+        var products = JSON.parse(localStorage.getItem('cart'));
+        axios.post('/api/getDetailedCart', {
+          cart: products
+        })
+        .then((res) => {
           var products = res.data;
+          console.log(products);
 
           this.prepRender(products)
         })
         .catch((error) => {
           console.log(error);
         })
-      } else {
-        
       }
 
     }
 
    render() {
+
+     function formatMoney(num) {
+          var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (2 || -1) + '})?');
+          return num.toString().match(re)[0];
+      }
+
+     var merchandiseTotal = 0;
+     for (var i = 0; i < this.state.cartData.length; i++) {
+       merchandiseTotal += this.state.cartData[i].count * this.state.cartData[i].price
+     }
+     merchandiseTotal = formatMoney(merchandiseTotal);
+
+     if (this.state.shippingOption == 0) {
+       var shippingTotal = '0.00';
+     } else if (this.state.shippingOption == 1) {
+       var shippingTotal = '7.00';
+     } else if (this.state.shippingOption == 2) {
+       var shippingTotal = '15.00';
+     } else if (this.state.shippingOption == 3) {
+       var shippingTotal = '20.00';
+     }
+
+     var taxTotal = formatMoney(merchandiseTotal * 0.09);
+
+     var totalTotal = formatMoney(parseFloat(merchandiseTotal)*0.9 + parseFloat(shippingTotal) + parseFloat(taxTotal));
+
+
      var myForm = (
        <form className="myForm" style={{color:'black'}} onSubmit={this.handleSubmit}>
           First name:
@@ -184,22 +281,35 @@ export default class CheckoutPage extends Component {
             <div className="App__Aside">
               <h1 className="page-header">Checkout</h1>
               <hr></hr>
-              <p>Hey {this.state.name}!</p>
-              <p>Review your saved info below. Does everything look right?</p>
-              <hr></hr>
-              <h3>1. Shipping Info</h3>
-              <p>Saved Address:</p>
-              <hr></hr>
-              <div className="BoxAddress">
-                <h6>{this.state.phone}</h6>
-                <h6>{this.state.address}</h6>
-                <h6>{this.state.city}, {this.state.stateAddress}, {this.state.zip}</h6>
-              </div>
+
+              {this.state.loginState ? (
+                <>
+                  <p>Hey {this.state.name}!</p>
+                  <p>Review your saved info below. Does everything look right?</p>
+                  <hr></hr>
+                  <h3>1. Shipping Info</h3>
+                  <hr></hr>
+                  <div className="BoxAddress">
+                    <h6>{this.state.phone}</h6>
+                    <h6>{this.state.address}</h6>
+                    <h6>{this.state.city}, {this.state.stateAddress}, {this.state.zip}</h6>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p>Hello Guest!</p>
+                  <hr></hr>
+                  <h3>1. Shipping Info</h3>
+                  <hr></hr>
+                  <p>Enter your shipping info by pressing the guest checkout button.</p>
+                </>
+              )}
+
               <div className="shipping-method-options">
                 <h3>2. Shipping Options</h3>
                 <p>Order by 1PM EST to receive by dates below.</p>
                 <hr></hr>
-                <div className="shipping-method-option selectable-option radius">
+                <div onClick={() => this.setShipping(0)} style={{ backgroundColor: this.state.shippingOption == 0 ? '#DDD' : 'white' }} className="shipping-method-option selectable-option radius">
                     <div className="selectable-option-text">
                       <div className="delivery-details">
                         <span className="delivery-method-name">Pick Up at Store</span>
@@ -208,7 +318,7 @@ export default class CheckoutPage extends Component {
                       </div>
                     </div>
                 </div>
-                <div className="shipping-method-option selectable-option radius">
+                <div onClick={() => this.setShipping(1)} style={{ backgroundColor: this.state.shippingOption == 1 ? '#DDD' : 'white' }} className="shipping-method-option selectable-option radius">
                     <div className="selectable-option-text">
                       <div className="delivery-details">
                         <span className="delivery-method-name">Standard</span>
@@ -218,7 +328,7 @@ export default class CheckoutPage extends Component {
                       </div>
                     </div>
                 </div>
-                <div className="shipping-method-option selectable-option radius">
+                <div onClick={() => this.setShipping(2)} style={{ backgroundColor: this.state.shippingOption == 2 ? '#DDD' : 'white' }} className="shipping-method-option selectable-option radius">
                     <div className="selectable-option-text">
                       <div className="delivery-details">
                         <span className="delivery-method-name">Two Days</span>
@@ -228,7 +338,7 @@ export default class CheckoutPage extends Component {
                       </div>
                     </div>
                 </div>
-                <div className="shipping-method-option selectable-option radius">
+                <div onClick={() => this.setShipping(3)} style={{ backgroundColor: this.state.shippingOption == 3 ? '#DDD' : 'white' }} className="shipping-method-option selectable-option radius">
                     <div className="selectable-option-text">
                       <div className="delivery-details">
                         <span className="delivery-method-name">Overnight</span>
@@ -335,7 +445,17 @@ export default class CheckoutPage extends Component {
                     <h4>Merchandise:</h4>
                   </div>
                   <div className="order-summary-row-value text-right col-xs-height col-xs-4 col-middle">
-                    <span>$2.00</span>
+                    <span>${merchandiseTotal}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="order-subtotal-container container-xs-height">
+                <div className="order-summary-row row-xs-height ">
+                  <div className="order-summary-row-title text-left col-xs-height col-xs-8 col-middle">
+                    <h4>Online Savings:</h4>
+                  </div>
+                  <div className="order-summary-row-value text-right col-xs-height col-xs-4 col-middle">
+                    <span style={{color: 'red'}}>-${formatMoney(merchandiseTotal*0.1)}</span>
                   </div>
                 </div>
               </div>
@@ -345,7 +465,7 @@ export default class CheckoutPage extends Component {
                     <h4>Shipping:</h4>
                   </div>
                   <div className="order-summary-row-value text-right col-xs-height col-xs-4 col-middle">
-                    <span>$7.00</span>
+                    <span>${shippingTotal}</span>
                   </div>
                 </div>
               </div>
@@ -355,7 +475,7 @@ export default class CheckoutPage extends Component {
                       <h4>Tax:</h4>
                     </div>
                     <div className="order-summary-row-value text-right col-xs-height col-xs-4 col-middle">
-                      <span>$0.20</span>
+                      <span>${taxTotal}</span>
                       <hr></hr>
                     </div>
                   </div>
@@ -366,12 +486,16 @@ export default class CheckoutPage extends Component {
                       <h4>Total:</h4>
                     </div>
                     <div className="order-summary-row-value text-right col-xs-height col-xs-4 col-middle">
-                      <span>$9.20</span>
+                      <span>${totalTotal}</span>
                     </div>
                   </div>
               </div>
               <hr></hr>
+              { this.props.loginState ?
               <Button style={{background:"#2b5238", margin:"1em"}} onClick={this.showGuestPopup.bind(this)}>Guest Checkout</Button>
+              :
+              <Button style={{background:"#2b5238", margin:"1em"}} onClick={this.placeOrder}>Checkout</Button>
+              }
             </div>
           </div>
         </div>

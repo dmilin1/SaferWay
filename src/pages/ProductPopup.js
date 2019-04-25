@@ -60,6 +60,16 @@ class ProductContainer extends Component {
       .catch((error) => {
         console.log(error);
       });
+    } else {
+      var cart = JSON.parse(localStorage.getItem('cart'))
+      if (cart == null) {cart = {}}
+      if (cart[this.props.product.name]) {
+        cart[this.props.product.name].count += 1;
+      } else {
+        cart[this.props.product.name] = { count: 1 }
+      }
+      console.log(cart)
+      localStorage.setItem('cart', JSON.stringify(cart));
     }
 
   }

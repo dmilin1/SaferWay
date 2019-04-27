@@ -319,3 +319,24 @@ span{
 .btn-block{
     display: block;
 }
+
+.removeButton {
+  color: black;
+  margin-top: 40px;
+  margin-left: 20%;
+  font-size: 20px;
+  height: 47px;
+  padding: 8px 20px;
+  background-color: #ddd;
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: grey;
+  transition: color 0.25s, border-color 0.25s;
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  color: red;
+  border-color: red;
+}

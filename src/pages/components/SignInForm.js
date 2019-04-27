@@ -54,6 +54,7 @@ class SignInForm extends Component{
             })
             .then((res) => {
               localStorage.setItem('cart', JSON.stringify({}));
+              window.location.href = '/product'
             })
             .catch((error) => {
               console.log(error);

@@ -39,8 +39,9 @@ export default class SignUpForm extends Component{
                     agree: false
                 }
             }, ()=>{
-                
+
             })
+            window.location.href = '/product'
         })
         .catch(err=>{
             console.log(err);

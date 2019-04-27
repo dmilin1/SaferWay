@@ -23,6 +23,10 @@ export default class ProductPopup extends Component {
 
 class ProductContainer extends Component {
 
+  state = {
+    count: 1,
+  };
+
   addToCart = () => {
     try {
       var loginState = JSON.parse(localStorage.getItem('loginState')).loggedin;
@@ -40,9 +44,9 @@ class ProductContainer extends Component {
         var cart = res.data.products;
         if (cart == undefined) {cart = {}}
         if (cart[this.props.product.name]) {
-          cart[this.props.product.name].count += 1;
+          cart[this.props.product.name].count += this.state.count;
         } else {
-          cart[this.props.product.name] = { count: 1 }
+          cart[this.props.product.name] = { count: this.state.count }
         }
         console.log(cart)
 
@@ -51,6 +55,7 @@ class ProductContainer extends Component {
           products: cart,
         })
         .then((res) => {
+          window.location.href = window.location.href;
         })
         .catch((error) => {
           console.log(error);
@@ -64,9 +69,9 @@ class ProductContainer extends Component {
       var cart = JSON.parse(localStorage.getItem('cart'))
       if (cart == null) {cart = {}}
       if (cart[this.props.product.name]) {
-        cart[this.props.product.name].count += 1;
+        cart[this.props.product.name].count += this.state.count;
       } else {
-        cart[this.props.product.name] = { count: 1 }
+        cart[this.props.product.name] = { count: this.state.count }
       }
       console.log(cart)
       localStorage.setItem('cart', JSON.stringify(cart));
@@ -96,6 +101,11 @@ class ProductContainer extends Component {
               <br/>
               Size: <span style={styles.descriptionDataText}>{this.props.product.size}</span>
               <br/>
+            </div>
+            <div style={{ flexDirection: 'row', marginTop: 15, }}>
+              <input type="button" value="-" id="minus" style={{width: 30, marginRight: 20}} onClick={() => {this.setState({count: Math.max(this.state.count-1,1)})}}/>
+              {this.state.count}
+              <input type="button" value="+" id="plus" style={{width: 30, marginLeft: 20}} onClick={() => {this.setState({count: this.state.count+1})}}/>
             </div>
             <div className="addToCart" style={styles.addToCart} onClick={this.addToCart}>
               Add To Cart

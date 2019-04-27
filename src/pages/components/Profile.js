@@ -61,17 +61,17 @@ class UserProfile extends Component {
             flexDirection: 'row',
             borderWidth: 2,
             borderRadius: 10,
-            borderColor: '#DDD',
-            borderStyle: 'solid',
             padding: 10,
             marginTop: 5,
             marginBottom: 5,
             marginLeft: 20,
+            backgroundColor: 'white',
           }}>
             <img src={images[purchase[i].picPath.split('/⁨productPics⁩/')[1]]} style={{height:"100px"}}/>
             <div style={{
               textAlign: 'center',
               fontFamily: 'Roboto',
+              fontSize: 18,
             }}>
             {purchase[i].name}
             <br/>
@@ -112,12 +112,13 @@ class UserProfile extends Component {
               flexDirection: 'row',
               borderWidth: 5,
               borderRadius: 10,
-              borderColor: '#555',
+              borderColor: 'black',
               borderStyle: 'solid',
               marginLeft: 20,
               marginRight: 20,
               marginBottom: 25,
               overflow: 'auto',
+              backgroundColor: '#AAAAAA',
             }}>
             {renderPurchase(this.state.historyData[i])}
             </div>

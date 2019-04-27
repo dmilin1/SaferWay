@@ -10,6 +10,22 @@ function importAll(r) {
 }
 const images = importAll(require.context('./../productPics', false, /\.(png|jpe?g|svg)$/));
 
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+function getUrlParam(parameter, defaultvalue){
+    var urlparameter = defaultvalue;
+    if(window.location.href.indexOf(parameter) > -1){
+        urlparameter = getUrlVars()[parameter];
+        }
+    return urlparameter;
+}
+
 
 export default class ProductPage extends Component {
 
@@ -22,7 +38,11 @@ export default class ProductPage extends Component {
 
      var productList = []
 
-     axios.get('/api/getAllProducts')
+     axios.post('/api/getProductsSearch', {
+       search: getUrlParam('search', null),
+       category: getUrlParam('category', null),
+       aisle: getUrlParam('aisle', null)
+     })
      .then((res) => {
        // handle success
        console.log(res);

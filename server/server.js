@@ -231,7 +231,7 @@ function launchServer() {
     if (cart && Object.keys(cart).length > 0) {
       var regex = '';
       for (var i = 0; i < Object.keys(cart).length; i++) {
-        regex += Object.keys(cart)[i]
+        regex += '^' + Object.keys(cart)[i] + '$'
         if (i < Object.keys(cart).length - 1) {
           regex += '|'
         }
@@ -241,10 +241,10 @@ function launchServer() {
       Product.find({ name: { $regex: regex } }).exec((err, products) => {
 
         var returnData = [];
-
+        console.log(cart)
         for (var i = 0; i < products.length; i++) {
+          console.log(products[i].name)
           products[i]['count'] = cart[products[i].name].count;
-          console.log(cart[products[i].name])
           returnData.push({
             aisle: products[i]['aisle'],
             category: products[i]['category'],
@@ -267,6 +267,18 @@ function launchServer() {
     }
   });
 
+  app.post('/api/getAccount', function (req, res) {
+    id = req.body.id;
+
+    Login.findById( id , (err, account) => {
+      console.log(account);
+      res.send({
+        address: account.address,
+        name: account.name,
+      });
+    });
+  })
+
   app.post('/api/getHistory', function (req, res) {
     id = req.body.id;
 
@@ -287,6 +299,75 @@ function launchServer() {
         if (err) throw err;
         res.send(history);
       });
+    });
+  })
+
+  app.post('/api/getProductsSearch', function (req, res) {
+    try {
+      var searchStr = req.body.search.toLowerCase();
+    } catch {}
+    var category = req.body.category
+    var aisle = req.body.aisle
+    if (searchStr == '') { searchStr = undefined; }
+    if (category == '') { category == null; }
+    if (aisle == '') { aisle == null; }
+    console.log(searchStr)
+    Product.find({ 'name': { $regex: new RegExp('[' + searchStr + ']'), $options: 'i' } }).exec((err, products) => {
+      console.log(products)
+      if (searchStr) {
+        products.sort((a,b) => {
+          aScore = 0;
+          for (var i = 0; i < a.name.length; i++) {
+            aChar = a.name.toLowerCase().charAt(i);
+            if (searchStr.includes(aChar)) {
+              aScore += 1;
+            } else {
+              aScore -= 0.5;
+            }
+          }
+          if (a.name.toLowerCase().includes(searchStr)) {
+            aScore += 10;
+          } else {
+            aScore -= 0.5;
+          }
+
+          bScore = 0;
+          for (var i = 0; i < b.name.length; i++) {
+            bChar = b.name.toLowerCase().charAt(i);
+            if (searchStr.includes(bChar)) {
+              bScore += 1;
+            } else {
+              bScore -= 0.5;
+            }
+          }
+          if (b.name.toLowerCase().includes(searchStr)) {
+            bScore += 10;
+          } else {
+            bScore -= 0.5;
+          }
+
+          a['searchScore'] = aScore;
+          b['searchScore'] = bScore;
+
+          return bScore - aScore
+        })
+      }
+
+      if (category) {
+        products = products.filter(function(product) {
+          return product.category.toLowerCase() == category.toLowerCase();
+        })
+      }
+
+      if (aisle) {
+        products = products.filter(function(product) {
+          return product.aisle == aisle;
+        })
+      }
+
+      console.log(products)
+
+      res.send(products);
     });
   })
 
@@ -385,7 +466,7 @@ db.once('open', function() {
 
     //Working. Searches products list
     function search(findName, callback) {
-      var query = { name: findName };
+      var query = { name: new RegExp('^'+findName+'$', "i")};
       Product.findOne(query, function(err, result) {
          if (err) throw err;
          if (result) {

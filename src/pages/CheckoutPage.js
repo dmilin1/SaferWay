@@ -150,15 +150,56 @@ export default class CheckoutPage extends Component {
      return num.toString().match(re)[0];
    }
 
+   removeProduct = (e) => {
+     var removeObj = e.currentTarget.dataset.value;
+
+     if (this.state.loginState) {
+
+       axios.post('/api/getCart', {
+         id: this.state.account
+       })
+       .then((res) => {
+         var products = res.data.products;
+         delete products[removeObj];
+
+         axios.post('/api/setCart', {
+           id: this.state.account,
+           products: products
+         })
+         .then((res) => {
+           window.location.href = '/checkout';
+         })
+         .catch((error) => {
+           console.log(error);
+         })
+
+       })
+       .catch((error) => {
+         console.log(error);
+       })
+
+     } else {
+       var products = JSON.parse(localStorage.getItem('cart'));
+       delete products[removeObj];
+       localStorage.setItem('cart', JSON.stringify(products));
+       window.location.href = '/checkout';
+     }
+   }
+
     prepRender = (products) => {
       var productList = []
       console.log(products)
       for (var i = 0; i < products.length; i++) {
 
         productList.push(
-          <div>
-            <img src={images[products[i].picPath.split('/⁨productPics⁩/')[1]]} alt={products[i].alt} style={{height:"100px"}}/>
-            <h3>{products[i]['count']}x {products[i].name} - ${this.formatMoney(products[i].count*products[i].price)}</h3>
+          <div style={{ display: 'flex', flexDirection: 'row',}}>
+            <div style={{ width: 300}}>
+              <img src={images[products[i].picPath.split('/⁨productPics⁩/')[1]]} alt={products[i].alt} style={{height:"100px"}}/>
+              <h3>{products[i]['count']}x {products[i].name} - ${this.formatMoney(products[i].count*products[i].price)}</h3>
+            </div>
+            <div data-value={products[i].name} className="removeButton" onClick={(e) => this.removeProduct(e)}>
+            Remove
+            </div>
           </div>
         )
       }
@@ -174,11 +215,24 @@ export default class CheckoutPage extends Component {
       try {
         var loginState = JSON.parse(localStorage.getItem('loginState')).loggedin;
         var account = JSON.parse(localStorage.getItem('account'));
-
         this.setState({
           loginState: loginState,
           account: account,
         })
+
+        axios.post('/api/getAccount', {
+          id: account._id
+        })
+        .then((res) => {
+          this.setState({
+            name: res.data.name,
+            address: res.data.address,
+          })
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+
         console.log(account._id);
       } catch {
         var loginState = false;

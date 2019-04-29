@@ -35,14 +35,16 @@ class SignInForm extends Component{
 
             var localCart = JSON.parse(localStorage.getItem('cart'));
             console.log(localCart);
-            var cart = res.data.products;
-            if (cart == undefined) {cart = {}}
-            for (var i = 0; i < Object.keys(localCart).length; i++) {
-              var product = Object.keys(localCart)[i];
-              if (cart[product]) {
-                cart[product].count += localCart[product].count;
-              } else {
-                cart[product] = { count: localCart[product].count }
+            if (localCart != null) {
+              var cart = res.data.products;
+              if (cart == undefined) {cart = {}}
+              for (var i = 0; i < Object.keys(localCart).length; i++) {
+                var product = Object.keys(localCart)[i];
+                if (cart[product]) {
+                  cart[product].count += localCart[product].count;
+                } else {
+                  cart[product] = { count: localCart[product].count }
+                }
               }
             }
 

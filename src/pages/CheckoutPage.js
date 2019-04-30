@@ -201,7 +201,7 @@ export default class CheckoutPage extends Component {
                 <div className="cart-item-info-text col-xs-height col-xs-12 col-top">
                   <h4>{products[i].name}</h4>
                   <div className="cart-item-price">
-                    <h4>${this.formatMoney(products[i].count*products[i].price)}.00</h4>
+                    <h4>${this.formatMoney(products[i].count*products[i].price)}</h4>
                   </div>
                   <div className="cart-item-product-details">
                     <h5>Quantity: {products[i]['count']}</h5>
@@ -216,6 +216,7 @@ export default class CheckoutPage extends Component {
                 </div>
               </div>
             </div>
+            <hr></hr>
           </div>
         )
       }
@@ -505,7 +506,6 @@ export default class CheckoutPage extends Component {
               </div>
             </div>
             */}
-            <hr></hr>
             <h2>Order Summary!</h2>
             <hr></hr>
             <div className="BoxOrderSummary">

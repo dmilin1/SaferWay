@@ -192,13 +192,29 @@ export default class CheckoutPage extends Component {
       for (var i = 0; i < products.length; i++) {
 
         productList.push(
-          <div style={{ display: 'flex', flexDirection: 'row',}}>
-            <div style={{ width: 300}}>
-              <img src={images[products[i].picPath.split('/⁨productPics⁩/')[1]]} alt={products[i].alt} style={{height:"100px"}}/>
-              <h3>{products[i]['count']}x {products[i].name} - ${this.formatMoney(products[i].count*products[i].price)}</h3>
+          <div>
+            <div className="cart-item-img col-xs-height col-xs-4 col-md-4 col-lg-3 col-top">
+                <img className="productCheckout imageResponsive"src={images[products[i].picPath.split('/⁨productPics⁩/')[1]]} alt={products[i].alt}></img>
             </div>
-            <div data-value={products[i].name} className="removeButton" onClick={(e) => this.removeProduct(e)}>
-            Remove
+            <div className="cart-item-info col-xs-height col-xs-8 col-md-8 col-lg-9 col-top">
+              <div className="cart-item-info-container container-xs-height">
+                <div className="cart-item-info-text col-xs-height col-xs-12 col-top">
+                  <h4>{products[i].name}</h4>
+                  <div className="cart-item-price">
+                    <h4>${this.formatMoney(products[i].count*products[i].price)}.00</h4>
+                  </div>
+                  <div className="cart-item-product-details">
+                    <h5>Quantity: {products[i]['count']}</h5>
+                    <ul className="list-inline __ef422">
+                    <li>
+                        <button><i className="fa fa-plus" aria-hidden="true"></i></button>
+                        <button><i className="fa fa-minus" aria-hidden="true"></i></button>
+                        <button data-value={products[i].name} onClick={(e) => this.removeProduct(e)}> <i className="fa fa-times" aria-hidden="true"></i></button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )

@@ -367,7 +367,7 @@ export default class CheckoutPage extends Component {
                     <div className="selectable-option-text">
                       <div className="delivery-details">
                         <span className="delivery-method-name">Pick Up at Store</span>
-                        <span className="delivery-speed">Ready In An Hour</span>
+                        <span className="delivery-speed">Ready in 1 Hour</span>
                         <span className="shipping-method-price text-bold text-right col-xs-2">$0.00</span>
                       </div>
                     </div>
@@ -375,7 +375,7 @@ export default class CheckoutPage extends Component {
                 <div onClick={() => this.setShipping(1)} style={{ backgroundColor: this.state.shippingOption == 1 ? '#DDD' : 'white' }} className="shipping-method-option selectable-option radius">
                     <div className="selectable-option-text">
                       <div className="delivery-details">
-                        <span className="delivery-method-name">Standard</span>
+                        <span className="delivery-method-name">Standard:</span>
                         <span className="delivery-estimate">3 - 7 Business Days</span>
                         <span className="delivery-speed">Arrives by 18 April</span>
                         <span className="shipping-method-price text-bold text-right col-xs-2">$7.00</span>
@@ -385,7 +385,7 @@ export default class CheckoutPage extends Component {
                 <div onClick={() => this.setShipping(2)} style={{ backgroundColor: this.state.shippingOption == 2 ? '#DDD' : 'white' }} className="shipping-method-option selectable-option radius">
                     <div className="selectable-option-text">
                       <div className="delivery-details">
-                        <span className="delivery-method-name">Two Days</span>
+                        <span className="delivery-method-name">Two Days:</span>
                         <span className="delivery-estimate">2 Business Days</span>
                         <span className="delivery-speed">Arrives by 11 April</span>
                         <span className="shipping-method-price text-bold text-right col-xs-2">$15.00</span>
@@ -395,8 +395,8 @@ export default class CheckoutPage extends Component {
                 <div onClick={() => this.setShipping(3)} style={{ backgroundColor: this.state.shippingOption == 3 ? '#DDD' : 'white' }} className="shipping-method-option selectable-option radius">
                     <div className="selectable-option-text">
                       <div className="delivery-details">
-                        <span className="delivery-method-name">Overnight</span>
-                        <span className="delivery-estimate">1 Business Days</span>
+                        <span className="delivery-method-name">Overnight:</span>
+                        <span className="delivery-estimate">1 Business Day</span>
                         <span className="delivery-speed">Arrives by 10 April</span>
                         <span className="shipping-method-price text-bold text-right col-xs-2">$20.00</span>
                       </div>
@@ -499,7 +499,7 @@ export default class CheckoutPage extends Component {
                     <h4>Merchandise:</h4>
                   </div>
                   <div className="order-summary-row-value text-right col-xs-height col-xs-4 col-middle">
-                    <span>${merchandiseTotal}</span>
+                    <span className = "order-summary-value">${merchandiseTotal}</span>
                   </div>
                 </div>
               </div>
@@ -509,7 +509,7 @@ export default class CheckoutPage extends Component {
                     <h4>Online Savings:</h4>
                   </div>
                   <div className="order-summary-row-value text-right col-xs-height col-xs-4 col-middle">
-                    <span style={{color: 'red'}}>-${formatMoney(merchandiseTotal*0.1)}</span>
+                    <span style={{color: 'red'}} className = "order-summary-value">-${formatMoney(merchandiseTotal*0.1)}</span>
                   </div>
                 </div>
               </div>
@@ -519,7 +519,7 @@ export default class CheckoutPage extends Component {
                     <h4>Shipping:</h4>
                   </div>
                   <div className="order-summary-row-value text-right col-xs-height col-xs-4 col-middle">
-                    <span>${shippingTotal}</span>
+                    <span className = "order-summary-value">${shippingTotal}</span>
                   </div>
                 </div>
               </div>
@@ -529,7 +529,7 @@ export default class CheckoutPage extends Component {
                       <h4>Tax:</h4>
                     </div>
                     <div className="order-summary-row-value text-right col-xs-height col-xs-4 col-middle">
-                      <span>${taxTotal}</span>
+                      <span className = "order-summary-value">${taxTotal}</span>
                       <hr></hr>
                     </div>
                   </div>
@@ -540,7 +540,7 @@ export default class CheckoutPage extends Component {
                       <h4>Total:</h4>
                     </div>
                     <div className="order-summary-row-value text-right col-xs-height col-xs-4 col-middle">
-                      <span>${totalTotal}</span>
+                      <span className = "order-summary-value">${totalTotal}</span>
                     </div>
                   </div>
               </div>

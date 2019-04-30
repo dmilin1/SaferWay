@@ -216,10 +216,8 @@ h6{
     display: block;
 }
 .text-bold{
-    font-family: "Avenir Next Demi","Helvetica Neue Medium";
-}
-.text-right{
-    text-align: right;
+    font-family: "Tahoma";
+    font-size: 16px;
 }
 .col-xs-2{
     padding-right: 0;
@@ -260,6 +258,10 @@ span{
 .order-summary-row-title, .order-summary-row-value{
     padding-top: 0px;
     padding-bottom: 13px;
+}
+.order-summary-value{
+  font-size: 16px;
+  font-family: "Tahoma";
 }
 .text-right{
     text-align: right;

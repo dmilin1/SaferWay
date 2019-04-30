@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+## Contributors
+Project Manager:
+Dimitrie Milinovich:
+  GitHub: dmilin1 (https://github.com/dmilin1)
+  LinkedIn: Dimitrie Milinovich (https://www.linkedin.com/in/dimitrie-milinovich-359b1215b/)
+Front End:
+Sukhvir Singh:
+  GitHub:  SukhvirS (https://github.com/SukhvirS)
+  LinkedIn:  Sukhvir Singh (https://www.linkedin.com/in/sukhvir-singh-62ba48121/)
+Byas Dhungana:
+  GitHub:  saybyas (https://github.com/saybyas)
+  LinkedIn:  Byas Dhungana (https://www.linkedin.com/in/byas-dhungana-700bbb112)
 ## Available Scripts
 
 In the project directory, you can run:

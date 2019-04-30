@@ -7,10 +7,29 @@ Dimitrie Milinovich: <br>
 Front End:  <br><br>
 Sukhvir Singh: <br>
   GitHub:  SukhvirS (https://github.com/SukhvirS) <br>
-  LinkedIn:  Sukhvir Singh (https://www.linkedin.com/in/sukhvir-singh-62ba48121/) <br>
+  LinkedIn:  Sukhvir Singh (https://www.linkedin.com/in/sukhvir-singh-62ba48121/) <br><br>
 Byas Dhungana: <br>
   GitHub:  saybyas (https://github.com/saybyas) <br>
-  LinkedIn:  Byas Dhungana (https://www.linkedin.com/in/byas-dhungana-700bbb112) <br>
+  LinkedIn:  Byas Dhungana (https://www.linkedin.com/in/byas-dhungana-700bbb112) <br><br>
+Kyuhak Yuk:  <br>
+  GitHub:  kyuhakyuk (https://github.com/kyuhakyuk) <br>
+  LinkedIn:  () <br><br>
+Gregory Mayo: <br>
+  GitHub:  gregorymayo (https://github.com/gregorymayo) <br>
+  LinkedIn:  Gregory Mayo (https://www.linkedin.com/in/gregoryjmayo/) <br><br>
+Justin Ngyuen: <br>
+  GitHub: () <br>
+  LinkedIn: () <br><br>
+Jiawei Zhang:
+  GitHub: () <br>
+  LinkedIn: () <br><br>
+Database:  <br><br>
+Gaston Garrido: <br>
+  GitHub:  ggmonx (https://github.com/ggmonx) <br>
+  LinkedIn:  (https://www.linkedin.com/in/gaston-g-953b1099/)  <br><br>
+Maneek Dhillon: <br>
+  GitHub:  Maneek Dhillon () <br>
+  LinkedIn:  Maneek Dhillon (https://www.linkedin.com/in/maneek-dhillon/) <br><br>
 ## Available Scripts
 
 In the project directory, you can run:

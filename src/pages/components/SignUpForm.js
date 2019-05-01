@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import './SignUpForm.css';
-import TermsAndConditionsForm from './TermsAndConditionsForm'
+// import TermsAndConditionsForm from './TermsAndConditionsForm'
 
 export default class SignUpForm extends Component{
     constructor() {

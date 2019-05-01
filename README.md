@@ -16,7 +16,7 @@ Gregory Mayo: <br>
   LinkedIn:  Gregory Mayo (https://www.linkedin.com/in/gregoryjmayo/) <br><br>
 Justin Ngyuen: <br>
   GitHub: justin-ngyuen03 (https://github.com/justin-nguyen03) <br>
-  LinkedIn: () <br><br>
+  LinkedIn: Justin Nguyen(https://www.linkedin.com/in/justin-nguyen-a3717416b/) <br><br>
 Sukhvir Singh: <br>
   GitHub:  SukhvirS (https://github.com/SukhvirS) <br>
   LinkedIn:  Sukhvir Singh (https://www.linkedin.com/in/sukhvir-singh-62ba48121/) <br><br>

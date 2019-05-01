@@ -2,14 +2,17 @@
     height: 91.5vh;
     display: flex;
     color: white;
+    font-family: Tahoma;
   }
 .App__Aside{
+    font-family: Tahoma;
     width: 50%;
     background-color: white;
     padding: 25px 40px;
 
 }
 .App__Form{
+    font-family: Tahoma;
     width: 50%;
     background-color: white;
     padding: 25px 40px;
@@ -311,8 +314,8 @@ span{
 }
 .btn-primary{
     color: #fff;
-    background: black;
-    border-color: #000;
+    background: rgb(48, 81, 56);
+    border-color: rgb(48, 81, 56);
     -webkit-box-shadow: inset 0 0 0 1px #000;
     box-shadow: inset 0 0 0 1px #000;
     margin-top: 10px;

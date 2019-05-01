@@ -506,7 +506,7 @@ export default class CheckoutPage extends Component {
               </div>
             </div>
             */}
-            <h2>Order Summary!</h2>
+            <h2>Order Summary</h2>
             <hr></hr>
             <div className="BoxOrderSummary">
               <div className="order-subtotal-container container-xs-height">
@@ -562,9 +562,9 @@ export default class CheckoutPage extends Component {
               </div>
               <hr></hr>
               { this.props.loginState ?
-              <Button style={{background:"#2b5238", margin:"1em"}} onClick={this.showGuestPopup.bind(this)}>Guest Checkout</Button>
+              <Button className="btn-primary btn-block" onClick={this.showGuestPopup.bind(this)}>Guest Checkout</Button>
               :
-              <Button style={{background:"#2b5238", margin:"1em"}} onClick={this.placeOrder}>Checkout</Button>
+              <Button className="btn-primary btn-block" onClick={this.placeOrder}>Checkout</Button>
               }
             </div>
           </div>

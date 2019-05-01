@@ -7,12 +7,14 @@
   width: 50%;
   background-color: white;
   padding: 26px 0px 0px 120px;
+  font-family: Tahoma;
 }
 .AppS__Form {
   width: 50%;
   background-color: white;
   padding: 25px 40px;
   overflow: auto;
+  font-family: Tahoma;
 }
 .PageSwitcher {
   display: flex;
@@ -20,7 +22,7 @@
   margin-bottom: 10%;
 }
 .PageSwitcher__Item {
-  background-color: #5ED18C;
+  background-color: rgb(103, 175, 121);
   color: white;
   padding: 10px 25px;
   cursor: pointer;
@@ -31,7 +33,7 @@
   text-decoration: none;
 }
 .PageSwitcher__Item--Active {
-  background-color: #28A745;
+  background-color: rgb(48, 81, 56);
   color: white;
 }
 .FormTitle {
@@ -41,7 +43,7 @@
   margin-bottom: 50px;
 }
 .FormTitle__Link {
-  color: #707C8B;
+  color: rgb(48, 81, 56);
   text-decoration: none;
   display: inline-block;
   font-size: 1.7em;
@@ -97,9 +99,9 @@
   margin-left: 5px;
 }
 .FormField__Button {
-  background-color: white;
-  color: #28A745;
-  border-color: #28A745;
+  background: rgb(48, 81, 56);
+  color: #fff;
+  border-color: rgb(48, 81, 56);
   outline: none;
   border-radius: 12px;
   padding: 15px 70px;
@@ -108,8 +110,20 @@
   margin:10px;
 }
 .FormField__Button:hover{
-  background-color:#28A745;
-  color: white;
+  background-color:#fff;
+  color: rgb(48, 81, 56);
+}
+.btn-primary{
+    color: #fff;
+    background: black;
+    border-color: rgb(48, 81, 56);;
+    -webkit-box-shadow: inset 0 0 0 1px rgb(48, 81, 56);
+    box-shadow: inset 0 0 0 1px rgb(48, 81, 56);
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.btn-block{
+    display: block;
 }
 .imgA{
   width:400px;

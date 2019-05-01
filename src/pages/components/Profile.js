@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import {Link } from 'react-router-dom';
 import axios from 'axios';
-import './SignUpForm.css';
+import './Profile.css';
 
 
 function importAll(r) {
@@ -55,24 +55,9 @@ class UserProfile extends Component {
       for (var i = 0; i < purchase.length; i++) {
         console.log(purchase[i])
         theRender.push(
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'row',
-            borderWidth: 2,
-            borderRadius: 10,
-            padding: 10,
-            marginTop: 5,
-            marginBottom: 5,
-            marginLeft: 20,
-            backgroundColor: 'white',
-          }}>
+          <div className="picture">
             <img src={images[purchase[i].picPath.split('/⁨productPics⁩/')[1]]} style={{height:"100px"}}/>
-            <div style={{
-              textAlign: 'center',
-              fontFamily: 'Roboto',
-              fontSize: 18,
-            }}>
+            <div className="picture-two">
             {purchase[i].name}
             <br/>
             {purchase[i].count}x ${purchase[i].price}
@@ -97,31 +82,13 @@ class UserProfile extends Component {
         }
         purchaseHistory.push(
           <div>
-            <div style={{
-              textAlign: 'center',
-              marginTop: 10,
-              marginBottom: 5,
-              fontFamily: 'Roboto',
-              fontWeight: 600,
-              fontSize: 20,
-            }}>
+            <div className="history-data">
             ${formatMoney(total)}
             </div>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'row',
-              borderWidth: 5,
-              borderRadius: 10,
-              borderColor: 'black',
-              borderStyle: 'solid',
-              marginLeft: 20,
-              marginRight: 20,
-              marginBottom: 25,
-              overflow: 'auto',
-              backgroundColor: '#AAAAAA',
-            }}>
+            <div className="history-picture">
             {renderPurchase(this.state.historyData[i])}
             </div>
+            <hr></hr>
           </div>
         )
       }
@@ -130,12 +97,7 @@ class UserProfile extends Component {
 
     return(
       <div id="user-profile">
-        <div style={{
-          textAlign: 'center',
-          fontWeight: 500,
-          fontSize: 25,
-          marginTop: 40,
-        }}>
+        <div className="purchase-history">
         Purchase History
         </div>
         <hr/>

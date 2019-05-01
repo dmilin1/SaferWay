@@ -1,0 +1,44 @@
+.picture{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-Width: 2px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    background-color: white;
+}
+
+.picture-two{
+    text-align: center;
+    font-family: Roboto;
+    font-size: 18px;
+}
+.history-data{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-family: Roboto;
+    font-weight: 600px;
+    font-size: 20px;
+}
+
+.history-picture{
+    display: flex;
+    flex-direction: row;
+    border-width: 5px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 25px;
+    overflow: auto;
+}
+
+.purchase-history{
+    text-align: center;
+    font-weight: 500px;
+    font-size: 25px;
+    margin-top: 40px;
+}

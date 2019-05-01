@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 //import {Link } from 'react-router-dom';
+import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import './SignUpForm.css';
+import TermsAndConditionsForm from './TermsAndConditionsForm'
 
 export default class SignUpForm extends Component{
     constructor() {
@@ -90,7 +92,8 @@ export default class SignUpForm extends Component{
                             <input type="password" id="password" className="FormField__Input" placeholder="Enter Your Password" name="password" value={this.state.password} onChange={this.handleChange}></input>
                         </div>
                         <label className="FormField__CheckboxLabel">
-                            <input className="FormField__Checkbox" type="checkbox" name="agree" value={this.state.agree} onChange={this.handleChange}/> I agree all statements in<a href="" className="FormField__TermsLink">terms of service</a>
+                            <input className="FormField__Checkbox" type="checkbox" name="agree" value={this.state.agree} onChange={this.handleChange}/> I agree all statements in the
+                            <NavLink to="/terms-of" activeClassName="PageSwitcher__Item--Active" className="FormField__TermsLink ">Terms And Conditions</NavLink>
                             <div className="FormField">
                                 <button className="FormField__Button" >Sign Up</button>
                             </div>

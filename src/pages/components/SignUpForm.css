@@ -1,10 +1,10 @@
 .BoxSignUp {
     width: 564px;
-    height: 745px;
+    height: auto;
     border: 1px solid black;
     padding: 20px;
     border-radius: 10px;
   }
-pTerms.style{
+.terms-of-format{
   color: black;
 }

@@ -809,6 +809,8 @@ db.once('open', function() {
     insertProduct("Oranges", 2.99, "Fruit", 2, "12 count", 100, "/⁨productPics⁩/oranges.jpg");
     insertProduct("Spinach", 1.99, "Vegetable", 2, "10 oz", 100, "/⁨productPics⁩/spinach.jpg");
     */
+    insertProduct("Cheese", 3.49, "Dairy", 1, "3 oz", 100, "/⁨productPics⁩/cheese.jpg");
+    insertProduct("Jelly", 3.89, "Spreads", 3, "16 oz", 100, "/⁨productPics⁩/jelly.jpeg");
     //addUser("Bob", "Jackson", "password", "bob@gmail.com", "321 10th St. Santa Clara, CA 91123");
     //addUser("John", "Smith", "password", "test@yahoo.com", "123 1st St. San Jose, CA 95123");
     //addUser("James", "Johnson", "password", "johnson@hotmail.com", "987 2nd St. Sunnyvale, CA 94567");

@@ -35,7 +35,7 @@ export default class HomePage extends Component {
                 </div>
             </div>
 
-            <div className="box" onClick={() => this.openLink("product?category=frozen-food")}>
+            <div className="box" onClick={() => this.openLink("product?category=frozen")}>
                 <div className="icon"><i className="fa fa-ice-cream"></i></div>
                 <div className="content">
                     <h3>Frozen Foods</h3>
@@ -49,28 +49,28 @@ export default class HomePage extends Component {
                 </div>
             </div>
 
-            <div className="box" onClick={() => this.openLink("product?category=personal-health")}>
+            <div className="box" onClick={() => this.openLink("product?category=alcohol")}>
                 <div className="icon"><i className="fa fa-diagnoses"></i></div>
                 <div className="content">
                     <h3>Personal Health</h3>
                 </div>
             </div>
 
-            <div className="box" onClick={() => this.openLink("product?category=baked-good")}>
-                <div className="icon"><i className="fa fa-bread-slice"></i></div>
+            <div className="box" onClick={() => this.openLink("product?category=drinks")}>
+                <div className="icon"><i class="fa fa-glass-whiskey"></i></div>
                 <div className="content">
-                    <h3>Baked Goods</h3>
+                    <h3>Drinks</h3>
                 </div>
             </div>
 
-            <div className="box" onClick={() => this.openLink("product?category=snack")}>
+            <div className="box" onClick={() => this.openLink("product?category=snacks")}>
                 <div className="icon"><i className="fa fa-cookie-bite"></i></div>
                 <div className="content">
                     <h3>Snacks</h3>
                 </div>
             </div>
 
-            <div className="box" onClick={() => this.openLink("product?category=household-item")}>
+            <div className="box" onClick={() => this.openLink("product?category=cleaning")}>
                 <div className="icon"><i className="fa fa-toilet-paper"></i></div>
                 <div className="content">
                     <h3>Household Items</h3>

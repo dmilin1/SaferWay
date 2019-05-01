@@ -41,7 +41,7 @@ export default class CustomNavbar extends Component {
     window.location.href='/login#/sign-in';
     var loginState = JSON.parse(localStorage.getItem('loginState'));
 
-      if(loginState.loggedin){
+      if(loginState && loginState.loggedin){
         window.location.href='/profile';
       }else{
         window.location.href='/login#/sign-in';

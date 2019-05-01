@@ -3,8 +3,8 @@ import './LoginPage.css';
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import SignInForm from './components/SignInForm'
 import SignUpForm from './components/SignUpForm'
-// import TermsAndConditionsForm from './components/TermsAndConditionsForm'
-//import axios from 'axios';
+import TermsAndConditionsForm from './components/TermsAndConditionsForm'
+import axios from 'axios';
 
 export default class LoginPage extends Component {
   render() {
@@ -51,6 +51,8 @@ export default class LoginPage extends Component {
             <Route path="/sign-up" component={SignUpForm}>
             </Route>
             <Route exact path="/sign-in" component={SignInForm}>
+            </Route>
+            <Route exact path="/terms-of" component={TermsAndConditionsForm}>
             </Route>
           </div>
         </div>

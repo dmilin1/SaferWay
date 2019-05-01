@@ -31,12 +31,10 @@
   outline: none;
   display: inline-block;
   text-decoration: none;
-  border-radius: 15px;
 }
 .PageSwitcher__Item--Active {
   background-color: rgb(48, 81, 56);
   color: white;
-  border-radius: 15px;
 }
 .FormTitle {
   color: #707C8B;

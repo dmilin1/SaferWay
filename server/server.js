@@ -776,7 +776,6 @@ db.once('open', function() {
     }
 
     //userSearch("","","",'');
-    /*
     insertProduct("Milk", 2.89, "Dairy", 1, "1 gallon", 100, "/⁨productPics⁩/milk.jpeg");
     insertProduct("Apple", 0.99, "Fruit", 2, "1", 100, "/⁨productPics⁩/apple.jpeg");
     insertProduct("Peanut Butter", 3.89, "Spreads", 3, "16 oz", 100, "/⁨productPics⁩/peanutButter.jpeg");
@@ -808,9 +807,11 @@ db.once('open', function() {
     insertProduct("Orange Juice", 1.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/orangeJuice.png");
     insertProduct("Oranges", 2.99, "Fruit", 2, "12 count", 100, "/⁨productPics⁩/oranges.jpg");
     insertProduct("Spinach", 1.99, "Vegetable", 2, "10 oz", 100, "/⁨productPics⁩/spinach.jpg");
-    */
     insertProduct("Cheese", 3.49, "Dairy", 1, "3 oz", 100, "/⁨productPics⁩/cheese.jpg");
     insertProduct("Jelly", 3.89, "Spreads", 3, "16 oz", 100, "/⁨productPics⁩/jelly.jpeg");
+    insertProduct("Coca Cola", 0.99, "Drinks", 7, "2 liter", 100, "/⁨productPics⁩/cocacola.png");
+    insertProduct("Chicken", 15.49, "Meat", 5, "6 pieces", 100, "/⁨productPics⁩/chicken.jpg");
+    insertProduct("Turkey", 4.59, "Deli", 1, "8 count", 100, "/⁨productPics⁩/turkey.jpeg");
     //addUser("Bob", "Jackson", "password", "bob@gmail.com", "321 10th St. Santa Clara, CA 91123");
     //addUser("John", "Smith", "password", "test@yahoo.com", "123 1st St. San Jose, CA 95123");
     //addUser("James", "Johnson", "password", "johnson@hotmail.com", "987 2nd St. Sunnyvale, CA 94567");

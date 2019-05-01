@@ -42,3 +42,67 @@
     font-size: 25px;
     margin-top: 40px;
 }
+
+tr{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+    border-top-color: inherit;
+    border-right-color: inherit;
+    border-bottom-color: inherit;
+    border-left-color: inherit;
+}
+
+.orders-list-item {
+    font-size: .75em;
+    line-height: 16px;
+}
+.order-date-message, .order-total-message, .order-number-message {
+    padding-right: 0;
+    padding-left: 0;
+}
+.order-status-message{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.aeoicon {
+    font-size: 16px;
+    margin-right: 10px;
+    top: 0;
+}
+.aeoicon-wismo_truck-outline {
+    top: 3px;
+}
+.orders-list-item td {
+    border-width: 1px 0;
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+    border-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-color: #eee;
+    border-top-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-left-color: rgb(238, 238, 238);
+    padding: 14px 129px;
+}
+.col-md-3, .col-lg-4 .col-md-4 .col-lg-3 .col-md-2{
+    position: relative;
+    min-height: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+    letter-spacing: .5px;
+}
+.text-valign-middle {
+    vertical-align: middle;
+}
+
+.text{
+    font-weight: 900;
+    font-size: 13px;
+}

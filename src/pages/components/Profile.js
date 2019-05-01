@@ -82,9 +82,16 @@ class UserProfile extends Component {
         }
         purchaseHistory.push(
           <div>
-            <div className="history-data">
-            ${formatMoney(total)}
-            </div>
+            <tr scope="row" className="orders-list-item">
+              <td className="order-date-message col-md-3 col-lg-4 text">11/27/2019</td>
+              <td className="order-status-message col-md-4 col-lg-3">
+                <div className="text-valign-middle aeoicon aeoicon-wismo_truck-outline">
+                  <i className="fa fa-truck" aria-hidden="true"></i>
+                </div>
+              </td>
+              <td className="order-total-message col-md-4 col-lg-3 text">${formatMoney(total)}</td>
+              <td className="order-number-message col-md-3 text">#6123434123</td>
+            </tr>  
             <div className="history-picture">
             {renderPurchase(this.state.historyData[i])}
             </div>

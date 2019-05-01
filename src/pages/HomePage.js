@@ -29,7 +29,7 @@ export default class HomePage extends Component {
             </div>
 
             <div className="box" onClick={() => this.openLink("product?category=dairy")}>
-                <div className="icon"><i className="fa fa-egg"></i></div>
+                <div className="icon"><i class="fa fa-cheese"></i></div>
                 <div className="content">
                     <h3>Dairy</h3>
                 </div>

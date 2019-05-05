@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import './SignUpForm.css';
-import SignInForm from './SignInForm'
-
-import TermsAndConditionsForm from './TermsAndConditionsForm'
+// import TermsAndConditionsForm from './TermsAndConditionsForm'
 
 export default class SignUpForm extends Component{
     constructor() {
@@ -21,14 +19,6 @@ export default class SignUpForm extends Component{
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onSignup = this.onSignup.bind(this);
-
-    }
-    save()
-    {
-      this.name = "name";
-      this.address = "address";
-      this.email = "email";
-      this.phone = "phone";
     }
     onSignup = async(email, password,name,address,phone) => {
         console.log('signup');
@@ -76,7 +66,6 @@ export default class SignUpForm extends Component{
         // console.log('The form was submitted with the following data:');
         // console.log(this.state);
       }
-
     render(){
         return(
                 <div className="FormCenter">
@@ -103,8 +92,8 @@ export default class SignUpForm extends Component{
                             <input type="password" id="password" className="FormField__Input" placeholder="Enter Your Password" name="password" value={this.state.password} onChange={this.handleChange}></input>
                         </div>
                         <label className="FormField__CheckboxLabel">
-                            <input className="FormField__Checkbox" type="checkbox" name="agree" value={this.state.agree} onChange={this.handleChange}/> I agree to all statements in the
-                            <NavLink to= "/terms-and" className="FormField__TermsLink " onclick = {this.save()}>Terms And Conditions</NavLink>
+                            <input className="FormField__Checkbox" type="checkbox" name="agree" value={this.state.agree} onChange={this.handleChange}/> I agree all statements in the
+                            <NavLink to="/terms-of" activeClassName="PageSwitcher__Item--Active" className="FormField__TermsLink ">Terms And Conditions</NavLink>
                             <div className="FormField">
                                 <button className="FormField__Button" >Sign Up</button>
                             </div>

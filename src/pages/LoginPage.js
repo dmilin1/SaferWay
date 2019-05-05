@@ -5,14 +5,8 @@ import SignInForm from './components/SignInForm'
 import SignUpForm from './components/SignUpForm'
 import TermsAndConditionsForm from './components/TermsAndConditionsForm'
 import axios from 'axios';
-export default class LoginPage extends Component {
-  save() {
-    this.name = "name";
-    this.address = "address";
-    this.email = "email";
-    this.phone = "phone";
-  }
 
+export default class LoginPage extends Component {
   render() {
     return (
       <Router>
@@ -48,19 +42,17 @@ export default class LoginPage extends Component {
           </div>
           <div className="AppS__Form">
             <div className="PageSwitcher">
+              <NavLink to="/sign-up" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item ">Sign Up</NavLink>
 
+              <NavLink exact to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item  ">Sign In</NavLink>
 
-              <NavLink exact to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item  "  onclick = {this.save()}>Sign In</NavLink>
-
-              <NavLink to="/sign-up" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item " onclick = {this.save()}>Sign Up</NavLink>
-
-              <NavLink to ="/terms-and" active ClassName = "PageSwitcher__Item--Active" className = "PageSwitcher__Item "  onclick = {this.save()}>Terms and Conditons</NavLink>
+              <NavLink to="/terms-of" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item ">Terms And Conditions</NavLink>
             </div>
             <Route path="/sign-up" component={SignUpForm}>
             </Route>
-            <Route path = "/terms-and" component = {TermsAndConditionsForm}>
-            </Route>
             <Route exact path="/sign-in" component={SignInForm}>
+            </Route>
+            <Route exact path="/terms-of" component={TermsAndConditionsForm}>
             </Route>
           </div>
         </div>

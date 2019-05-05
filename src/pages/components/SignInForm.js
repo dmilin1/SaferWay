@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './SignInForm.css';
 
-import SignUpForm from './SignUpForm'
-import TermsAndConditionsForm from './TermsAndConditionsForm'
-
 class SignInForm extends Component{
     constructor() {
         super();

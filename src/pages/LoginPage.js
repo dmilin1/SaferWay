@@ -46,13 +46,10 @@ export default class LoginPage extends Component {
 
               <NavLink exact to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item  ">Sign In</NavLink>
 
-              <NavLink to="/terms-of" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item ">Terms And Conditions</NavLink>
             </div>
             <Route path="/sign-up" component={SignUpForm}>
             </Route>
             <Route exact path="/sign-in" component={SignInForm}>
-            </Route>
-            <Route exact path="/terms-of" component={TermsAndConditionsForm}>
             </Route>
           </div>
         </div>

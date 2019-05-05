@@ -9,6 +9,10 @@ export default class SignUpForm extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            email: '',
+            name: '',
+            address: '',
+            phone: '',
             password: '',
             agree: false
         };
@@ -28,18 +32,18 @@ export default class SignUpForm extends Component{
         })
         .then(res=>{
             console.log(res.data);
-            // this.setState(()=>{
-            //     return{
-            //         email: '',
-            //         name: '',
-            //         address: '',
-            //         phone: '',
-            //         password: '',
-            //         agree: false
-            //     }
-            // }, ()=>{
-            //
-            // })
+            this.setState(()=>{
+                return{
+                    email: '',
+                    name: '',
+                    address: '',
+                    phone: '',
+                    password: '',
+                    agree: false
+                }
+            }, ()=>{
+
+            })
             window.location.href = '/product'
         })
         .catch(err=>{
@@ -70,19 +74,19 @@ export default class SignUpForm extends Component{
                     <form className="FormField" onSubmit={(e)=>{this.handleSubmit(e)}}>
                         <div className="FormField">
                             <label className="FormField__Label" htmlFor="name">Full Name</label>
-                            <input type="text" id="name" className="FormField__Input" placeholder="Enter Your Full Name" name="name"  value={this.props.name} onChange={this.handleChange}></input>
+                            <input type="text" id="name" className="FormField__Input" placeholder="Enter Your Full Name" name="name"  value={this.state.name} onChange={this.handleChange}></input>
                         </div>
                         <div className="FormField">
                             <label className="FormField__Label" htmlFor="address">Full Address</label>
-                            <input type="text" id="address" className="FormField__Input" placeholder="Enter Your Full Address" name="address" value={this.props.address} onChange={this.handleChange}></input>
+                            <input type="text" id="address" className="FormField__Input" placeholder="Enter Your Full Address" name="address" value={this.state.address} onChange={this.handleChange}></input>
                         </div>
                         <div className="FormField">
                             <label className="FormField__Label" htmlFor="phone">Phone</label>
-                            <input type="text" id="phone" className="FormField__Input" placeholder="Enter Your Phone Number" name="phone"  value={this.props.phone} onChange={this.handleChange}></input>
+                            <input type="text" id="phone" className="FormField__Input" placeholder="Enter Your Phone Number" name="phone"  value={this.state.phone} onChange={this.handleChange}></input>
                         </div>
                         <div className="FormField">
                             <label className="FormField__Label" htmlFor="email">Email</label>
-                            <input type="email" id="email" className="FormField__Input" placeholder="Enter Your Email" name="email"  value={this.props.email} onChange={this.handleChange}></input>
+                            <input type="email" id="email" className="FormField__Input" placeholder="Enter Your Email" name="email"  value={this.state.email} onChange={this.handleChange}></input>
                         </div>
                         <div className="FormField">
                             <label className="FormField__Label" htmlFor="password">Password</label>

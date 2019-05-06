@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import './SignUpForm.css';
-import Pdf from './TermsConditions.pdf';
+import MyTermsandConditions from './TermsConditions.pdf';
 
 export default class SignUpForm extends Component{
     constructor(props) {
@@ -94,7 +94,7 @@ export default class SignUpForm extends Component{
                         </div>
                         <label className="FormField__CheckboxLabel">
                             <input className="FormField__Checkbox" type="checkbox" name="agree" value={this.state.agree} onChange={this.handleChange}/> I agree all to statements in the
-                            <a href = {Pdf} target = "_blank" className = "FormField__TermsLink">Terms and Conditions</a>
+                            <a href = {MyTermsandConditions} target = "_blank" className = "FormField__TermsLink">Terms and Conditions</a>
                             <div className="FormField">
                                 <button className="FormField__Button" >Sign Up</button>
                             </div>

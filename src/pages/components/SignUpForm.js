@@ -6,8 +6,8 @@ import './SignUpForm.css';
 import MyTermsandConditions from './TermsConditions.pdf';
 
 export default class SignUpForm extends Component{
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             email: '',
             name: '',
@@ -62,7 +62,7 @@ export default class SignUpForm extends Component{
       handleSubmit(e) {
         e.preventDefault();
         console.log('submit');
-        this.onSignup(this.props.email, this.state.password, this.state.name, this.props.address, this.props.phone);
+        this.onSignup(this.state.email, this.state.password, this.state.name, this.state.address, this.state.phone);
 
         // console.log('The form was submitted with the following data:');
         // console.log(this.state);
